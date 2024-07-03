@@ -10,7 +10,7 @@
 - multi-files upload
 - auto save chat history to vector database
 - unlimit chat history
-- support Custom System Prompt
+- support custom System Prompt
 - Ollama model auto-loader
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
