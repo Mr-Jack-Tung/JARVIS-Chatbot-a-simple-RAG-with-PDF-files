@@ -4,7 +4,7 @@
 
 ### Features
 - support 29 languages
-- upload any language files and response with user language ^^
+- upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
 - support PDF, TXT files
 - drag & drop to upload files
