@@ -4,6 +4,6 @@
 - drag & drop to upload files
 - multi-files upload
 - save chat history to vector database unlimit
--  
+- support Custom System Prompt
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
