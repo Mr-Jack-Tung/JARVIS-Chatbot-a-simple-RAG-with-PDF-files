@@ -9,8 +9,8 @@
 - support PDF, TXT files
 - drag & drop to upload files
 - multi-files upload
-- auto save chat history to vector database
 - unlimit chat history
+- auto save chat history to vector database
 - support custom System Prompt
 - Ollama model auto-loader
 - 360 code lines ^^
