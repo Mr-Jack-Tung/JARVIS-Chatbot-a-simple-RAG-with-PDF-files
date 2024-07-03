@@ -3,7 +3,7 @@
 # Author: Mr.Jack _ www.bicweb.vn
 # Date: 03 July 2024 - 08 PM
 
-# pip install tqdm, pypdf, chromadb, tiktoken, gradio, langchain, langchain_community, ollama
+# pip install tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama
 
 import os, sys, re
 import time
