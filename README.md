@@ -1,6 +1,5 @@
 # JARVIS Chatbot
-a local simple RAG with PDF files assistant
-
+(a local simple RAG with PDF files assistant)
 - Author: Mr. Jack Tung
 - Date: 03 July 2024 - 08 PM
 
