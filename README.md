@@ -12,6 +12,7 @@
 - unlimit chat history
 - support custom System Prompt
 - Ollama model auto-loader
+- 360 code lines ^^
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
 
