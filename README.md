@@ -1,4 +1,8 @@
 # JARVIS Chatbot _ a simple RAG with PDF files assistant
+- Author: Mr.Jack _ www .bicweb. vn
+- Date: 03 July 2024 - 08 PM
+
+### Features
 - support 29 languages
 - PDF, TXT files upload to vector database unlimit
 - drag & drop to upload files
