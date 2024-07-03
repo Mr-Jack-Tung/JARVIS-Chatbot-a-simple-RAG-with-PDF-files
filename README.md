@@ -4,10 +4,12 @@
 
 ### Features
 - support 29 languages
-- PDF, TXT files upload to vector database unlimit
+- unlimit upload files to vector database
+- support PDF, TXT files
 - drag & drop to upload files
 - multi-files upload
-- save chat history to vector database unlimit
+- auto save chat history to vector database
+- unlimit chat history
 - support Custom System Prompt
 - Ollama model auto-loader
 
