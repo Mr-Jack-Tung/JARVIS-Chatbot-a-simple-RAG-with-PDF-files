@@ -1,5 +1,5 @@
 # JARVIS Chatbot _ a simple RAG with PDF files assistant
-- Author: Mr.Jack _ www .bicweb. vn
+- Author: Mr. Jack Tung
 - Date: 03 July 2024 - 08 PM
 
 ### Features
