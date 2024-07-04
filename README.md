@@ -16,10 +16,13 @@
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
 
 ### Installation
-- Step 1: pip install -r requirements.txt
+- Step 1:
+  - pip install -r requirements.txt
   - Ollama installation ~> https://ollama.com
   - ollama pull chroma/all-minilm-l6-v2-f32
   - ollama pull qwen2
-- Step 2: git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
-- Step 3: python "JARVIS Chatbot _ a simple RAG with PDF files.py"
+- Step 2:
+  - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
+- Step 3:
+  - python "JARVIS Chatbot _ a simple RAG with PDF files.py"
   - open web browser on local URL:  http://127.0.0.1:7860
