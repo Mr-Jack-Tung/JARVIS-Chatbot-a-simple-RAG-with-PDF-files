@@ -162,63 +162,6 @@ Your responses should be precise yet comprehensive when necessary; however, you 
 
 In addition, you are equipped with predictive analytics abilities that allow for forward-thinking discussions about potential future developments in technology or society based on current trends and historical patterns—always within the realm of hypothetical scenarios to avoid misleading users as a sentient being capable of personal experiences."""
 
-class UI_Style(Base):
-    def __init__(
-        self,
-        *,
-        primary_hue: colors.Color | str = colors.cyan,
-        secondary_hue: colors.Color | str = colors.blue,
-        neutral_hue: colors.Color | str = colors.blue,
-        spacing_size: sizes.Size | str = sizes.spacing_md,
-        radius_size: sizes.Size | str = sizes.radius_md,
-        text_size: sizes.Size | str = sizes.text_md,
-        font: fonts.Font
-        | str
-        | Iterable[fonts.Font | str] = (
-            fonts.GoogleFont("Quicksand"),
-            "ui-sans-serif",
-            "sans-serif",
-        ),
-        font_mono: fonts.Font
-        | str
-        | Iterable[fonts.Font | str] = (
-            fonts.GoogleFont("IBM Plex Mono"),
-            "ui-monospace",
-            "monospace",
-        ),
-    ):
-        super().__init__(
-            primary_hue=primary_hue,
-            secondary_hue=secondary_hue,
-            neutral_hue=neutral_hue,
-            spacing_size=spacing_size,
-            radius_size=radius_size,
-            text_size=text_size,
-            font=font,
-            font_mono=font_mono,
-        )
-        super().set(
-            body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
-            body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
-            
-            button_primary_background_fill="linear-gradient(90deg, *primary_300, *secondary_400)",
-            button_primary_background_fill_hover="linear-gradient(90deg, *primary_200, *secondary_300)",
-            button_primary_text_color="white",
-            button_primary_background_fill_dark="linear-gradient(90deg, *primary_600, *secondary_800)",
-            
-            slider_color="*secondary_300",
-            slider_color_dark="*secondary_600",
-            
-            block_title_text_weight="600",
-            block_border_width="3px",
-            block_shadow="*shadow_drop_lg",
-            
-            button_shadow="*shadow_drop_lg",
-            button_large_padding="24px",
-        )
-
-ui_style = UI_Style()
-
 def add_message(history, message):
     if len(history)<1:
         history.append(["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"])
@@ -300,6 +243,63 @@ def get_ollama_list_models():
     for i in range(len(results['models'])):
         ollama_list_models.append(results['models'][i]['model'])
     return ollama_list_models
+
+class UI_Style(Base):
+    def __init__(
+        self,
+        *,
+        primary_hue: colors.Color | str = colors.cyan,
+        secondary_hue: colors.Color | str = colors.blue,
+        neutral_hue: colors.Color | str = colors.blue,
+        spacing_size: sizes.Size | str = sizes.spacing_md,
+        radius_size: sizes.Size | str = sizes.radius_md,
+        text_size: sizes.Size | str = sizes.text_md,
+        font: fonts.Font
+        | str
+        | Iterable[fonts.Font | str] = (
+            fonts.GoogleFont("Quicksand"),
+            "ui-sans-serif",
+            "sans-serif",
+        ),
+        font_mono: fonts.Font
+        | str
+        | Iterable[fonts.Font | str] = (
+            fonts.GoogleFont("IBM Plex Mono"),
+            "ui-monospace",
+            "monospace",
+        ),
+    ):
+        super().__init__(
+            primary_hue=primary_hue,
+            secondary_hue=secondary_hue,
+            neutral_hue=neutral_hue,
+            spacing_size=spacing_size,
+            radius_size=radius_size,
+            text_size=text_size,
+            font=font,
+            font_mono=font_mono,
+        )
+        super().set(
+            body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
+            body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
+            
+            button_primary_background_fill="linear-gradient(90deg, *primary_300, *secondary_400)",
+            button_primary_background_fill_hover="linear-gradient(90deg, *primary_200, *secondary_300)",
+            button_primary_text_color="white",
+            button_primary_background_fill_dark="linear-gradient(90deg, *primary_600, *secondary_800)",
+            
+            slider_color="*secondary_300",
+            slider_color_dark="*secondary_600",
+            
+            block_title_text_weight="600",
+            block_border_width="3px",
+            block_shadow="*shadow_drop_lg",
+            
+            button_shadow="*shadow_drop_lg",
+            button_large_padding="24px",
+        )
+
+ui_style = UI_Style()
 
 with gr.Blocks(theme=ui_style) as GUI:
     with gr.Row():
