@@ -61,7 +61,7 @@ model_settings = Model_Settings()
 embed_model = OllamaEmbeddings(model='nomic-embed-text')
 
 vector_store = "chroma_index"
-chunk_size = 512
+chunk_size = 1024
 
 child_splitter = RecursiveCharacterTextSplitter(
     chunk_size=chunk_size, 
@@ -71,7 +71,7 @@ child_splitter = RecursiveCharacterTextSplitter(
     length_function=len,
     )
 
-parent_splitter = RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=100)
+parent_splitter = RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=200)
 
 vectorstore = Chroma(
     collection_name="Jack_QnA", 
@@ -90,7 +90,7 @@ chroma_retriever = ParentDocumentRetriever(
 
 def doc_spliter(text:str, source:str):
     content = LangchainDocument(page_content=text, metadata={"source": source, 'date':str(datetime.now())})
-    splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=16000, chunk_overlap=100)
+    splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=16000, chunk_overlap=400)
     split_docs = splitter.split_documents([content])
     return split_docs
 
@@ -136,7 +136,7 @@ def vectorstore_add_multi_files(path_files):
 def vectorstore_similarity_search_with_score(message):
     results = []
     retrieval = []
-    results = vectorstore.similarity_search_with_score(message, k=10)
+    results = vectorstore.similarity_search_with_score(message, k=30)
 
     MAX_SCORE= 0
     if results:
@@ -247,7 +247,7 @@ def ollama_pipeline(message_input, history):
         llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
         context_retrieval = ""
         context_retrieval += vectorstore_similarity_search_with_score(message_input)
-        context_retrieval = re.sub(r"[\W]+"," ",context_retrieval)
+        context_retrieval = re.sub(r"[\"\'\{\}]+"," ",context_retrieval)
 
         prompt = ChatPromptTemplate.from_template(system_prompt + "\n\n" + context_retrieval + "\n\nConversation:\n**human**: {user}\n**Jarvis (AI)**: ")
         chain = prompt | llm | StrOutputParser()
