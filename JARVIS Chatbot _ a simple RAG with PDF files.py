@@ -34,10 +34,10 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from langchain_community.document_loaders import PyPDFLoader
 
-print("\nollama.pull('nomic-embed-text')")
+print("\nollama pull nomic-embed-text")
 ollama.pull('nomic-embed-text')
 
-print("\nollama.pull('qwen2')")
+print("\nollama pull qwen2")
 ollama.pull('qwen2')
 
 def pdf_file_loader(file_path):
