@@ -37,7 +37,7 @@ from langchain_community.document_loaders import PyPDFLoader
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
 
-print("\nollama pull qwen2")
+print("\nollama pull qwen2\n")
 ollama.pull('qwen2')
 
 def pdf_file_loader(file_path):
@@ -328,7 +328,7 @@ with gr.Blocks(theme=ui_style) as GUI:
 
             with gr.Tab("System prompt"):
                 with gr.Row():
-                    txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=22)
+                    txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=22, min_width=220)
 
                     with gr.Row():
                         with gr.Column(scale=1, min_width=50):
