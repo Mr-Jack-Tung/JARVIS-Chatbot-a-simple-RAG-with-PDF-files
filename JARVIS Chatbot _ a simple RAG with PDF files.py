@@ -136,7 +136,7 @@ def vectorstore_add_multi_files(path_files):
 def vectorstore_similarity_search_with_score(message):
     results = []
     retrieval = []
-    results = vectorstore.similarity_search_with_score(message, k=30)
+    results = vectorstore.similarity_search_with_score(message, k=50)
 
     MAX_SCORE= 0
     if results:
