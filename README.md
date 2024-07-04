@@ -8,8 +8,7 @@
 - unlimit upload files to vector database
 - support PDF, TXT files
 - multi-files upload
-- unlimit chat history
-- auto save chat history to vector database
+- unlimit & auto save chat history to vector database
 - support custom System Prompt
 - Ollama model auto-loader
 - 360 code lines ^^
