@@ -34,6 +34,9 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from langchain_community.document_loaders import PyPDFLoader
 
+ollama.pull('nomic-embed-text')
+ollama.pull('qwen2')
+
 def pdf_file_loader(file_path):
     loader = PyPDFLoader(file_path)
     pages = loader.load_and_split()
