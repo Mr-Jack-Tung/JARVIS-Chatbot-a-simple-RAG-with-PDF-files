@@ -40,11 +40,6 @@ ollama.pull('chroma/all-minilm-l6-v2-f32')
 print("\nollama pull qwen2\n")
 ollama.pull('qwen2')
 
-def pdf_file_loader(file_path):
-    loader = PyPDFLoader(file_path)
-    pages = loader.load_and_split()
-    return pages
-
 class Model_Settings:
     def __init__(self):
         self.MODEL_NAME = 'qwen2:latest'
@@ -97,6 +92,11 @@ def doc_spliter(text:str, source:str):
 def vectorstore_add_document(text:str, source:str):
     knowledge_item = doc_spliter(text, source)
     chroma_retriever.add_documents(knowledge_item, ids=None)
+
+def pdf_file_loader(file_path):
+    loader = PyPDFLoader(file_path)
+    pages = loader.load_and_split()
+    return pages
 
 def vectorstore_add_multi_files(path_files):
     upload_files = ""
