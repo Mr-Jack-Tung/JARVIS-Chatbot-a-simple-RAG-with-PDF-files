@@ -49,9 +49,9 @@ class Model_Settings:
     def __init__(self):
         self.MODEL_NAME = 'qwen2:latest'
         self.NUM_PREDICT = 1024
-        self.TEMPERATURE = 0.3
-        self.TOP_K = 50
-        self.TOP_P = 0.95
+        self.TEMPERATURE = 0
+        self.TOP_K = 100
+        self.TOP_P = 1
         self.REPEAT_PENALTY = 1.2
         self.SYSTEM_PROMPT = ""
         self.SCORE_MARGIN_RETRIEVAL = 0.3
