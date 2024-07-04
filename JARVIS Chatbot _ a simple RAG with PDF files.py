@@ -50,7 +50,7 @@ class Model_Settings:
         self.MODEL_NAME = 'qwen2:latest'
         self.NUM_PREDICT = 1024
         self.TEMPERATURE = 0
-        self.TOP_K = 100
+        self.TOP_K = 50
         self.TOP_P = 1
         self.REPEAT_PENALTY = 1.2
         self.SYSTEM_PROMPT = ""
@@ -136,7 +136,7 @@ def vectorstore_add_multi_files(path_files):
 def vectorstore_similarity_search_with_score(message):
     results = []
     retrieval = []
-    results = vectorstore.similarity_search_with_score(message, k=50)
+    results = vectorstore.similarity_search_with_score(message, k=30)
 
     MAX_SCORE= 0
     if results:
