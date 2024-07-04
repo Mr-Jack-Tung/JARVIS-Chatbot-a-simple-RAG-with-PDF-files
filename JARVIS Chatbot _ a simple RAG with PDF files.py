@@ -34,8 +34,8 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from langchain_community.document_loaders import PyPDFLoader
 
-print("\nollama pull nomic-embed-text")
-ollama.pull('nomic-embed-text')
+print("\nollama pull chroma/all-minilm-l6-v2-f32")
+ollama.pull('chroma/all-minilm-l6-v2-f32')
 
 print("\nollama pull qwen2")
 ollama.pull('qwen2')
@@ -58,7 +58,7 @@ class Model_Settings:
 
 model_settings = Model_Settings()
 
-embed_model = OllamaEmbeddings(model='nomic-embed-text')
+embed_model = OllamaEmbeddings(model='chroma/all-minilm-l6-v2-f32')
 
 vector_store = "chroma_index"
 chunk_size = 1024
@@ -280,19 +280,19 @@ def radio_device_select(radio_device):
 
 def slider_num_predict_change(slider_num_predict):
     model_settings.NUM_PREDICT = slider_num_predict
-    print("num_predict setting:",model_settings.NUM_PREDICT)
+    print("num_predict:",model_settings.NUM_PREDICT)
 
 def slider_temperature_change(slider_temperature):
     model_settings.TEMPERATURE = slider_temperature
-    print("temperature setting:",model_settings.TEMPERATURE)
+    print("temperature:",model_settings.TEMPERATURE)
 
 def slider_top_k_change(slider_top_k):
     model_settings.TOP_K = slider_top_k
-    print("top_k setting:",model_settings.TOP_K)
+    print("top_k:",model_settings.TOP_K)
 
 def slider_top_p_change(slider_top_p):
     model_settings.TOP_P = slider_top_p
-    print("top_p setting:",model_settings.TOP_P)
+    print("top_p:",model_settings.TOP_P)
 
 def get_ollama_list_models():
     results = ollama.list()
