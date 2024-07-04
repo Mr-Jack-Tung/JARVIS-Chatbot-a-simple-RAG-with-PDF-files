@@ -242,7 +242,7 @@ def ollama_pipeline(message_input, history):
         llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
         context_retrieval = ""
         context_retrieval += vectorstore_similarity_search_with_score(message_input)
-        context_retrieval = re.sub(r"[\"\'\{\}]+"," ",context_retrieval)
+        context_retrieval = re.sub(r"[\"\'\{\}\x08]+"," ",context_retrieval)
 
         prompt = ChatPromptTemplate.from_template(system_prompt + "\n\n" + context_retrieval + "\n\nConversation:\n**human**: {user}\n**Jarvis (AI)**: ")
         chain = prompt | llm | StrOutputParser()
