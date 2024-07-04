@@ -48,7 +48,7 @@ def pdf_file_loader(file_path):
 class Model_Settings:
     def __init__(self):
         self.MODEL_NAME = 'qwen2:latest'
-        self.NUM_PREDICT = 1024
+        self.NUM_PREDICT = 2048
         self.TEMPERATURE = 0
         self.TOP_K = 50
         self.TOP_P = 1
@@ -135,8 +135,7 @@ def vectorstore_add_multi_files(path_files):
 
 def vectorstore_similarity_search_with_score(message):
     results = []
-    retrieval = []
-    results = vectorstore.similarity_search_with_score(message, k=30)
+    results = vectorstore.similarity_search_with_score(message, k=5)
 
     MAX_SCORE= 0
     if results:
@@ -145,17 +144,13 @@ def vectorstore_similarity_search_with_score(message):
                 MAX_SCORE = float(results[i][1])
 
         model_settings.SCORE_MARGIN_RETRIEVAL = round(MAX_SCORE * 0.99, 5)
-
         print("\nSCORE_MARGIN_RETRIEVAL:",round(model_settings.SCORE_MARGIN_RETRIEVAL * 100, 5),"%")
-        for i in range(len(results)):
-            if float(results[i][1]) >= float(model_settings.SCORE_MARGIN_RETRIEVAL):
-                retrieval.append(results[i])
-
+        
     context_retrieval = ""
-    if retrieval:
-        print("\nRetrieval:", len(retrieval), "items")
-        for i in range(len(retrieval)):
-            context_retrieval += retrieval[i][0].page_content + "\n\n"
+    if results:
+        print("\nRetrieval:", len(results), "items")
+        for i in range(len(results)):
+            context_retrieval += results[i][0].page_content + "\n\n"
 
     return context_retrieval
 
@@ -319,7 +314,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                     radio_device.select(fn=radio_device_select, inputs=[radio_device])
 
                     with gr.Accordion(label="More settings", open=True):
-                        slider_num_predict = gr.Slider(minimum=0, maximum=2048, value=model_settings.NUM_PREDICT, step=256, label="Max new tokens", interactive=True)
+                        slider_num_predict = gr.Slider(minimum=0, maximum=4096, value=model_settings.NUM_PREDICT, step=256, label="Max new tokens", interactive=True)
                         slider_num_predict.change(fn=slider_num_predict_change, inputs=slider_num_predict)
 
                         slider_temperature = gr.Slider(minimum=0, maximum=1, value=model_settings.TEMPERATURE, step=0.1, label="Temperature", interactive=True)
