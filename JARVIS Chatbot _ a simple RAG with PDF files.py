@@ -307,7 +307,7 @@ with gr.Blocks(theme=ui_style) as GUI:
             with gr.Tab("Model"):
                 with gr.Row():
                     choices_models = get_ollama_list_models()
-                    dropdown_model = gr.Dropdown(choices=choices_models, value='qwen2:latest', type="value", label="Model", interactive=True)
+                    dropdown_model = gr.Dropdown(choices=choices_models, value='qwen2:latest', type="value", label="Model", interactive=True, min_width=220)
                     dropdown_model.select(fn=dropdown_model_select, inputs=[dropdown_model])
 
                     radio_device = gr.Radio(choices=["GPU", "MLX", "CPU"], value='CPU', label="Device")
