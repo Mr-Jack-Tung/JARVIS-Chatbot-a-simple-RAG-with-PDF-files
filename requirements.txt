@@ -1,0 +1,8 @@
+tqdm
+pypdf
+chromadb
+tiktoken
+gradio
+langchain
+langchain_community
+ollama
