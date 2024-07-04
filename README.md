@@ -7,7 +7,6 @@
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
 - support PDF, TXT files
-- drag & drop to upload files
 - multi-files upload
 - unlimit chat history
 - auto save chat history to vector database
