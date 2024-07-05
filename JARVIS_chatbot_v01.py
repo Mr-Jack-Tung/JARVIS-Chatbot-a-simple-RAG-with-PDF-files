@@ -86,7 +86,7 @@ chroma_retriever = ParentDocumentRetriever(
 
 def doc_spliter(text:str, source:str):
     content = LangchainDocument(page_content=text, metadata={"source": source, 'date':str(datetime.now())})
-    splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=16000, chunk_overlap=400)
+    splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=16000, chunk_overlap=300)
     split_docs = splitter.split_documents([content])
     return split_docs
 
