@@ -151,7 +151,7 @@ def vectorstore_similarity_search_with_score(message):
     if results:
         print("\nRetrieval:", len(results), "items")
         for i in range(len(results)):
-            context_retrieval += results[i][0].page_content + "\n\n"
+            context_retrieval += "retrieval content: " + results[i][0].page_content + " recall score: " + str(results[i][1]) + "\n\n"
 
     return context_retrieval
 
