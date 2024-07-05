@@ -199,14 +199,17 @@ def bot(history, chat_input):
         s_time = time.time()
         answer = ollama_pipeline(question, history)
         e_time = time.time()
+        
         print("\n{0:.2f}s ~> Answer:".format(e_time-s_time),answer)
         dt_string = datetime.now().strftime("%H.%M")
         response = "(" + dt_string + ") **Jarvis (AI)**: " + str(answer)
         history[-1][1] = ""
-
+        
         for character in response:
             history[-1][1] += character
-
+        
+        response2db = str("### USER: "+question+"\n\n"+"### ASSISTANT: "+answer)
+        vectorstore_add_document(response2db, 'chat_history')
     return history, gr.MultimodalTextbox(value={"text": ""}, interactive=True)
 
 def btn_save_click(txt_system_prompt):
@@ -343,16 +346,9 @@ with gr.Blocks(theme=ui_style) as GUI:
                             btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
 
         with gr.Column(scale=6):
-            chatbot = gr.Chatbot(
-                [],
-                elem_id="chatbot",
-                bubble_full_width=False,
-                height=500,
-                show_copy_button=True,
-            )
-
+            chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, height=500, show_copy_button=True,)
             chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
-
+            
             chat_msg = chat_input.submit(fn=add_message, inputs=[chatbot, chat_input], outputs=[chatbot])
             bot_msg = chat_msg.then(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input])
 
