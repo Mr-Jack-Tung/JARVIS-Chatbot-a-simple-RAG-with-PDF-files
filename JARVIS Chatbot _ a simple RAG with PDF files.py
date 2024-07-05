@@ -33,6 +33,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import TextLoader
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
@@ -116,21 +117,21 @@ def vectorstore_add_multi_files(path_files):
             file_string += "📝 " + file_name +"\n"
 
         if file_extend == "pdf":
-            pages = pdf_file_loader(str(file))
+            pages = pdf_file_loader(file)
             page_total = len(pages)
 
             for i in tqdm(range(page_total), desc ="~> to vectorstore"):
-                if pages[i] != "":
-                    vectorstore_add_document(str(pages[i]), file_name)
+                if pages[i].page_content != "":
+                    vectorstore_add_document(pages[i].page_content, file_name)
                 sleep(0.1)
 
         if file_extend == "txt":
-            text = open(str(file), 'r').read()
-            if text != "":
-                vectorstore_add_document(str(text), file_name)
-
+            loader = TextLoader(file)
+            text = loader.load()
+            if text[0].page_content != "":
+                vectorstore_add_document(text[0].page_content, file_name)
+        
         upload_files += file_string
-
     return upload_files
 
 def vectorstore_similarity_search_with_score(message):
