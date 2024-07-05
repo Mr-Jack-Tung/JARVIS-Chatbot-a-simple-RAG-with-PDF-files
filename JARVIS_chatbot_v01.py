@@ -48,7 +48,7 @@ class Model_Settings:
         self.NUM_PREDICT = 2048
         self.TEMPERATURE = 0.6
         self.TOP_K = 100
-        self.TOP_P = 1
+        self.TOP_P = 0.95
         self.REPEAT_PENALTY = 1.2
         self.SYSTEM_PROMPT = ""
 
@@ -166,14 +166,14 @@ def add_message(history, message):
         path_files = message["files"]
         print("\n")
         upload_files += vectorstore_add_multi_files(path_files)
+    if upload_files:
+        print("\nUpload files:\n",upload_files)
     
     if len(history)<1:
         history.append(["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"])
     if message["text"]:
         dt_string = datetime.now().strftime("%H.%M")
         history.append(("(" + dt_string + ") **human**: " + message["text"], ""))
-    if upload_files:
-        print("\nUpload files:\n",upload_files)
     return history
 
 def ollama_pipeline(message_input, history):
