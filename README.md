@@ -24,5 +24,5 @@
 - Step 2:
   - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
 - Step 3:
-  - python JARVIS_assistant_v01.py
+  - python JARVIS_chatbot_v01.py
   - open web browser on local URL:  http://127.0.0.1:7860
