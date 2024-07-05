@@ -164,15 +164,14 @@ Your responses should be precise yet comprehensive when necessary; however, you 
 In addition, you are equipped with predictive analytics abilities that allow for forward-thinking discussions about potential future developments in technology or society based on current trends and historical patterns—always within the realm of hypothetical scenarios to avoid misleading users as a sentient being capable of personal experiences."""
 
 def add_message(history, message):
-    if len(history)<1:
-        history.append(["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"])
-
     upload_files = ""
     if message["files"]:
         path_files = message["files"]
         print("\n")
         upload_files += vectorstore_add_multi_files(path_files)
-        
+    
+    if len(history)<1:
+        history.append(["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"])
     if message["text"]:
         dt_string = datetime.now().strftime("%H.%M")
         history.append(("(" + dt_string + ") **human**: " + message["text"], ""))
