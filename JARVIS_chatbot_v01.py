@@ -196,8 +196,10 @@ def ollama_pipeline(message_input, history):
 def bot(history, chat_input):
     if chat_input['text']:
         question = str(history[-1][0]).split("**human**: ")[1]
+        s_time = time.time()
         answer = ollama_pipeline(question, history)
-        print("\nanswer:",answer)
+        e_time = time.time()
+        print("\n{0:.2f}s ~> Answer:".format(e_time-s_time),answer)
         dt_string = datetime.now().strftime("%H.%M")
         response = "(" + dt_string + ") **Jarvis (AI)**: " + str(answer)
         history[-1][1] = ""
