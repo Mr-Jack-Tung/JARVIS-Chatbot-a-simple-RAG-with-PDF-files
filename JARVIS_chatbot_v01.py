@@ -51,7 +51,6 @@ class Model_Settings:
         self.TOP_P = 1
         self.REPEAT_PENALTY = 1.2
         self.SYSTEM_PROMPT = ""
-        self.SCORE_MARGIN_RETRIEVAL = 0.3
 
 model_settings = Model_Settings()
 
@@ -144,12 +143,9 @@ def vectorstore_similarity_search_with_score(message):
         for i in range(len(results)):
             if float(results[i][1]) > MAX_SCORE:
                 MAX_SCORE = float(results[i][1])
-
-        model_settings.SCORE_MARGIN_RETRIEVAL = round(MAX_SCORE * 0.99, 5)
-        print("\nSCORE_MARGIN_RETRIEVAL:",round(model_settings.SCORE_MARGIN_RETRIEVAL * 100, 5),"%")
+        print("\nMAX_SCORE_RETRIEVAL:",round(MAX_SCORE * 100, 3),"%")
         
-    context_retrieval = ""
-    if results:
+        context_retrieval = ""
         print("\nRetrieval:", len(results), "items")
         for i in range(len(results)):
             context_retrieval += "retrieval content: " + results[i][0].page_content + " recall score: " + str(results[i][1]) + "\n\n"
