@@ -205,11 +205,10 @@ def bot(history, chat_input):
         response = "(" + dt_string + ") **Jarvis (AI)**: " + str(answer)
         history[-1][1] = ""
         
-        for character in response:
-            history[-1][1] += character
-        
         response2db = str("### USER: "+question+"\n\n"+"### ASSISTANT: "+answer)
         vectorstore_add_document(response2db, 'chat_history')
+        for character in response:
+            history[-1][1] += character
     return history, gr.MultimodalTextbox(value={"text": ""}, interactive=True)
 
 def btn_save_click(txt_system_prompt):
