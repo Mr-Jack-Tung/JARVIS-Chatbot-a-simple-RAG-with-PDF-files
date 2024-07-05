@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # JARVIS Chatbot - a simple RAG with PDF files
+# Version: 0.1
 # Author: Mr.Jack _ www.bicweb.vn
 # Date: 03 July 2024 - 08 PM
 
