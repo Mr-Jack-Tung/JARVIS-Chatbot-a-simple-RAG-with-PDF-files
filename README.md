@@ -17,12 +17,13 @@
 
 ### Installation
 - Step 1:
-  - pip install -r requirements.txt
+  - Create and activate new conda enviroment with python==3.19 : https://docs.anaconda.com/navigator/tutorials/manage-environments/
   - Ollama installation ~> https://ollama.com
   - ollama pull chroma/all-minilm-l6-v2-f32
   - ollama pull qwen2
 - Step 2:
   - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
+  - pip install -r requirements.txt
 - Step 3:
   - python JARVIS_chatbot_v01.py
   - open web browser on local URL:  http://127.0.0.1:7860
