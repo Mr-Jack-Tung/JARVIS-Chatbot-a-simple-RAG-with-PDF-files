@@ -200,12 +200,12 @@ def bot(history, chat_input):
         dt_string = datetime.now().strftime("%H.%M")
         response = "(" + dt_string + ") **Jarvis (AI)**: " + str(answer)
         history[-1][1] = ""
+        history[-1][1] = response
         
         response2db = str("### USER: "+question+"\n\n"+"### ASSISTANT: "+answer)
         vectorstore_add_document(response2db, 'chat_history')
-        for character in response:
-            history[-1][1] += character
-    return history, gr.MultimodalTextbox(value={"text": ""}, interactive=True)
+        
+    return history, {"text": ""}
 
 def btn_save_click(txt_system_prompt):
     model_settings.SYSTEM_PROMPT = txt_system_prompt
@@ -341,7 +341,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                             btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
 
         with gr.Column(scale=6):
-            chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, height=500, show_copy_button=True,)
+            chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=500, show_copy_button=True,)
             chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
             
             chat_msg = chat_input.submit(fn=add_message, inputs=[chatbot, chat_input], outputs=[chatbot])
