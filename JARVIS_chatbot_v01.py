@@ -46,7 +46,7 @@ class Model_Settings:
     def __init__(self):
         self.MODEL_NAME = 'qwen2:latest'
         self.NUM_PREDICT = 2048
-        self.TEMPERATURE = 0.6
+        self.TEMPERATURE = 0
         self.TOP_K = 100
         self.TOP_P = 0.95
         self.REPEAT_PENALTY = 1.2
