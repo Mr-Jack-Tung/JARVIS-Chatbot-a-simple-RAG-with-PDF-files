@@ -341,7 +341,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                             btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
 
         with gr.Column(scale=6):
-            chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=500, show_copy_button=True,)
+            chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
             chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
             
             chat_msg = chat_input.submit(fn=add_message, inputs=[chatbot, chat_input], outputs=[chatbot])
