@@ -183,8 +183,7 @@ def ollama_pipeline(message_input, history):
         context_retrieval = ""
         context_retrieval += vectorstore_similarity_search_with_score(message_input)
         context_retrieval = re.sub(r"[\"\'\{\}\x08]+"," ",context_retrieval)
-
-        prompt = ChatPromptTemplate.from_template(system_prompt + "\n\n" + context_retrieval + "\n\nConversation:\n**human**: {user}\n**Jarvis (AI)**: ")
+        prompt = ChatPromptTemplate.from_template("RETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\n" + system_prompt + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
         chain = prompt | llm | StrOutputParser()
         result = chain.invoke({"user": message_input})
         return result
