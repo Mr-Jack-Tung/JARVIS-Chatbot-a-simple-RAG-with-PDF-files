@@ -18,7 +18,7 @@
 
 ### Installation
 - Step 1:
-  - Create and activate new conda enviroment with python==3.19 : https://docs.anaconda.com/navigator/tutorials/manage-environments/
+  - Create and activate new conda enviroment with python==3.11.9 : https://docs.anaconda.com/navigator/tutorials/manage-environments/
   - Ollama installation ~> https://ollama.com
   - ollama pull chroma/all-minilm-l6-v2-f32
   - ollama pull qwen2
