@@ -149,7 +149,7 @@ def vectorstore_similarity_search_with_score(message):
         print("\nRetrieval:", len(results), "items")
         for i in range(len(results)):
             if results[i][1] > 0.3:
-                context_retrieval += "Retrieval content {0}: ".format(i) + str(results[i][0].page_content) + " Recall score {0}: ".format(i) + str(results[i][1]) + "\n\n"
+                context_retrieval += "Retrieval content {0}: ".format(i) + str(results[i][0].page_content) + " Recall score: {0:.6f}".format(results[i][1]) + "\n\n"
 
     return context_retrieval
 
