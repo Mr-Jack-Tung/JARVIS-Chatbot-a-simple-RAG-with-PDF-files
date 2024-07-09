@@ -148,7 +148,8 @@ def vectorstore_similarity_search_with_score(message):
         context_retrieval = ""
         print("\nRetrieval:", len(results), "items")
         for i in range(len(results)):
-            context_retrieval += "Retrieval content {0}: ".format(i) + str(results[i][0].page_content) + " Recall score {0}: ".format(i) + str(results[i][1]) + "\n\n"
+            if results[i][1] > 0.3:
+                context_retrieval += "Retrieval content {0}: ".format(i) + str(results[i][0].page_content) + " Recall score {0}: ".format(i) + str(results[i][1]) + "\n\n"
 
     return context_retrieval
 
@@ -183,7 +184,7 @@ def ollama_pipeline(message_input, history):
         context_retrieval = ""
         context_retrieval += vectorstore_similarity_search_with_score(message_input)
         context_retrieval = re.sub(r"[\"\'\{\}\x08]+"," ",context_retrieval)
-        prompt = ChatPromptTemplate.from_template("RETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\n" + system_prompt + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
+        prompt = ChatPromptTemplate.from_template(system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
         chain = prompt | llm | StrOutputParser()
         result = chain.invoke({"user": message_input})
         return result
