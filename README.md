@@ -14,7 +14,7 @@
 - Ollama model auto-loader
 - 360 code lines ^^
 
-### Update Jul 09, 2024 (v0.1.1)
+### Update Jul 09, 2024 (v0.1.1): Retrieval settings
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.1%20_%20Screenshot%202024-07-09.jpg)
 
 ### Screenshot Jul 03, 2024 (v0.1.0):
