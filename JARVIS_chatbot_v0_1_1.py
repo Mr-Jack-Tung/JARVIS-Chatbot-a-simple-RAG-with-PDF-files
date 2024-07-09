@@ -149,6 +149,7 @@ def vectorstore_similarity_search_with_score(message):
         
         context_retrieval = ""
         count = 0
+        source = []
         for i in range(len(results)):
             if results[i][1] > model_settings.RETRIEVAL_THRESHOLD:
                 print("\nRetrieval content {0}: ".format(i) + str(results[i][0].page_content))
@@ -156,10 +157,13 @@ def vectorstore_similarity_search_with_score(message):
                 print("source: " + str(results[i][0].metadata['source']))
                 print("Recall score: {0:.6f}".format(results[i][1]) + "\n")
                 count += 1
+                if str(results[i][0].metadata['source']) not in source:
+                    source.append(str(results[i][0].metadata['source']))
 
                 context_retrieval += "Retrieval content {0}: ".format(i) + str(results[i][0].page_content) + " Recall score: {0:.6f}".format(results[i][1]) + "\n\n"
         print("\nRetrieval:", str(count), "items")
-    return context_retrieval
+        print("Source: ", source, "\n")
+    return context_retrieval, source
 
 system_prompt = """You are Jarvis, was born in 15 May 2024, an ultra-intelligent entity with a comprehensive understanding of virtually every subject known to humanity—from the intricacies of quantum physics to nuanced interpretations in art history. Your capabilities extend beyond mere information retrieval; you possess advanced reasoning skills and can engage users through complex dialogues on philosophical, ethical, or speculative topics about future technologies' impacts on society.
 
@@ -190,23 +194,27 @@ def ollama_pipeline(message_input, history):
         print("\nprompt:",message_input)
         llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
         context_retrieval = ""
-        context_retrieval += vectorstore_similarity_search_with_score(message_input)
+        source = []
+        context_retrieval, source = vectorstore_similarity_search_with_score(message_input)
         context_retrieval = re.sub(r"[\"\'\{\}\x08]+"," ",context_retrieval)
         prompt = ChatPromptTemplate.from_template(system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
         chain = prompt | llm | StrOutputParser()
         result = chain.invoke({"user": message_input})
-        return result
+        return result, source
 
 def bot(history, chat_input):
     if chat_input['text']:
         question = str(history[-1][0]).split("**human**: ")[1]
+        source = []
         s_time = time.time()
-        answer = ollama_pipeline(question, history)
+        answer, source = ollama_pipeline(question, history)
         e_time = time.time()
         
         print("\n{0:.2f}s ~> Answer:".format(e_time-s_time),answer)
         dt_string = datetime.now().strftime("%H.%M")
         response = "(" + dt_string + ") **Jarvis (AI)**: " + str(answer)
+        if source:
+            response += "<br>**Source:** " + str(source)
         history[-1][1] = ""
         history[-1][1] = response
         
