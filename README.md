@@ -34,5 +34,5 @@
   - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
   - pip install -r requirements.txt
 - Step 3:
-  - python JARVIS_chatbot_v01.py
+  - python JARVIS_chatbot_v0_1_0.py
   - open web browser on local URL:  http://127.0.0.1:7860
