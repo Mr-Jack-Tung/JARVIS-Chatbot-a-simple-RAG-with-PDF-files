@@ -52,7 +52,7 @@ class Model_Settings:
         self.REPEAT_PENALTY = 1.2
         self.SYSTEM_PROMPT = ""
         self.RETRIEVAL_TOP_K = 5
-        self.RETRIEVAL_THRESHOLD = 0.35
+        self.RETRIEVAL_THRESHOLD = 0.3
 
 model_settings = Model_Settings()
 
