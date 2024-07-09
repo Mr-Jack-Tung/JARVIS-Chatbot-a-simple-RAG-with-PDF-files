@@ -15,7 +15,7 @@
 - 360 code lines ^^
 
 ### Update Jul 09, 2024 (v0.1.1)
-![alt-text]()
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.1%20_%20Screenshot%202024-07-09.jpg)
 
 ### Screenshot Jul 03, 2024 (v0.1.0):
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
