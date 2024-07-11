@@ -5,7 +5,7 @@
 
 ### Why JARVIS?
 - All Free
-- Local Run ~> Privacy
+- Local Run ~> 100% Privacy
 - Open Source ~> Custom
 
 ### Features
