@@ -15,7 +15,7 @@
 - 360 code lines ^^
 
 ### Update Jul 09, 2024 (v0.1.1)
-- custom Retrieval settings
+- Add: custom Retrieval settings
 - python JARVIS_chatbot_v0_1_1.py
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.1%20_%20Screenshot%202024-07-09.jpg)
