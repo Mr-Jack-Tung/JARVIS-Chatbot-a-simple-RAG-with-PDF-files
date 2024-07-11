@@ -26,7 +26,7 @@
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.1%20_%20Screenshot%202024-07-11.jpg)
 
 ### Screenshot Jul 03, 2024 (v0.1.0)
-- Qwen2 model support 29 languages
+- Qwen2-7B model support 29 languages
 - support custom System Prompt
 - custom Inferece settings
 - support multi-files upload: .PDF, .TXT format
