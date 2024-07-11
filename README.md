@@ -4,9 +4,9 @@
 - If you like what I do, give me a star ^^ ~> ⭐
 
 ### Why JARVIS?
-- Free
-- Local run ~> Private
-- Open source ~> Custom
+- All Free
+- Local Run ~> Privacy
+- Open Source ~> Custom
 
 ### Features
 - support 29 languages
