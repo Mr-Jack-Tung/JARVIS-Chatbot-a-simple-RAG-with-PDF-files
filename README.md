@@ -53,6 +53,8 @@
   - open web browser on local URL:  http://127.0.0.1:7860
 
 ### How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
+URL: https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
+
 step 1: Go to
 - https://huggingface.co/mradermacher/LLaMAX3-8B-Alpaca-GGUF
 
