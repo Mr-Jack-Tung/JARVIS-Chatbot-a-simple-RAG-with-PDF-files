@@ -24,6 +24,7 @@
 
 ### Update next (v0.1.2): Fine tune embbeding model for RAG pipeline ^^
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
+- https://huggingface.co/blog/matryoshka
 - https://github.com/thangnch/MiAI_HieuNgo_EmbedingFineTune
 
 ### Update Jul 09, 2024 (v0.1.1)
