@@ -3,6 +3,11 @@
 - Date: 03 July 2024 - 08 PM
 - If you like what I do, give me a star ^^ ~> ⭐
 
+### Why JARVIS?
+- Free
+- Local run ~> Private
+- Open source ~> Custom
+
 ### Features
 - support 29 languages
 - upload in any language PDF files and response with user language ^^
