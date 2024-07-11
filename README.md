@@ -4,9 +4,9 @@
 - If you like what I do, give me a star ^^ ~> ⭐
 
 ### Why JARVIS?
-- All Free
+- All Free ~> 100% No money
 - Local Run ~> 100% Privacy
-- Open Source ~> Custom
+- Open Source ~> 100% Custom
 
 ### Features
 - support 29 languages
@@ -51,3 +51,27 @@
 - Step 3:
   - python JARVIS_chatbot_v0_1_0.py
   - open web browser on local URL:  http://127.0.0.1:7860
+
+### How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
+step 1: Go to
+- https://huggingface.co/mradermacher/LLaMAX3-8B-Alpaca-GGUF
+
+step 2: Download GGUF file
+- Choice: Q4_K_M | 5.0GB | fast | recommended
+
+step 3: Create Modelfile (from Terminal)
+- $ echo ‘FROM “./LLaMAX3-8B-Alpaca.Q4_K_M.gguf”\nTEMPLATE “{{ .System }}\n### Input:\n{{ .Prompt }}\n### Response:”’ >> Modelfile
+
+step 4: Login your Ollama account (eg. mrjacktung)
+- My models ~> New ~> create new space with name: mradermacher-llamax3-8b-alpaca-gguf
+
+step 5: Create repository
+- ollama create -f Modelfile mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
+- ollama push mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
+
+step 6: Testing
+- ollama run mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
+
+*Thanks to:*
+- Michael Radermacher: https://huggingface.co/mradermacher/LLaMAX3-8B-Alpaca-GGUF
+- Data Science Basics: Ollama, How To Create Custom Models From HuggingFace (GGUF) _ https://www.youtube.com/watch?v=TFwYvHZV6j0
