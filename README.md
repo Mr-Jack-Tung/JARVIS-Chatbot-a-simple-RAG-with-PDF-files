@@ -40,6 +40,9 @@
 **GraphRAG**
 - https://www.microsoft.com/en-us/research/blog/graphrag-new-tool-for-complex-data-discovery-now-on-github/
 - https://github.com/microsoft/graphrag/tree/main/examples_notebooks
+- https://neo4j.com/developer-blog/global-graphrag-neo4j-langchain/
+- https://blog.langchain.dev/enhancing-rag-based-applications-accuracy-by-constructing-and-leveraging-knowledge-graphs/
+- https://docs.llamaindex.ai/en/stable/examples/query_engine/knowledge_graph_query_engine/
 
 
 ### Update Jul 09, 2024 (v0.1.1)
