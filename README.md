@@ -23,7 +23,7 @@
 - custom Retrieval settings
 - Source reference response
 
-### Update next (v0.1.2): 
+### Update next (v0.1.x)
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
 - https://huggingface.co/blog/matryoshka
@@ -36,6 +36,10 @@
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/03-basic-langchain-agent.ipynb
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/02-dynamic-routes.ipynb
 - https://mer.vin/2024/07/routellm-code-example/
+
+**GraphRAG**
+- https://www.microsoft.com/en-us/research/blog/graphrag-new-tool-for-complex-data-discovery-now-on-github/
+- https://github.com/microsoft/graphrag/tree/main/examples_notebooks
 
 
 ### Update Jul 09, 2024 (v0.1.1)
