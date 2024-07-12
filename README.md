@@ -28,11 +28,14 @@
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
 - https://huggingface.co/blog/matryoshka
 - https://github.com/thangnch/MiAI_HieuNgo_EmbedingFineTune
+- Fine tuning Embeddings Model: https://www.youtube.com/watch?v=hdFHYNCmO8U
 
 **Dynamically Semantic Router**
+- RouteLLM: Learning to Route LLMs with Preference Data _ https://arxiv.org/abs/2406.18665
 - https://python.langchain.com/v0.1/docs/expression_language/how_to/routing/
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/03-basic-langchain-agent.ipynb
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/02-dynamic-routes.ipynb
+- https://mer.vin/2024/07/routellm-code-example/
 
 
 ### Update Jul 09, 2024 (v0.1.1)
