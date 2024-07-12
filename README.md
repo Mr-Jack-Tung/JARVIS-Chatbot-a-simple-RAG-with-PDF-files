@@ -23,10 +23,17 @@
 - custom Retrieval settings
 - Source reference response
 
-### Update next (v0.1.2): Fine tune embbeding model for RAG pipeline ^^
+### Update next (v0.1.2): 
+**Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
 - https://huggingface.co/blog/matryoshka
 - https://github.com/thangnch/MiAI_HieuNgo_EmbedingFineTune
+
+**Dynamically Semantic Router**
+- https://python.langchain.com/v0.1/docs/expression_language/how_to/routing/
+- https://github.com/aurelio-labs/semantic-router/blob/main/docs/03-basic-langchain-agent.ipynb
+- https://github.com/aurelio-labs/semantic-router/blob/main/docs/02-dynamic-routes.ipynb
+
 
 ### Update Jul 09, 2024 (v0.1.1)
 - Add: custom Retrieval settings
