@@ -8,6 +8,8 @@
 - All Free ~> 100% No money
 - Local Run ~> 100% Privacy
 - Open Source ~> 100% Custom
+- multi-languages support
+- RAG support
 
 ### Features
 - support 29 languages
