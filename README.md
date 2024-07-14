@@ -47,8 +47,11 @@
 - https://docs.llamaindex.ai/en/stable/examples/query_engine/knowledge_graph_query_engine/
 
 ### Update Jul 15, 2024 (v0.1.2)
+- add: Groq API
+- add: OpenAi API
+- add: LiteLLM
 
-![alt-text]()
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.2%20_%20Screenshot%202024-07-15.jpg)
 
 ### Update Jul 09, 2024 (v0.1.1)
 - Add: custom Retrieval settings
