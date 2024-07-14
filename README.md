@@ -61,6 +61,7 @@ python JARVIS_chatbot_v0_1_2.py
 - Add: custom Retrieval settings
 - Add: Source reference response
 - Add: LLaMAX3-8B-Alpaca (supports over 100 languages)_ https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf _ bonus: "How To Create Custom Ollama Models From HuggingFace ( GGUF ) file"
+  - ollama pull mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
 ```
 python JARVIS_chatbot_v0_1_1.py
