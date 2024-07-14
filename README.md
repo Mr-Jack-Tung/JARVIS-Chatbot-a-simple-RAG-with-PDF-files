@@ -24,6 +24,8 @@
 - (v0.1.0) 360 code lines ^^
 - custom Retrieval settings
 - Source reference response
+- support Groq API, OpenAI API
+- support LiteLLM local
 
 ### Update next (v0.1.x)
 **Fine tune embbeding model for RAG pipeline ^^**
