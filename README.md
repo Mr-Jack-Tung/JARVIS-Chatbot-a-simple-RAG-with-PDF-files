@@ -46,6 +46,9 @@
 - https://blog.langchain.dev/enhancing-rag-based-applications-accuracy-by-constructing-and-leveraging-knowledge-graphs/
 - https://docs.llamaindex.ai/en/stable/examples/query_engine/knowledge_graph_query_engine/
 
+### Update Jul 15, 2024 (v0.1.2)
+
+![alt-text]()
 
 ### Update Jul 09, 2024 (v0.1.1)
 - Add: custom Retrieval settings
