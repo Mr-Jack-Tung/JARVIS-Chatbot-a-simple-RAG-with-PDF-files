@@ -212,11 +212,8 @@ def ollama_pipeline(message_input, history):
             result = chain.invoke({"user": message_input})
 
         if model_settings.MODEL_TYPE == "LiteLLM":
-            client = openai.OpenAI(api_key="anything", base_url="http://0.0.0.0:4000")
             prompt = system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-
-            # request sent to model set on litellm proxy, `litellm --model`
-            response = client.chat.completions.create(model=model_settings.MODEL_NAME, messages = [{"role": "user", "content": prompt}])
+            response = completion(model=model_settings.MODEL_NAME, api_base="http://localhost:11434", messages = [{"role": "user", "content": prompt}])
             result = response.choices[0].message.content
 
         if model_settings.MODEL_TYPE == "OpenAI":
