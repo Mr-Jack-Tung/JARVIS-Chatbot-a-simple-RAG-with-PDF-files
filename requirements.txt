@@ -6,3 +6,7 @@ gradio
 langchain
 langchain_community
 ollama
+openai
+groq
+litellm
+'litellm[proxy]'
