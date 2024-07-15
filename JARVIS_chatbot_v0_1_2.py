@@ -18,33 +18,25 @@ import gradio as gr
 from gradio.themes.base import Base
 from gradio.themes.utils import colors, fonts, sizes
 
+import ollama openai
+from litellm import completion
+
 from langchain.docstore.document import Document as LangchainDocument
 from langchain.prompts import PromptTemplate
 from langchain.retrievers import ParentDocumentRetriever
 from langchain.storage import InMemoryStore
-
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-import ollama
-from langchain_community.chat_models import ChatOllama
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OllamaEmbeddings
-
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.chat_models import ChatOllama
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import TextLoader
 
-# from openai import OpenAI
-# from groq import Groq
-
-import openai
-from langchain_openai import OpenAI
-from langchain_groq import ChatGroq
-
-from litellm import completion
+os.system("pip install -U tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama 'litellm[proxy]' openai")
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
