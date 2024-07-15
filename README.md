@@ -82,7 +82,7 @@
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
 
-### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
+#### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
 URL: https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
 step 1: Go to
