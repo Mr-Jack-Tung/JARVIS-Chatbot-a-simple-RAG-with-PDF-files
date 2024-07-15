@@ -5,7 +5,7 @@
 - If you like what I do, give me a star ^^ ~> ⭐
 
 ### Why JARVIS?
-- All Free ~> 100% No money
+- All Free ~> 100% Free
 - Local Run ~> 100% Privacy
 - Open Source ~> 100% Custom
 - multi-languages support
