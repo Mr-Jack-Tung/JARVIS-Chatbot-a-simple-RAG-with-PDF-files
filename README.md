@@ -63,7 +63,7 @@
   - python JARVIS_assistant.py
   - open web browser on local URL:  http://127.0.0.1:7860
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20Chatbot%20v0.1.2%20_%20Screenshot%202024-07-15.jpg)
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.0%20_%202024-07-15.jpg)
 
 ### Update Jul 09, 2024 (v0.1.1)
 - Add: custom Retrieval settings
@@ -71,7 +71,7 @@
 - Add: LLaMAX3-8B-Alpaca (supports over 100 languages)_ https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf _ bonus: "How To Create Custom Ollama Models From HuggingFace ( GGUF ) file"
   - ollama pull mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20Chatbot%20v0.1.1%20_%20Screenshot%202024-07-11.jpg)
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.0%20_%202024-07-11.jpg)
 
 ### Screenshot Jul 03, 2024 (v0.1.0)
 - Qwen2-7B model support 29 languages (https://huggingface.co/Qwen/Qwen2-7B-Instruct-GGUF)
@@ -80,7 +80,7 @@
 - support multi-files upload: .PDF, .TXT format
 - unlimit & auto save chat history to database
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20Chatbot%20v0.1.0%20_%20Screenshot%202024-07-03.jpg)
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.0%20_%202024-07-03.jpg)
 
 #### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
 URL: https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
