@@ -500,7 +500,7 @@ with gr.Blocks(theme=ui_style) as GUI:
 
                     with gr.Row(variant="panel"):
                         with gr.Accordion(label="Retrieval settings", open=True):
-                            slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="K", interactive=True)
+                            slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True)
                             slider_retrieval_top_k.change(fn=slider_retrieval_top_k_change, inputs=slider_retrieval_top_k)
 
                             slider_retrieval_threshold = gr.Slider(minimum=0, maximum=1, value=model_settings.RETRIEVAL_THRESHOLD, step=0.05, label="Threshold score", interactive=True)
