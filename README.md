@@ -49,9 +49,9 @@
 - https://docs.llamaindex.ai/en/stable/examples/query_engine/knowledge_graph_query_engine/
 
 ### Update Jul 15, 2024 (v0.1.2)
-- add: Groq API
+- add: Groq Cloud API
 - add: OpenAi API
-- add: LiteLLM
+- add: LiteLLM local
 
 ```
 python JARVIS_chatbot_v0_1_2.py
