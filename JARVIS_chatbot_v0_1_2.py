@@ -4,7 +4,7 @@
 # Author: Mr.Jack _ www.bicweb.vn
 # Date: 15 July 2024 - 01.30 AM
 
-# pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai 'litellm[proxy]'
+# pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai litellm 'litellm[proxy]'
 # pip install -qU groq, openai, langchain-groq, langchain-openai
 
 import os, sys, re
@@ -37,8 +37,8 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import TextLoader
 
-print("\npip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai 'litellm[proxy]'")
-os.system("pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai 'litellm[proxy]'")
+print("\npip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai litellm 'litellm[proxy]'")
+os.system("pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai litellm 'litellm[proxy]'")
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
@@ -353,6 +353,10 @@ def openai_dropdown_model_select(dropdown_model):
     model_settings.MODEL_NAME = dropdown_model
     print("\nSelected model:",model_settings.MODEL_NAME)
 
+def litellm_dropdown_model_select(dropdown_model):
+    model_settings.MODEL_NAME = dropdown_model
+    print("\nSelected model:",model_settings.MODEL_NAME)
+
 class UI_Style(Base):
     def __init__(
         self,
@@ -451,8 +455,8 @@ with gr.Blocks(theme=ui_style) as GUI:
                                 model_settings.MODEL_NAME = litellm_list_models[0]
                                 print("Selected model:",model_settings.MODEL_NAME)
 
-                                if litellm_list_models:
-                                    dropdown_model = gr.Dropdown(choices=litellm_list_models, value=model_settings.MODEL_NAME, type="value", label="Models", interactive=True)
+                                litellm_dropdown_model = gr.Dropdown(choices=litellm_list_models, value=model_settings.MODEL_NAME, type="value", label="Models", interactive=True)
+                                litellm_dropdown_model.select(fn=litellm_dropdown_model_select, inputs=[litellm_dropdown_model])
 
                         # radio_device = gr.Radio(choices=["GPU", "MLX", "CPU"], value='CPU', label="Device")
                         # radio_device.select(fn=radio_device_select, inputs=[radio_device])
