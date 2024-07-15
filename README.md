@@ -49,8 +49,9 @@
 - https://docs.llamaindex.ai/en/stable/examples/query_engine/knowledge_graph_query_engine/
 
 ### Update Jul 15, 2024 (v0.1.2)
-- add: Groq Cloud API (https://docs.litellm.ai/docs/providers/groq)
-- add: OpenAi API (https://docs.litellm.ai/docs/providers/openai)
+- add: Groq Cloud API (https://docs.litellm.ai/docs/providers/groq ; https://console.groq.com/docs/api-reference)
+- add: OpenAi API (https://docs.litellm.ai/docs/providers/openai ; https://platform.openai.com/docs/models)
+- add: Gemini API (https://docs.litellm.ai/docs/providers/gemini ; https://ai.google.dev/gemini-api)
 - add: LiteLLM local (https://docs.litellm.ai/docs/)
 
 #### Installation
