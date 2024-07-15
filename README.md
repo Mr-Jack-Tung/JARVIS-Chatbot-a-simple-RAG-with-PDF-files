@@ -24,7 +24,7 @@
 - (v0.1.0) 360 code lines ^^
 - custom Retrieval settings
 - Source reference response
-- support Groq API, OpenAI API
+- support Groq API, OpenAI API, Gemini API
 - support LiteLLM locally
 
 ### Update next (v0.1.x)
