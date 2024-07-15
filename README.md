@@ -7,8 +7,8 @@
 ### Why JARVIS?
 - All Free ~> 100% Free
 - Local Run ~> 100% Privacy
-- Open Source ~> 100% Custom
-- multi-languages support
+- Open Source ~> 100% DIY Custom
+- 29 multi-languages support
 - RAG support
 
 ### Features
