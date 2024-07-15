@@ -214,7 +214,7 @@ def ollama_pipeline(message_input, history):
 
         if model_settings.MODEL_TYPE == "LiteLLM":
             prompt = system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-            response = completion(model=model_settings.MODEL_NAME, api_base="http://localhost:11434", messages = [{"role": "user", "content": prompt}])
+            response = completion(model="ollama/" + model_settings.MODEL_NAME, api_base="http://localhost:11434", messages = [{"role": "user", "content": prompt}])
             result = response.choices[0].message.content
 
         if model_settings.MODEL_TYPE == "OpenAI":
@@ -447,7 +447,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                                 openai_dropdown_model.select(fn=openai_dropdown_model_select, inputs=[openai_dropdown_model])
 
                             if dropdown_model_type == "LiteLLM":
-                                litellm_list_models = get_litellm_list_models()
+                                litellm_list_models = get_ollama_list_models()
                                 model_settings.MODEL_NAME = litellm_list_models[0]
                                 print("Selected model:",model_settings.MODEL_NAME)
 
