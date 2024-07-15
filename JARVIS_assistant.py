@@ -4,11 +4,7 @@
 # Author: Mr.Jack _ www.bicweb.vn
 # Date: 15 July 2024 - 01.30 AM
 
-# pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama openai litellm 'litellm[proxy]'
-# pip install -qU groq, openai, langchain-groq, langchain-openai
-
-import os, sys, re
-import time
+import os, sys, re, time
 from datetime import datetime
 from typing import Iterable
 from tqdm import tqdm
@@ -18,8 +14,7 @@ import gradio as gr
 from gradio.themes.base import Base
 from gradio.themes.utils import colors, fonts, sizes
 
-import ollama
-import openai
+import ollama, openai
 from litellm import completion
 
 from langchain.docstore.document import Document as LangchainDocument
