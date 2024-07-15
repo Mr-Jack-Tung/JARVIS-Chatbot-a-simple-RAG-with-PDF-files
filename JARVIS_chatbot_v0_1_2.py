@@ -18,7 +18,8 @@ import gradio as gr
 from gradio.themes.base import Base
 from gradio.themes.utils import colors, fonts, sizes
 
-import ollama openai
+import ollama
+import openai
 from litellm import completion
 
 from langchain.docstore.document import Document as LangchainDocument
