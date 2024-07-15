@@ -60,7 +60,7 @@
 - Step 2:
   - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
 - Step 3:
-  - python JARVIS_assisstant.py
+  - python JARVIS_assistant.py
   - open web browser on local URL:  http://127.0.0.1:7860
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20Chatbot%20v0.1.2%20_%20Screenshot%202024-07-15.jpg)
