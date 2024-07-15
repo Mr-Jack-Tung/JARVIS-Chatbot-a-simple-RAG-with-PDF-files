@@ -10,6 +10,7 @@ from typing import Iterable
 from tqdm import tqdm
 from time import sleep
 
+import requests
 import gradio as gr
 from gradio.themes.base import Base
 from gradio.themes.utils import colors, fonts, sizes
@@ -190,7 +191,6 @@ def add_message(history, message):
         history.append(("(" + dt_string + ") **human**: " + message["text"], ""))
     return history
 
-
 def ollama_pipeline(message_input, history):
     if message_input:
         print("\nprompt:",message_input)
@@ -297,7 +297,6 @@ def btn_key_save_click(txt_groq_api_key, txt_openai_api_key):
 
     print("\nSave API keys ~> Ok")
 
-import os, requests
 def get_groq_list_models(groq_api_key):
     url = "https://api.groq.com/openai/v1/models"
     headers = {
@@ -320,17 +319,14 @@ def get_openai_list_models(openai_api_key):
         list_models.append(model.id)
     return list_models
 
-# pip install 'litellm[proxy]'
-# litellm --model ollama/qwen2
-
-def get_litellm_list_models():
-    url = "http://0.0.0.0:4000/models"
-    headers = {
-        "accept": "application/json",
-    }
-    response = requests.get(url, headers=headers)
-    result = response.json()
-    return [result['data'][0]['id']]
+# def get_litellm_list_models():
+#     url = "http://0.0.0.0:4000/models"
+#     headers = {
+#         "accept": "application/json",
+#     }
+#     response = requests.get(url, headers=headers)
+#     result = response.json()
+#     return [result['data'][0]['id']]
 
 def dropdown_model_type_select(dropdown_model_type):
     model_settings.MODEL_TYPE = dropdown_model_type
