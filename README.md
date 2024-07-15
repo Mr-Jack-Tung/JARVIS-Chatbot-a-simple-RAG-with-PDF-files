@@ -80,7 +80,7 @@
 - support multi-files upload: .PDF, .TXT format
 - unlimit & auto save chat history to database
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20Chatbot%20v0.1.0%20_%20Screenshot%202024-07-03.jpg)
 
 #### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
 URL: https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
