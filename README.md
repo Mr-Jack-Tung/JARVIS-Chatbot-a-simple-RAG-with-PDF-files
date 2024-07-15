@@ -53,9 +53,15 @@
 - add: OpenAi API (https://docs.litellm.ai/docs/providers/openai)
 - add: LiteLLM local (https://docs.litellm.ai/docs/)
 
-```
-python JARVIS_chatbot_v0_1_2.py
-```
+#### Installation
+- Step 1:
+  - Create and activate new conda enviroment with python==3.11.9 : https://docs.anaconda.com/navigator/tutorials/manage-environments/
+  - Ollama installation ~> https://ollama.com
+- Step 2:
+  - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
+- Step 3:
+  - python JARVIS_chatbot_v0_1_2.py
+  - open web browser on local URL:  http://127.0.0.1:7860
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.2%20_%20Screenshot%202024-07-15.jpg)
 
@@ -64,10 +70,6 @@ python JARVIS_chatbot_v0_1_2.py
 - Add: Source reference response
 - Add: LLaMAX3-8B-Alpaca (supports over 100 languages)_ https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf _ bonus: "How To Create Custom Ollama Models From HuggingFace ( GGUF ) file"
   - ollama pull mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
-
-```
-python JARVIS_chatbot_v0_1_1.py
-```
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20v0.1.1%20_%20Screenshot%202024-07-11.jpg)
 
@@ -80,20 +82,7 @@ python JARVIS_chatbot_v0_1_1.py
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/JARVIS%20Chatbot%20_%20Screenshot%202024-07-03.png)
 
-### Installation
-- Step 1:
-  - Create and activate new conda enviroment with python==3.11.9 : https://docs.anaconda.com/navigator/tutorials/manage-environments/
-  - Ollama installation ~> https://ollama.com
-  - ollama pull chroma/all-minilm-l6-v2-f32
-  - ollama pull qwen2
-- Step 2:
-  - git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
-  - pip install -r requirements.txt
-- Step 3:
-  - python JARVIS_chatbot_v0_1_0.py
-  - open web browser on local URL:  http://127.0.0.1:7860
-
-### How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
+### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
 URL: https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
 step 1: Go to
