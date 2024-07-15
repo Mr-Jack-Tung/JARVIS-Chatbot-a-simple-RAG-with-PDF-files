@@ -36,7 +36,7 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import TextLoader
 
-os.system("pip install -U tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama 'litellm[proxy]' openai")
+os.system("pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama 'litellm[proxy]' openai")
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
