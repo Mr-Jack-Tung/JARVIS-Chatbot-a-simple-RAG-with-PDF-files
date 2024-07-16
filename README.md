@@ -23,7 +23,7 @@
 - Ollama model auto-loader
 - (v0.1.0) 360 code lines ^^
 - custom Retrieval settings
-- Source reference response
+- support documents reference response
 - support Groq API, OpenAI API, Gemini API
 - support LiteLLM locally
 
