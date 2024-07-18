@@ -51,6 +51,12 @@
 - https://blog.langchain.dev/enhancing-rag-based-applications-accuracy-by-constructing-and-leveraging-knowledge-graphs/
 - https://docs.llamaindex.ai/en/stable/examples/query_engine/knowledge_graph_query_engine/
 
+**Continuous Pre-training & Fine-tuning**
+- Continual Pre-training of Language Models: https://arxiv.org/abs/2302.03241
+- Continuous Training and Fine-tuning for Domain-Specific Language Models in Medical Question Answering: https://arxiv.org/abs/2311.00204
+- Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
+- Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
+
 ### Update Jul 15, 2024 (v0.1.2)
 - add: Groq Cloud API (https://docs.litellm.ai/docs/providers/groq ; https://console.groq.com/docs/api-reference)
 - add: OpenAi API (https://docs.litellm.ai/docs/providers/openai ; https://platform.openai.com/docs/models)
