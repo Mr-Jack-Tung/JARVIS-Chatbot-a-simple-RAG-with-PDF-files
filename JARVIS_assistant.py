@@ -5,6 +5,8 @@
 # Date: 15 July 2024 - 01.30 AM
 
 '''
+https://github.com/chroma-core/chroma/issues/189#issuecomment-1454418844
+
 if you have an issue on Windows OS, while doing pip install chromadb. To Resolve this issue, 
 
 You need to download https://visualstudio.microsoft.com/visual-cpp-build-tools/ first.
