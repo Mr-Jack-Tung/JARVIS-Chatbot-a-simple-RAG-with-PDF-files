@@ -75,6 +75,23 @@
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.2%20_%202024-07-15.jpg)
 
+### Notes:
+'''
+https://github.com/chroma-core/chroma/issues/189#issuecomment-1454418844
+
+if you have an issue on Windows OS, while doing pip install chromadb. To Resolve this issue, 
+
+You need to download https://visualstudio.microsoft.com/visual-cpp-build-tools/ first.
+
+Next, navigate to "Individual components", find these two
+
+MSVC v143 - VS2002 C++ x64/86 build tools (lates)
+and Windows 10 SDK
+
+then:
+pip install -U chromadb
+'''
+
 ### Update Jul 09, 2024 (v0.1.1)
 - Add: custom Retrieval settings
 - Add: Source reference response
