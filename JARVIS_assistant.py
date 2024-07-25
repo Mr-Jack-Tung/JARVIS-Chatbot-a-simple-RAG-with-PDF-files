@@ -4,6 +4,43 @@
 # Author: Mr.Jack _ www.bicweb.vn
 # Date: 15 July 2024 - 01.30 AM
 
+'''
+if you have an issue on Windows OS, while doing pip install chromadb. To Resolve this issue, 
+
+You need to download https://visualstudio.microsoft.com/visual-cpp-build-tools/ first.
+
+Next, navigate to "Individual components", find these two
+
+MSVC v143 - VS2002 C++ x64/86 build tools (lates)
+and Windows 10 SDK
+
+pip install -U chromadb
+
+'''
+
+import os
+
+print("\npip install -qU tqdm pypdf chromadb tiktoken")
+os.system("pip install -qU tqdm pypdf chromadb tiktoken")
+
+print("\npip install -qU langchain-chroma")
+os.system("pip install -qU langchain-chroma")
+
+print("\npip install -qU gradio langchain langchain_community")
+os.system("pip install -qU gradio langchain langchain_community")
+
+print("\npip install -qU ollama litellm litellm[proxy]")
+os.system("pip install -qU ollama litellm litellm[proxy]")
+
+print("\npip install -qU openai groq google-generativeai")
+os.system("pip install -qU openai groq google-generativeai")
+
+print("\nollama pull chroma/all-minilm-l6-v2-f32")
+ollama.pull('chroma/all-minilm-l6-v2-f32')
+
+print("\nollama pull qwen2\n")
+ollama.pull('qwen2')
+
 import os, sys, re, time
 from datetime import datetime
 from typing import Iterable
@@ -28,28 +65,29 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.chat_models import ChatOllama
-from langchain_community.vectorstores import Chroma
+# from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import TextLoader
 
-print("\npip install -qU tqdm pypdf chromadb tiktoken")
-os.system("pip install -qU tqdm pypdf chromadb tiktoken")
+# print("\npip install -qU tqdm pypdf chromadb tiktoken")
+# os.system("pip install -qU tqdm pypdf chromadb tiktoken")
 
-print("\npip install -qU gradio langchain langchain_community")
-os.system("pip install -qU gradio langchain langchain_community")
+# print("\npip install -qU gradio langchain langchain_community")
+# os.system("pip install -qU gradio langchain langchain_community")
 
-print("\npip install -qU ollama litellm 'litellm[proxy]'")
-os.system("pip install -qU ollama litellm 'litellm[proxy]'")
+# print("\npip install -qU ollama litellm 'litellm[proxy]'")
+# os.system("pip install -qU ollama litellm 'litellm[proxy]'")
 
-print("\npip install -qU openai groq google-generativeai")
-os.system("pip install -qU openai groq google-generativeai")
+# print("\npip install -qU openai groq google-generativeai")
+# os.system("pip install -qU openai groq google-generativeai")
 
-print("\nollama pull chroma/all-minilm-l6-v2-f32")
-ollama.pull('chroma/all-minilm-l6-v2-f32')
+# print("\nollama pull chroma/all-minilm-l6-v2-f32")
+# ollama.pull('chroma/all-minilm-l6-v2-f32')
 
-print("\nollama pull qwen2\n")
-ollama.pull('qwen2')
+# print("\nollama pull qwen2\n")
+# ollama.pull('qwen2')
 
 class Model_Settings:
     def __init__(self):
@@ -152,6 +190,8 @@ def vectorstore_similarity_search_with_score(message):
     results = []
     results = vectorstore.similarity_search_with_score(message, k=model_settings.RETRIEVAL_TOP_K)
 
+    context_retrieval = ""
+    source = []
     MAX_SCORE= 0
     if results:
         for i in range(len(results)):
@@ -159,9 +199,7 @@ def vectorstore_similarity_search_with_score(message):
                 MAX_SCORE = float(results[i][1])
         print("\nMAX_SCORE_RETRIEVAL:",round(MAX_SCORE * 100, 3),"%")
         
-        context_retrieval = ""
         count = 0
-        source = []
         for i in range(len(results)):
             if results[i][1] > model_settings.RETRIEVAL_THRESHOLD:
                 print("\nRetrieval content {0}: ".format(i) + str(results[i][0].page_content))
