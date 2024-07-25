@@ -35,6 +35,8 @@ os.system("pip install -qU ollama litellm litellm[proxy]")
 print("\npip install -qU openai groq google-generativeai")
 os.system("pip install -qU openai groq google-generativeai")
 
+import ollama
+
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
 
