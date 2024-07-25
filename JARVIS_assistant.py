@@ -33,8 +33,14 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import TextLoader
 
-print("\npip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama litellm 'litellm[proxy]'")
-os.system("pip install -qU tqdm pypdf chromadb tiktoken gradio langchain langchain_community ollama litellm 'litellm[proxy]'")
+print("\npip install -qU tqdm pypdf chromadb tiktoken")
+os.system("pip install -qU tqdm pypdf chromadb tiktoken")
+
+print("\npip install -qU gradio langchain langchain_community")
+os.system("pip install -qU gradio langchain langchain_community")
+
+print("\npip install -qU ollama litellm 'litellm[proxy]'")
+os.system("pip install -qU ollama litellm 'litellm[proxy]'")
 
 print("\npip install -qU openai groq google-generativeai")
 os.system("pip install -qU openai groq google-generativeai")
@@ -431,7 +437,7 @@ ui_style = UI_Style()
 
 with gr.Blocks(theme=ui_style) as GUI:
     with gr.Row():
-        with gr.Column(scale=2):
+        with gr.Column(scale=1):
             with gr.Tab("Model"):
                 with gr.Row():
                     with gr.Row(variant="panel"):
@@ -486,7 +492,7 @@ with gr.Blocks(theme=ui_style) as GUI:
 
                     with gr.Row(variant="panel"):
                         with gr.Accordion(label="More settings", open=True):
-                            slider_num_predict = gr.Slider(minimum=0, maximum=4096, value=model_settings.NUM_PREDICT, step=256, label="Max new tokens", interactive=True)
+                            slider_num_predict = gr.Slider(minimum=0, maximum=4096, value=model_settings.NUM_PREDICT, step=256, label="Max new tokens", interactive=True, min_width=220)
                             slider_num_predict.change(fn=slider_num_predict_change, inputs=slider_num_predict)
 
                             slider_temperature = gr.Slider(minimum=0, maximum=1, value=model_settings.TEMPERATURE, step=0.1, label="Temperature", interactive=True)
@@ -500,7 +506,7 @@ with gr.Blocks(theme=ui_style) as GUI:
 
                     with gr.Row(variant="panel"):
                         with gr.Accordion(label="Retrieval settings", open=True):
-                            slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True)
+                            slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True, min_width=220)
                             slider_retrieval_top_k.change(fn=slider_retrieval_top_k_change, inputs=slider_retrieval_top_k)
 
                             slider_retrieval_threshold = gr.Slider(minimum=0, maximum=1, value=model_settings.RETRIEVAL_THRESHOLD, step=0.05, label="Threshold score", interactive=True)
@@ -528,7 +534,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                     btn_key_save = gr.Button(value="Save", min_width=50)
                     btn_key_save.click(fn=btn_key_save_click, inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
 
-        with gr.Column(scale=6):
+        with gr.Column(scale=7):
             chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
             chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
             
