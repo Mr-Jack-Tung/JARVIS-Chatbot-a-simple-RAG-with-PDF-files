@@ -5,23 +5,6 @@
 # Version: 0.1.2
 # Date: 15 July 2024 - 01.30 AM
 
-'''
-https://github.com/chroma-core/chroma/issues/189#issuecomment-1454418844
-
-if you have an issue on Windows OS, while doing pip install chromadb. To Resolve this issue, 
-
-You need to download https://visualstudio.microsoft.com/visual-cpp-build-tools/ first.
-
-Next, navigate to "Individual components", find these two
-
-MSVC v143 - VS2002 C++ x64/86 build tools (lates)
-and Windows 10 SDK
-
-then:
-pip install -U chromadb
-
-'''
-
 import os
 
 print("\npip install -qU tqdm pypdf chromadb tiktoken")
