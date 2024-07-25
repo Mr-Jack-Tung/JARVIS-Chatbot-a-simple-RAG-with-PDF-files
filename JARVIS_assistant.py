@@ -14,6 +14,7 @@ Next, navigate to "Individual components", find these two
 MSVC v143 - VS2002 C++ x64/86 build tools (lates)
 and Windows 10 SDK
 
+then:
 pip install -U chromadb
 
 '''
@@ -72,24 +73,6 @@ from langchain_chroma import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import TextLoader
-
-# print("\npip install -qU tqdm pypdf chromadb tiktoken")
-# os.system("pip install -qU tqdm pypdf chromadb tiktoken")
-
-# print("\npip install -qU gradio langchain langchain_community")
-# os.system("pip install -qU gradio langchain langchain_community")
-
-# print("\npip install -qU ollama litellm 'litellm[proxy]'")
-# os.system("pip install -qU ollama litellm 'litellm[proxy]'")
-
-# print("\npip install -qU openai groq google-generativeai")
-# os.system("pip install -qU openai groq google-generativeai")
-
-# print("\nollama pull chroma/all-minilm-l6-v2-f32")
-# ollama.pull('chroma/all-minilm-l6-v2-f32')
-
-# print("\nollama pull qwen2\n")
-# ollama.pull('qwen2')
 
 class Model_Settings:
     def __init__(self):
