@@ -8,11 +8,11 @@
 - All Free ~> 100% Free
 - Local Run ~> 100% Privacy
 - Open Source ~> 100% DIY Custom
-- 29 multi-languages support
+- 30 multi-languages support
 - PDF RAG support
 
 ### Features
-- support 29 languages
+- support 30 languages
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
 - support PDF, TXT files
@@ -84,7 +84,7 @@
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.1%20_%202024-07-11.jpg)
 
 ### Screenshot Jul 03, 2024 (v0.1.0)
-- Qwen2-7B model support 29 languages (https://huggingface.co/Qwen/Qwen2-7B-Instruct-GGUF)
+- Qwen2-7B model support 30 languages (https://huggingface.co/Qwen/Qwen2-7B-Instruct-GGUF)
 - support custom System Prompt
 - custom Inferece settings
 - support multi-files upload: .PDF, .TXT format
