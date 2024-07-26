@@ -70,7 +70,7 @@ class Model_Settings:
         self.TOP_P = 1
         self.REPEAT_PENALTY = 1.2
         self.SYSTEM_PROMPT = ""
-        self.RETRIEVAL_TOP_K = 5
+        self.RETRIEVAL_TOP_K = 3
         self.RETRIEVAL_THRESHOLD = 0.3
         self.GROQ_API_KEY = ""
         self.OPENAI_API_KEY = ""
