@@ -404,6 +404,10 @@ def litellm_dropdown_model_select(dropdown_model):
     model_settings.MODEL_NAME = dropdown_model
     print("\nSelected model:",model_settings.MODEL_NAME)
 
+def btn_bot_reset_click(chatbot):
+    chatbot = ""
+    return chatbot
+    
 class UI_Style(Base):
     def __init__(
         self,
@@ -546,7 +550,10 @@ with gr.Blocks(theme=ui_style) as GUI:
 
                             slider_retrieval_threshold = gr.Slider(minimum=0, maximum=1, value=model_settings.RETRIEVAL_THRESHOLD, step=0.05, label="Threshold score", interactive=True)
                             slider_retrieval_threshold.change(fn=slider_retrieval_threshold_change, inputs=slider_retrieval_threshold)
-
+                    
+                    with gr.Row(variant="panel"):
+                        btn_bot_reset = gr.Button(value="Chatbot reset")
+                        
             with gr.Tab("System prompt"):
                 with gr.Row():
                     txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=22, min_width=220)
@@ -572,4 +579,7 @@ with gr.Blocks(theme=ui_style) as GUI:
             bot_msg = chat_msg.then(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input])
 
             # gr.Examples(examples=[{'text': "Bạn tên là gì?"}, {'text': "What's your name?"}, {'text': 'Quel est ton nom?'}, {'text': 'Wie heißen Sie?'}, {'text': '¿Cómo te llamas?'}, {'text': '你叫什么名字？'}, {'text': 'あなたの名前は何ですか？'}, {'text': '이름이 뭐에요?'}, {'text': 'คุณชื่ออะไร?'}, {'text': 'ما اسمك؟'}], inputs=chat_input)
+            
+            btn_bot_reset.click(fn=btn_bot_reset_click, inputs=chatbot, outputs=chatbot)
+
 GUI.launch()
