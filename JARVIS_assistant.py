@@ -191,9 +191,9 @@ def vectorstore_similarity_search_with_score(message):
         for i in range(len(results)):
             if results[i][1] > model_settings.RETRIEVAL_THRESHOLD:
                 print("\nRetrieval content {0}: ".format(i) + str(results[i][0].page_content))
-                print("date: " + str(results[i][0].metadata['date']))
-                print("source: " + str(results[i][0].metadata['source']))
-                print("Recall score: {0:.6f}".format(results[i][1]) + "\n")
+                print("- date: " + str(results[i][0].metadata['date']))
+                print("- source: " + str(results[i][0].metadata['source']))
+                print("- recall score: {0:.6f}".format(results[i][1]) + "\n")
                 count += 1
                 if str(results[i][0].metadata['source']) not in source:
                     source.append(str(results[i][0].metadata['source']))
