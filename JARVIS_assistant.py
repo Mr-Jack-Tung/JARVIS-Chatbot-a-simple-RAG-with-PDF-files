@@ -552,7 +552,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                             slider_retrieval_threshold.change(fn=slider_retrieval_threshold_change, inputs=slider_retrieval_threshold)
                     
                     with gr.Row(variant="panel"):
-                        btn_bot_reset = gr.Button(value="Chatbot reset")
+                        btn_bot_reset = gr.Button(value="Chat-history Clear")
                         
             with gr.Tab("System prompt"):
                 with gr.Row():
@@ -567,10 +567,6 @@ with gr.Blocks(theme=ui_style) as GUI:
                             btn_reset = gr.Button(value="Reset")
                             btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
             
-            # with gr.Tab("+"):
-            #     with gr.Row(variant="panel"):
-            #         txt_textbox_01 = gr.Textbox()
-
         with gr.Column(scale=7):
             chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
             chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
