@@ -122,7 +122,7 @@ def pdf_file_loader(file_path):
     pages = loader.load_and_split()
     return pages
 
-import platform # Check OS
+import platform # Get system information
 
 def vectorstore_add_multi_files(path_files):
     my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
