@@ -127,7 +127,7 @@ def vectorstore_add_multi_files(path_files):
     count=0
     for file in path_files:
         count +=1
-        file_name = str(file).split("/")[-1]
+        file_name = str(file).split("\\")[-1] # MacOS: .split("/")[-1] ; Windows: .split("\\")[-1]
         file_extend = str(file_name).split(".")[-1]
 
         print("({0}/{1}) upload files:".format(count,len(path_files)), file_name)
@@ -149,10 +149,16 @@ def vectorstore_add_multi_files(path_files):
                 sleep(0.1)
 
         if file_extend == "txt":
-            loader = TextLoader(file)
-            text = loader.load()
-            if text[0].page_content != "":
-                vectorstore_add_document(text[0].page_content, file_name)
+            # loader = TextLoader(file)
+            # text = loader.load()
+            # if text[0].page_content != "":
+            #     vectorstore_add_document(text[0].page_content, file_name)
+            
+            f = open(file,  mode='r',  encoding='utf8')
+            text = f.read()
+            if text:
+                print("\n",text[:300],"...")
+                vectorstore_add_document(text, file_name)
         
         upload_files += file_string
     return upload_files
