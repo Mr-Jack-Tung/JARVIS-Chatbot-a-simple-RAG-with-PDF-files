@@ -467,6 +467,15 @@ with gr.Blocks(theme=ui_style) as GUI:
             with gr.Tab("Model"):
                 with gr.Row():
                     with gr.Row(variant="panel"):
+                        with gr.Accordion(label="API Keys", open=False):
+                            txt_groq_api_key = gr.Textbox(value="", placeholder="GroqCloud API Key", show_label=False)
+                            txt_openai_api_key = gr.Textbox(value="", placeholder="OpenAI API Key", show_label=False)
+                            txt_gemini_api_key = gr.Textbox(value="", placeholder="Gemini API Key", show_label=False)
+                            
+                            btn_key_save = gr.Button(value="Save", min_width=50)
+                            btn_key_save.click(fn=btn_key_save_click, inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
+                            
+                    with gr.Row(variant="panel"):
 
                         dropdown_model_type = gr.Dropdown(choices=["Ollama", "GroqCloud", "OpenAI", "Gemini", "LiteLLM"], value=model_settings.MODEL_TYPE, type="value", label="Type", interactive=True, min_width=220)
                         dropdown_model_type.select(fn=dropdown_model_type_select, inputs=[dropdown_model_type])
@@ -517,7 +526,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                         # radio_device.select(fn=radio_device_select, inputs=[radio_device])
 
                     with gr.Row(variant="panel"):
-                        with gr.Accordion(label="More settings", open=True):
+                        with gr.Accordion(label="Model settings", open=False):
                             slider_num_predict = gr.Slider(minimum=0, maximum=4096, value=model_settings.NUM_PREDICT, step=256, label="Max new tokens", interactive=True, min_width=220)
                             slider_num_predict.change(fn=slider_num_predict_change, inputs=slider_num_predict)
 
@@ -531,7 +540,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                             slider_top_p.change(fn=slider_top_p_change, inputs=slider_top_p)
 
                     with gr.Row(variant="panel"):
-                        with gr.Accordion(label="Retrieval settings", open=True):
+                        with gr.Accordion(label="Retrieval settings", open=False):
                             slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True, min_width=220)
                             slider_retrieval_top_k.change(fn=slider_retrieval_top_k_change, inputs=slider_retrieval_top_k)
 
@@ -551,14 +560,9 @@ with gr.Blocks(theme=ui_style) as GUI:
                             btn_reset = gr.Button(value="Reset")
                             btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
             
-            with gr.Tab("API Key"):
+            with gr.Tab("+"):
                 with gr.Row(variant="panel"):
-                    txt_groq_api_key = gr.Textbox(value="", placeholder="GroqCloud API Key", show_label=False)
-                    txt_openai_api_key = gr.Textbox(value="", placeholder="OpenAI API Key", show_label=False)
-                    txt_gemini_api_key = gr.Textbox(value="", placeholder="Gemini API Key", show_label=False)
-                    
-                    btn_key_save = gr.Button(value="Save", min_width=50)
-                    btn_key_save.click(fn=btn_key_save_click, inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
+                    txt_textbox_01 = gr.Textbox()
 
         with gr.Column(scale=7):
             chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
