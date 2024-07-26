@@ -58,7 +58,7 @@ from langchain_community.chat_models import ChatOllama
 from langchain_chroma import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.document_loaders import TextLoader
+# from langchain_community.document_loaders import TextLoader
 
 class Model_Settings:
     def __init__(self):
@@ -125,7 +125,7 @@ def pdf_file_loader(file_path):
 import platform # Check OS
 
 def vectorstore_add_multi_files(path_files):
-    platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
+    my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
     
     upload_files = ""
     count=0
@@ -133,9 +133,9 @@ def vectorstore_add_multi_files(path_files):
         count +=1
         
         file_name = ""
-        if platform == "Windows":
+        if my_platform == "Windows":
             file_name = str(file).split("\\")[-1]   # Windows: .split("\\")[-1]
-        elif platform == "Darwin":
+        elif my_platform == "Darwin":
             file_name = str(file).split("/")[-1]    # MacOS: .split("/")[-1] 
         else:
             file_name = file
