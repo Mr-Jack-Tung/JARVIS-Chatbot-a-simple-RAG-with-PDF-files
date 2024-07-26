@@ -122,12 +122,23 @@ def pdf_file_loader(file_path):
     pages = loader.load_and_split()
     return pages
 
+import platform # Check OS
+
 def vectorstore_add_multi_files(path_files):
+    platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
+    
     upload_files = ""
     count=0
     for file in path_files:
         count +=1
-        file_name = str(file).split("\\")[-1] # MacOS: .split("/")[-1] ; Windows: .split("\\")[-1]
+        
+        file_name = ""
+        if platform == "Windows":
+            file_name = str(file).split("\\")[-1]   # Windows: .split("\\")[-1]
+        elif platform == "Darwin":
+            file_name = str(file).split("/")[-1]    # MacOS: .split("/")[-1] 
+        else:
+            file_name = file
         file_extend = str(file_name).split(".")[-1]
 
         print("({0}/{1}) upload files:".format(count,len(path_files)), file_name)
