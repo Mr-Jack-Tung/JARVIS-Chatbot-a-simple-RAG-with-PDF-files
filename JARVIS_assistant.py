@@ -604,7 +604,7 @@ with gr.Blocks(theme=ui_style) as GUI:
 
             with gr.Tab("System prompt"):
                 with gr.Row():
-                    txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=22, min_width=220)
+                    txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=23, min_width=220)
 
                     with gr.Row():
                         with gr.Column(scale=1, min_width=50):
