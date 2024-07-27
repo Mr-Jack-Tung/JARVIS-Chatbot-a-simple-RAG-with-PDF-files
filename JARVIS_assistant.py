@@ -581,7 +581,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                         # radio_device.select(fn=radio_device_select, inputs=[radio_device])
 
                     with gr.Row(variant="panel"):
-                        with gr.Accordion(label="Model settings", open=False):
+                        with gr.Accordion(label="Model settings", open=True):
                             slider_num_predict = gr.Slider(minimum=0, maximum=4096, value=model_settings.NUM_PREDICT, step=256, label="Max new tokens", interactive=True, min_width=220)
                             slider_num_predict.change(fn=slider_num_predict_change, inputs=slider_num_predict)
 
@@ -595,7 +595,7 @@ with gr.Blocks(theme=ui_style) as GUI:
                             slider_top_p.change(fn=slider_top_p_change, inputs=slider_top_p)
 
                     with gr.Row(variant="panel"):
-                        with gr.Accordion(label="Retrieval settings", open=False):
+                        with gr.Accordion(label="Retrieval settings", open=True):
                             slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True, min_width=220)
                             slider_retrieval_top_k.change(fn=slider_retrieval_top_k_change, inputs=slider_retrieval_top_k)
 
