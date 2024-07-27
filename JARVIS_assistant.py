@@ -160,11 +160,6 @@ def vectorstore_add_multi_files(path_files):
                 sleep(0.1)
 
         if file_extend == "txt":
-            # loader = TextLoader(file)
-            # text = loader.load()
-            # if text[0].page_content != "":
-            #     vectorstore_add_document(text[0].page_content, file_name)
-            
             f = open(file,  mode='r',  encoding='utf8')
             text = f.read()
             if text:
