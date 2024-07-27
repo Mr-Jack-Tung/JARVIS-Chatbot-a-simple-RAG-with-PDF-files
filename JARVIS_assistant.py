@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.2
-# Date: 15 July 2024 - 01.30 AM
+# Version: 0.1.3
+# Date: 28 July 2024 - 00.30 AM
 
 import os
 
@@ -404,17 +404,22 @@ def litellm_dropdown_model_select(dropdown_model):
     model_settings.MODEL_NAME = dropdown_model
     print("\nSelected model:",model_settings.MODEL_NAME)
 
-def btn_bot_reset_click(chatbot):
-    chatbot = ""
-    return chatbot
+def btn_create_new_workspace_click(workspace_list):
+    max_id = 0
+    for wp in workspace_list:
+        if wp["id"] >= max_id:
+            max_id = wp["id"] + 1
+    workspace = {"id":max_id, "name":"New workspace "+str(max_id), "history":[["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?  [v{0}]".format(max_id)]]}
+    workspace_list.insert(0, workspace)
+    return workspace_list, workspace
     
 class UI_Style(Base):
     def __init__(
         self,
         *,
-        primary_hue: colors.Color | str = colors.cyan,
-        secondary_hue: colors.Color | str = colors.blue,
-        neutral_hue: colors.Color | str = colors.blue,
+        primary_hue: colors.Color | str = colors.green, # cyan
+        secondary_hue: colors.Color | str = colors.orange, # blue
+        neutral_hue: colors.Color | str = colors.orange,
         spacing_size: sizes.Size | str = sizes.spacing_md,
         radius_size: sizes.Size | str = sizes.radius_md,
         text_size: sizes.Size | str = sizes.text_md,
@@ -460,7 +465,7 @@ class UI_Style(Base):
             block_shadow="*shadow_drop_lg",
             
             button_shadow="*shadow_drop_lg",
-            button_large_padding="24px",
+            button_large_padding="12px",
         )
 
 ui_style = UI_Style()
@@ -468,6 +473,52 @@ ui_style = UI_Style()
 with gr.Blocks(theme=ui_style) as GUI:
     with gr.Row():
         with gr.Column(scale=1):
+            with gr.Tab("Workspace"):
+                first_state_workspace = {"id":0, "name":"My first workspace", "history":[["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"]]}
+                state_workspace_list = gr.State([first_state_workspace])
+                state_workspace_selected = gr.State(first_state_workspace)
+
+                with gr.Row(variant="panel"):
+                    with gr.Row():
+                        btn_create_new_workspace = gr.Button(value="Create new workspace", min_width=220)
+                        btn_create_new_workspace.click(fn=btn_create_new_workspace_click, inputs=state_workspace_list, outputs=[state_workspace_list, state_workspace_selected])
+
+                    with gr.Row():
+                        @gr.render(inputs=[state_workspace_list, state_workspace_selected])
+                        def show_new_workspace(workspace_list, workspace_selected):
+                            def txt_workspace_focus(focus_state):
+                                for wp in workspace_list:
+                                    if wp["id"] == focus_state:
+                                        return wp
+                            
+                            def btn_delete_workspace_click(focus_state):
+                                if len(workspace_list) > 1:
+                                    for wp in workspace_list:
+                                        if wp["id"] == focus_state:
+                                            workspace_list.remove(wp)
+                                return workspace_list
+                            
+                            def txt_workspace_change(focus_state, txt_workspace):
+                                for wp in workspace_list:
+                                    if wp["id"] == focus_state:
+                                        workspace_list.remove(wp)
+                                        workspace= {"id":wp["id"], "name":txt_workspace, "history":wp["history"]}
+                                        workspace_list.insert(0, workspace)
+                                        return workspace_list, workspace
+
+                            for wksp in workspace_list:
+                                with gr.Row():
+                                    with gr.Column(scale=10, min_width=200):
+                                        focus_state = gr.State(wksp["id"])
+                                        txt_workspace = gr.Textbox(value=str(wksp["name"]), show_label=False, container=False, min_width=200,  interactive=True)
+                                        txt_workspace.focus(txt_workspace_focus, focus_state, [state_workspace_selected])
+                                        txt_workspace.submit(txt_workspace_change, [focus_state, txt_workspace], [state_workspace_list, state_workspace_selected])
+                                    
+                                    with gr.Column(scale=1, min_width=10):
+                                        # if wksp["id"] != 0:
+                                        btn_delete_workspace = gr.Button(value="x", min_width=5) #  size="sm"
+                                        btn_delete_workspace.click(fn=btn_delete_workspace_click, inputs=focus_state, outputs=[state_workspace_list])
+            
             with gr.Tab("Model"):
                 with gr.Row():
                     with gr.Row(variant="panel"):
@@ -550,10 +601,7 @@ with gr.Blocks(theme=ui_style) as GUI:
 
                             slider_retrieval_threshold = gr.Slider(minimum=0, maximum=1, value=model_settings.RETRIEVAL_THRESHOLD, step=0.05, label="Threshold score", interactive=True)
                             slider_retrieval_threshold.change(fn=slider_retrieval_threshold_change, inputs=slider_retrieval_threshold)
-                    
-                    with gr.Row(variant="panel"):
-                        btn_bot_reset = gr.Button(value="Chat-history Clear")
-                        
+
             with gr.Tab("System prompt"):
                 with gr.Row():
                     txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=22, min_width=220)
@@ -568,11 +616,25 @@ with gr.Blocks(theme=ui_style) as GUI:
                             btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
             
         with gr.Column(scale=7):
-            chatbot = gr.Chatbot([], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
+            def update_chat_history(chatbot, workspace_list, workspace_selected):
+                for wp in workspace_list:
+                    if wp["id"] == workspace_selected["id"]:
+                        workspace= {"id":wp["id"], "name":wp["name"], "history":chatbot}
+                        workspace_list.remove(wp)
+                        workspace_list.insert(0, workspace)
+                        return workspace_list, workspace
+
+            workspace_selected = state_workspace_selected.value
+            chatbot = gr.Chatbot(workspace_selected["history"], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
             chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
-            
+
+            def workspace_selected_chatbot(workspace_selected):
+                return workspace_selected["history"]
+            state_workspace_selected.change(fn=workspace_selected_chatbot, inputs=state_workspace_selected,  outputs=chatbot)
+
             chat_msg = chat_input.submit(fn=add_message, inputs=[chatbot, chat_input], outputs=[chatbot])
-            bot_msg = chat_msg.then(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input])
+            bot_msg = chat_msg.then(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input]).then(fn=update_chat_history, inputs=[chatbot, state_workspace_list, state_workspace_selected], outputs=[state_workspace_list, state_workspace_selected])
+chatbot
 
             # gr.Examples(examples=[{'text': "Bạn tên là gì?"}, {'text': "What's your name?"}, {'text': 'Quel est ton nom?'}, {'text': 'Wie heißen Sie?'}, {'text': '¿Cómo te llamas?'}, {'text': '你叫什么名字？'}, {'text': 'あなたの名前は何ですか？'}, {'text': '이름이 뭐에요?'}, {'text': 'คุณชื่ออะไร?'}, {'text': 'ما اسمك؟'}], inputs=chat_input)
             
