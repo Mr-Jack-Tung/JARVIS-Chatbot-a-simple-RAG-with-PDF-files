@@ -57,6 +57,11 @@
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
 
+### Update Jul 15, 2024 (v0.1.3)
+- add: Create/delete workspace
+- change color to orange/green
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28.jpg)
+
 ### Update Jul 15, 2024 (v0.1.2)
 - add: Groq Cloud API (https://docs.litellm.ai/docs/providers/groq ; https://console.groq.com/docs/api-reference)
 - add: OpenAi API (https://docs.litellm.ai/docs/providers/openai ; https://platform.openai.com/docs/models)
