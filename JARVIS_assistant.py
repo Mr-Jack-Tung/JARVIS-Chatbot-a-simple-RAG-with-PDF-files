@@ -637,7 +637,5 @@ with gr.Blocks(theme=ui_style) as GUI:
 chatbot
 
             # gr.Examples(examples=[{'text': "Bạn tên là gì?"}, {'text': "What's your name?"}, {'text': 'Quel est ton nom?'}, {'text': 'Wie heißen Sie?'}, {'text': '¿Cómo te llamas?'}, {'text': '你叫什么名字？'}, {'text': 'あなたの名前は何ですか？'}, {'text': '이름이 뭐에요?'}, {'text': 'คุณชื่ออะไร?'}, {'text': 'ما اسمك؟'}], inputs=chat_input)
-            
-            btn_bot_reset.click(fn=btn_bot_reset_click, inputs=chatbot, outputs=chatbot)
 
 GUI.launch()
