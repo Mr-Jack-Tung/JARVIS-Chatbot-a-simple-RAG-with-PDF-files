@@ -22,6 +22,9 @@ os.system("pip install -qU ollama litellm litellm[proxy]")
 print("\npip install -qU openai groq google-generativeai")
 os.system("pip install -qU openai groq google-generativeai")
 
+print("\npip install -qU gradio_toggle")
+os.system("pip install -qU gradio_toggle")
+
 import ollama
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
@@ -60,6 +63,8 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 # from langchain_community.document_loaders import TextLoader
 
+from gradio_toggle import Toggle
+
 class Model_Settings:
     def __init__(self):
         self.MODEL_TYPE = "Ollama"
@@ -75,6 +80,7 @@ class Model_Settings:
         self.GROQ_API_KEY = ""
         self.OPENAI_API_KEY = ""
         self.GEMINI_API_KEY = ""
+        self.IS_RETRIEVAL = True
 
 model_settings = Model_Settings()
 
@@ -228,8 +234,9 @@ def ollama_pipeline(message_input, history):
 
         context_retrieval = ""
         source = []
-        context_retrieval, source = vectorstore_similarity_search_with_score(message_input)
-        context_retrieval = re.sub(r"[\"\'\{\}\x08]+"," ",context_retrieval)
+        if model_settings.IS_RETRIEVAL:
+            context_retrieval, source = vectorstore_similarity_search_with_score(message_input)
+            context_retrieval = re.sub(r"[\"\'\{\}\x08]+"," ",context_retrieval)
 
         result = ""
         if model_settings.MODEL_TYPE == "Ollama":
@@ -407,6 +414,9 @@ def btn_create_new_workspace_click(workspace_list):
     workspace = {"id":max_id, "name":"New workspace "+str(max_id), "history":[["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?  [v{0}]".format(max_id)]]}
     workspace_list.insert(0, workspace)
     return workspace_list, workspace
+
+def update_is_retrieval(is_retrieval):
+    model_settings.IS_RETRIEVAL = is_retrieval
     
 class UI_Style(Base):
     def __init__(
@@ -612,6 +622,9 @@ def JARVIS_assistant():
     
                         with gr.Row(variant="panel"):
                             with gr.Accordion(label="Retrieval settings", open=True):
+                                chk_is_retrieval = Toggle(label="Is retrieval", value=True, interactive=True)
+                                chk_is_retrieval.change(fn=update_is_retrieval, inputs=chk_is_retrieval)
+                                
                                 slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True, min_width=220)
                                 slider_retrieval_top_k.change(fn=slider_retrieval_top_k_change, inputs=slider_retrieval_top_k)
     
