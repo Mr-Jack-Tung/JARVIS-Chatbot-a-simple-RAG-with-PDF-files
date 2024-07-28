@@ -26,6 +26,7 @@
 - support documents reference response
 - support Groq API, OpenAI API, Gemini API
 - support LiteLLM locally
+- workspaces management
 
 ### Update next (v0.x.x)
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.x.x%20_%202024-07-18.jpg)
