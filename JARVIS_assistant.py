@@ -412,9 +412,9 @@ class UI_Style(Base):
     def __init__(
         self,
         *,
-        primary_hue: colors.Color | str = colors.green, # cyan
-        secondary_hue: colors.Color | str = colors.orange, # blue
-        neutral_hue: colors.Color | str = colors.orange,
+        primary_hue: colors.Color | str = colors.cyan,     # cyan / green
+        secondary_hue: colors.Color | str = colors.blue,  # blue / orange
+        neutral_hue: colors.Color | str = colors.blue,    # blue / yellow
         spacing_size: sizes.Size | str = sizes.spacing_md,
         radius_size: sizes.Size | str = sizes.radius_md,
         text_size: sizes.Size | str = sizes.text_md,
