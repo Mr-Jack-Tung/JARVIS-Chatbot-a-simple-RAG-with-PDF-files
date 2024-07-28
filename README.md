@@ -27,6 +27,7 @@
 - support Groq API, OpenAI API, Gemini API
 - support LiteLLM locally
 - workspaces management
+- on/off Retrieval
 
 ### Update next (v0.x.x)
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.x.x%20_%202024-07-18.jpg)
@@ -60,6 +61,7 @@
 
 ### Update Jul 28, 2024 (v0.1.3)
 - add: Workspaces management
+- add: On/Off Retrieval
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28.jpg)
 
