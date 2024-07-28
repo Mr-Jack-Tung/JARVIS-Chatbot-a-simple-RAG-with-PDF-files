@@ -466,8 +466,15 @@ class UI_Style(Base):
 def JARVIS_assistant():
     ui_style = UI_Style()
 
-    theme_1 = gr.Theme.from_hub("gstaff/xkcd") 
-    theme_2 = gr.Theme.from_hub("gradio/seafoam")
+    theme_1 = gr.Theme.from_hub("gradio/default")
+    theme_2 = gr.Theme.from_hub("gradio/base")
+    theme_3 = gr.Theme.from_hub("gradio/seafoam")
+    theme_4 = gr.Theme.from_hub("gradio/glass")
+    theme_5 = gr.Theme.from_hub("gstaff/xkcd") 
+    theme_6 = gr.Theme.from_hub("ParityError/LimeFace")
+    theme_7 = gr.Theme.from_hub("EveryPizza/Cartoony-Gradio-Theme")
+    theme_8 = gr.Theme.from_hub("snehilsanyal/scikit-learn")
+    theme_9 = gr.Theme.from_hub("abidlabs/banana")
     
     with gr.Blocks(theme=ui_style) as GUI:
         with gr.Row():
