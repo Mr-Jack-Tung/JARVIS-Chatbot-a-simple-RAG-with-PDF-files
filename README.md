@@ -57,7 +57,7 @@
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
 
-### Update Jul 15, 2024 (v0.1.3)
+### Update Jul 28, 2024 (v0.1.3)
 - add: Create/delete workspace
 - change color to orange/green
 
