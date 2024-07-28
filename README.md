@@ -15,7 +15,7 @@
 - support 30 languages
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
-- support PDF, TXT files
+- support PDF, TXT, MD, MDX files
 - multi-files upload
 - custom Inferece settings
 - unlimit & auto save chat history to vector database
@@ -28,6 +28,7 @@
 - support LiteLLM locally
 - workspaces management
 - on/off Retrieval
+- support DOCX files
 
 ### Update next (v0.x.x)
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.x.x%20_%202024-07-18.jpg)
@@ -64,6 +65,7 @@
 ### Update Jul 28, 2024 (v0.1.3)
 - add: Workspaces management
 - add: On/Off Retrieval
+- add: support DOCX files
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28.jpg)
 
