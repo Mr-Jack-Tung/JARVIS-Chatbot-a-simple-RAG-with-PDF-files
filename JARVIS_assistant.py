@@ -466,7 +466,7 @@ class UI_Style(Base):
 def JARVIS_assistant():
     ui_style = UI_Style()
 
-    theme_1 = gr.Theme.from_hub("gradio/default")
+    theme_1 = "gradio/default"
     theme_2 = gr.Theme.from_hub("gradio/base")
     theme_3 = gr.Theme.from_hub("gradio/seafoam")
     theme_4 = gr.Theme.from_hub("gradio/glass")
