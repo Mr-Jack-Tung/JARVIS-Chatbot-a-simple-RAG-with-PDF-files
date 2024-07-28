@@ -25,6 +25,9 @@ os.system("pip install -qU openai groq google-generativeai")
 print("\npip install -qU gradio_toggle")
 os.system("pip install -qU gradio_toggle")
 
+print("\npip install -qU python-docx")
+os.system("pip install -qU python-docx")
+
 import ollama
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
@@ -129,6 +132,7 @@ def pdf_file_loader(file_path):
     return pages
 
 import platform # Get system information
+from docx import Document
 
 def vectorstore_add_multi_files(path_files):
     my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
@@ -152,11 +156,6 @@ def vectorstore_add_multi_files(path_files):
         file_string = ""
         if file_extend == "pdf":
             file_string += "📓 " + file_name +"\n"
-
-        if file_extend == "txt":
-            file_string += "📝 " + file_name +"\n"
-
-        if file_extend == "pdf":
             pages = pdf_file_loader(file)
             page_total = len(pages)
 
@@ -165,13 +164,26 @@ def vectorstore_add_multi_files(path_files):
                     vectorstore_add_document(pages[i].page_content, file_name)
                 sleep(0.1)
 
-        if file_extend == "txt":
+        if file_extend in ["txt", "md", "mdx"]:
+            file_string += "📝 " + file_name +"\n"
             f = open(file,  mode='r',  encoding='utf8')
             text = f.read()
             if text:
                 print("\n",text[:300],"...")
                 vectorstore_add_document(text, file_name)
         
+        if file_extend == "docx":
+            file_string += "📓 " + file_name +"\n"
+            doc = Document(file)
+            fullText = []
+            for para in doc.paragraphs:
+                fullText.append(para.text)
+            text = '\n'.join(fullText)
+
+            if text:
+                print("\n",text[:300],"...")
+                vectorstore_add_document(text, file_name)
+                
         upload_files += file_string
     return upload_files
 
