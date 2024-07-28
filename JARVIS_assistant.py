@@ -239,23 +239,23 @@ def ollama_pipeline(message_input, history):
             result = chain.invoke({"user": message_input})
 
         if model_settings.MODEL_TYPE == "LiteLLM":
-            prompt = system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-            response = completion(model="ollama/" + model_settings.MODEL_NAME, api_base="http://localhost:11434", messages = [{"role": "user", "content": prompt}])
+            prompt = "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
+            response = completion(model="ollama/" + model_settings.MODEL_NAME, api_base="http://localhost:11434", messages = [{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}])
             result = response.choices[0].message.content
 
         if model_settings.MODEL_TYPE == "OpenAI":
-            prompt = system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-            response = completion(model=model_settings.MODEL_NAME, messages=[{"role": "user", "content": prompt}],)
+            prompt = "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
+            response = completion(model=model_settings.MODEL_NAME, messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],)
             result = response.choices[0].message.content
 
         if model_settings.MODEL_TYPE == "GroqCloud":
-            prompt = system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-            response = completion(model="groq/" + model_settings.MODEL_NAME, messages=[{"role": "user", "content": prompt}],)
+            prompt = "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
+            response = completion(model="groq/" + model_settings.MODEL_NAME, messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],)
             result = response.choices[0].message.content
 
         if model_settings.MODEL_TYPE == "Gemini":
-            prompt = system_prompt + "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-            response = completion(model="gemini/" + model_settings.MODEL_NAME, messages=[{"role": "user", "content": prompt}],)
+            prompt = "\n\nRETRIEVAL DOCUMENT:\n" + context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
+            response = completion(model="gemini/" + model_settings.MODEL_NAME, messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],)
             result = response.choices[0].message.content
 
         return result, source
