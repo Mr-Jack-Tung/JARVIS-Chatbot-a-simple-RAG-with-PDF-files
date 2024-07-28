@@ -463,20 +463,20 @@ class UI_Style(Base):
             button_large_padding="12px",
         )
 
-theme_default = gr.themes.Default().set(
-    body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
-    body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
-)
+# theme_default = gr.themes.Default().set(
+#     body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
+#     body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
+# )
 
-theme_default_blue = gr.themes.Default(primary_hue="blue").set(
-    body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
-    body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
-)
+# theme_default_blue = gr.themes.Default(primary_hue="blue").set(
+#     body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
+#     body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
+# )
 
 def JARVIS_assistant():
     ui_style = UI_Style()
 
-    # theme_1 = "gradio/default"
+    theme_1 = "gradio/default"
     # theme_2 = gr.Theme.from_hub("gradio/base")
     # theme_3 = gr.Theme.from_hub("gradio/seafoam")
     # theme_4 = gr.Theme.from_hub("gradio/glass")
