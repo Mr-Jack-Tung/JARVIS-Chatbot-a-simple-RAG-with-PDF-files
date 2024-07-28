@@ -138,7 +138,7 @@ def vectorstore_add_multi_files(path_files):
         elif my_platform == "Darwin":
             file_name = str(file).split("/")[-1]    # MacOS: .split("/")[-1] 
         else:
-            file_name = file
+            file_name = str(file).split("\\")[-1]
         file_extend = str(file_name).split(".")[-1]
 
         print("({0}/{1}) upload files:".format(count,len(path_files)), file_name)
