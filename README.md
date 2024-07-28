@@ -58,8 +58,7 @@
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
 
 ### Update Jul 28, 2024 (v0.1.3)
-- add: Create/delete workspace
-- change color to orange/green
+- add: Manage workspaces
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28.jpg)
 
