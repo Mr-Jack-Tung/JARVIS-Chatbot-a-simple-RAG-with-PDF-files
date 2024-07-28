@@ -33,6 +33,8 @@
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.x.x%20_%202024-07-18.jpg)
 
 ### Update next (v0.1.x)
+**Tools and Agents**
+
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
 - https://huggingface.co/blog/matryoshka
