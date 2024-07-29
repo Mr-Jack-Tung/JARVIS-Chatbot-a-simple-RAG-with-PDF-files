@@ -35,8 +35,8 @@
 
 ### Update next (v0.1.x)
 **Tools and Agents**
-- Math
-- Search
+- Math tool
+- Internet search tool
 
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
