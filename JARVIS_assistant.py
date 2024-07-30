@@ -5,29 +5,45 @@
 # Version: 0.1.3
 # Date: 28 July 2024 - 00.30 AM
 
+
+# Delelte Chroma vectorstore ------------------------------------------------------------
+import os.path
+import shutil
+
+path_to_folder = "chroma_index"
+folder_exists = os.path.exists(path_to_folder)
+
+if folder_exists:
+	shutil.rmtree(path_to_folder)
+	print("\n",path_to_folder,"is deleted")
+
+
+# Install needed packages ------------------------------------------------------------
 import os
 
-print("\npip install -qU tqdm pypdf chromadb tiktoken")
-os.system("pip install -qU tqdm pypdf chromadb tiktoken")
+print("\npip install -q tqdm pypdf chromadb tiktoken")
+os.system("pip install -q tqdm pypdf chromadb tiktoken")
 
-print("\npip install -qU langchain-chroma")
-os.system("pip install -qU langchain-chroma")
+print("\npip install -q langchain-chroma")
+os.system("pip install -q langchain-chroma")
 
-print("\npip install -qU gradio langchain langchain_community")
-os.system("pip install -qU gradio langchain langchain_community")
+print("\npip install -q gradio langchain langchain_community")
+os.system("pip install -q gradio langchain langchain_community")
 
-print("\npip install -qU ollama litellm litellm[proxy]")
-os.system("pip install -qU ollama litellm litellm[proxy]")
+print("\npip install -q ollama litellm litellm[proxy]")
+os.system("pip install -q ollama litellm litellm[proxy]")
 
-print("\npip install -qU openai groq google-generativeai")
-os.system("pip install -qU openai groq google-generativeai")
+print("\npip install -q openai groq google-generativeai")
+os.system("pip install -q openai groq google-generativeai")
 
-print("\npip install -qU gradio_toggle")
-os.system("pip install -qU gradio_toggle")
+print("\npip install -q gradio_toggle")
+os.system("pip install -q gradio_toggle")
 
-print("\npip install -qU python-docx")
-os.system("pip install -qU python-docx")
+print("\npip install -q python-docx")
+os.system("pip install -q python-docx")
 
+
+# Pull ollama Qwen2-7B model ------------------------------------------------------------
 import ollama
 
 print("\nollama pull chroma/all-minilm-l6-v2-f32")
@@ -36,6 +52,8 @@ ollama.pull('chroma/all-minilm-l6-v2-f32')
 print("\nollama pull qwen2\n")
 ollama.pull('qwen2')
 
+
+# Import needed packages ------------------------------------------------------------
 import os, sys, re, time
 from datetime import datetime
 from typing import Iterable
@@ -68,6 +86,8 @@ from langchain_community.document_loaders import PyPDFLoader
 
 from gradio_toggle import Toggle
 
+
+# Start ------------------------------------------------------------
 class Model_Settings:
     def __init__(self):
         self.MODEL_TYPE = "Ollama"
