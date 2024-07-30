@@ -450,6 +450,33 @@ def btn_create_new_workspace_click(workspace_list):
 def update_is_retrieval(is_retrieval):
     model_settings.IS_RETRIEVAL = is_retrieval
 
+def btn_save_workspace_click(workspace_list):
+    my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
+    folder_path = "chat_workspaces"
+
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    # current date and time
+    now = datetime.now()
+    time_now = now.strftime("%Y-%m-%d_%H-%M-%S")
+
+    for wp in workspace_list:
+        file_name = str(time_now)+"_"+str(wp["id"])+"_"+str(wp["name"])+'.txt'
+
+        file_path = ""
+        if my_platform == "Windows":
+            file_path = folder_path + "\\" + file_name
+        elif my_platform == "Darwin":
+           file_path = folder_path + "/" + file_name
+        else:
+            file_path = folder_path + "/" + file_name
+
+        with open(file_path, 'w') as f:
+            for chat in wp["history"]:
+                f.write(str(chat[0])+"\n"+str(chat[1])+"\n\n")
+        print("save workspace to ~>",file_path)
+
 
 # Style class ------------------------------------------------------------
 class UI_Style(Base):
@@ -542,6 +569,9 @@ def JARVIS_assistant():
     
                     with gr.Row(variant="panel"):
                         with gr.Row():
+                            btn_save_workspace = gr.Button(value="Save all workspaces", min_width=220)
+                            btn_save_workspace.click(fn=btn_save_workspace_click, inputs=state_workspace_list)
+			    
                             btn_create_new_workspace = gr.Button(value="Create new workspace", min_width=220)
                             btn_create_new_workspace.click(fn=btn_create_new_workspace_click, inputs=state_workspace_list, outputs=[state_workspace_list, state_workspace_selected])
     
