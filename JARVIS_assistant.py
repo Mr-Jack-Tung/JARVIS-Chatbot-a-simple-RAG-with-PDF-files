@@ -449,7 +449,9 @@ def btn_create_new_workspace_click(workspace_list):
 
 def update_is_retrieval(is_retrieval):
     model_settings.IS_RETRIEVAL = is_retrieval
-    
+
+
+# Style class ------------------------------------------------------------
 class UI_Style(Base):
     def __init__(
         self,
@@ -515,6 +517,8 @@ class UI_Style(Base):
 #     body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
 # )
 
+
+# GUI ------------------------------------------------------------
 def JARVIS_assistant():
     ui_style = UI_Style()
 
