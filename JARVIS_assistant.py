@@ -30,26 +30,26 @@ os.system("pip install -q langchain-chroma")
 print("\npip install -q gradio langchain langchain_community")
 os.system("pip install -q gradio langchain langchain_community")
 
-print("\npip install -q ollama litellm litellm[proxy]")
+("\npip install -q ollama litellm litellm[proxy]")
 os.system("pip install -q ollama litellm litellm[proxy]")
 
-print("\npip install -q openai groq google-generativeai")
+("\npip install -q openai groq google-generativeai")
 os.system("pip install -q openai groq google-generativeai")
 
-print("\npip install -q gradio_toggle")
+("\npip install -q gradio_toggle")
 os.system("pip install -q gradio_toggle")
 
-print("\npip install -q python-docx")
+("\npip install -q python-docx")
 os.system("pip install -q python-docx")
 
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
 import ollama
 
-print("\nollama pull chroma/all-minilm-l6-v2-f32")
+("\nollama pull chroma/all-minilm-l6-v2-f32")
 ollama.pull('chroma/all-minilm-l6-v2-f32')
 
-print("\nollama pull qwen2\n")
+("\nollama pull qwen2\n")
 ollama.pull('qwen2')
 
 
@@ -323,7 +323,7 @@ def bot(history, chat_input):
 
 def btn_save_click(txt_system_prompt):
     model_settings.SYSTEM_PROMPT = txt_system_prompt
-    print("system_prompt:",model_settings.SYSTEM_PROMPT)
+    print("\nsystem_prompt:",model_settings.SYSTEM_PROMPT)
 
 def btn_reset_click(txt_system_prompt):
     model_settings.SYSTEM_PROMPT = system_prompt
@@ -416,7 +416,7 @@ def get_gemini_list_modes(gemini_api_key):
 
 def dropdown_model_type_select(dropdown_model_type):
     model_settings.MODEL_TYPE = dropdown_model_type
-    print("dropdown_model_type:",model_settings.MODEL_TYPE)
+    print("\ndropdown_model_type:",model_settings.MODEL_TYPE)
 
 def ollama_dropdown_model_select(dropdown_model):
     model_settings.MODEL_NAME = dropdown_model
@@ -475,7 +475,7 @@ def btn_save_workspace_click(workspace_list):
         with open(file_path, 'w') as f:
             for chat in wp["history"]:
                 f.write(str(chat[0])+"\n"+str(chat[1])+"\n\n")
-        print("save workspace to ~>",file_path)
+        print("\nsave workspace to ~>",file_path)
 
 
 # Style class ------------------------------------------------------------
