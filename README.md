@@ -65,6 +65,9 @@
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
 
+### Update Jul 31, 2024 (v0.1.4)
+- add: Function calling
+
 ### Update Jul 28, 2024 (v0.1.3)
 - add: Workspaces management
 - add: On/Off Retrieval
