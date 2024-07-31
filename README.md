@@ -68,6 +68,8 @@
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Function calling
 
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.4%20_%202024-07-31.jpg)
+
 ### Update Jul 28, 2024 (v0.1.3)
 - add: Workspaces management
 - add: On/Off Retrieval
