@@ -37,7 +37,7 @@
 **Tools and Agents**
 - Math tool
 - Internet search tool
-- MindSearch: https://github.com/InternLM/MindSearch
+- MindSearch agent: https://github.com/InternLM/MindSearch
 
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
