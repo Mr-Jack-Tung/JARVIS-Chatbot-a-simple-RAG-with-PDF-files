@@ -512,7 +512,7 @@ def btn_save_workspace_click(workspace_list):
         else:
             file_path = folder_path + "/" + file_name
 
-        with open(file_path, 'w') as f:
+        with open(file_path, 'w', encoding="utf-8") as f:
             for chat in wp["history"]:
                 f.write(str(chat[0])+"\n"+str(chat[1])+"\n\n")
         print("\nsave workspace to ~>",file_path)
