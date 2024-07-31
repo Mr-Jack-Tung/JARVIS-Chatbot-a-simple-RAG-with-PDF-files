@@ -92,22 +92,22 @@ from gradio_toggle import Toggle
 
 # Start ------------------------------------------------------------
 class Model_Settings:
-    def __init__(self):
-        self.MODEL_TYPE = "Ollama"
-        self.MODEL_NAME = 'qwen2:latest'
-        self.NUM_PREDICT = 2048
-        self.TEMPERATURE = 0
-        self.TOP_K = 100
-        self.TOP_P = 1
-        self.REPEAT_PENALTY = 1.2
-        self.SYSTEM_PROMPT = ""
-        self.RETRIEVAL_TOP_K = 3
-        self.RETRIEVAL_THRESHOLD = 0.3
-        self.GROQ_API_KEY = ""
-        self.OPENAI_API_KEY = ""
-        self.GEMINI_API_KEY = ""
-        self.IS_RETRIEVAL = True
-        self.FUNCTION_CALLING = True
+	def __init__(self):
+		self.MODEL_TYPE = "Ollama"
+		self.MODEL_NAME = 'qwen2:latest'
+		self.NUM_PREDICT = 2048
+		self.TEMPERATURE = 0
+		self.TOP_K = 100
+		self.TOP_P = 1
+		self.REPEAT_PENALTY = 1.2
+		self.SYSTEM_PROMPT = ""
+		self.RETRIEVAL_TOP_K = 3
+		self.RETRIEVAL_THRESHOLD = 0.3
+		self.GROQ_API_KEY = ""
+		self.OPENAI_API_KEY = ""
+		self.GEMINI_API_KEY = ""
+		self.IS_RETRIEVAL = True
+		self.FUNCTION_CALLING = True
 
 model_settings = Model_Settings()
 
@@ -305,14 +305,14 @@ def ollama_pipeline(message_input, history):
         result = ""
         if model_settings.MODEL_TYPE == "Ollama":
             if model_settings.FUNCTION_CALLING:
-                response = agent_executor.invoke({"input": context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
-                result = response['output']
+				response = agent_executor.invoke({"input": context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
+				result = response['output']
                 
             else:
-                llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
-                prompt = ChatPromptTemplate.from_template(system_prompt + context_retrieval + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
-                chain = prompt | llm | StrOutputParser()
-                result = chain.invoke({"user": message_input})
+				llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
+				prompt = ChatPromptTemplate.from_template(system_prompt + context_retrieval + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
+				chain = prompt | llm | StrOutputParser()
+				result = chain.invoke({"user": message_input})
 
         if model_settings.MODEL_TYPE == "LiteLLM":
             prompt = context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
