@@ -305,8 +305,8 @@ def ollama_pipeline(message_input, history):
         result = ""
         if model_settings.MODEL_TYPE == "Ollama":
             if model_settings.FUNCTION_CALLING:
-                response = agent_executor.invoke({"input": context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
-                result = response['output']
+		response = agent_executor.invoke({"input": context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
+		result = response['output']
                 
             else:
 		llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
@@ -726,8 +726,8 @@ def JARVIS_assistant():
                                 slider_top_p = gr.Slider(minimum=0, maximum=1, value=model_settings.TOP_P, step=0.05, label="Top_p", interactive=True)
                                 slider_top_p.change(fn=slider_top_p_change, inputs=slider_top_p)
 
-			    	chk_function_calling = Toggle(label="Function calling", value=True, interactive=True)
-                                chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
+				chk_function_calling = Toggle(label="Function calling", value=True, interactive=True)
+				chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
     
                         with gr.Row(variant="panel"):
                             with gr.Accordion(label="Retrieval settings", open=True):
