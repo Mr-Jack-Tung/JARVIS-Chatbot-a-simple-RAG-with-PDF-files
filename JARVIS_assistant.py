@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.3
-# Date: 28 July 2024 - 00.30 AM
+# Version: 0.1.4
+# Date: 31 July 2024 - 00.01 AM
 
 
 # Delelte Chroma vectorstore ------------------------------------------------------------
@@ -30,17 +30,20 @@ os.system("pip install -q langchain-chroma")
 print("\npip install -q gradio langchain langchain_community")
 os.system("pip install -q gradio langchain langchain_community")
 
-("\npip install -q ollama litellm litellm[proxy]")
+print("\npip install -q ollama litellm litellm[proxy]")
 os.system("pip install -q ollama litellm litellm[proxy]")
 
-("\npip install -q openai groq google-generativeai")
+print("\npip install -q openai groq google-generativeai")
 os.system("pip install -q openai groq google-generativeai")
 
-("\npip install -q gradio_toggle")
+print("\npip install -q gradio_toggle")
 os.system("pip install -q gradio_toggle")
 
-("\npip install -q python-docx")
+print("\npip install -q python-docx")
 os.system("pip install -q python-docx")
+
+print("pip install -q arxiv wikipedia langchainhub")
+os.system("pip install -U arxiv wikipedia langchainhub")
 
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
@@ -104,6 +107,7 @@ class Model_Settings:
         self.OPENAI_API_KEY = ""
         self.GEMINI_API_KEY = ""
         self.IS_RETRIEVAL = True
+	self.FUNCTION_CALLING = True
 
 model_settings = Model_Settings()
 
@@ -260,6 +264,34 @@ def add_message(history, message):
         history.append(("(" + dt_string + ") **human**: " + message["text"], ""))
     return history
 
+
+# https://github.com/Mr-Jack-Tung/Ollama-Mistral-with-Langchain-RAG-Agent-and-Custom-tools
+from langchain.agents import AgentExecutor, create_react_agent, load_tools
+from langchain.prompts import PromptTemplate
+from langchain.memory import ConversationBufferWindowMemory
+
+from langchain_community.llms import Ollama
+model_local = Ollama(model=model_settings.MODEL_NAME)
+
+from simple_langchain_tools import get_all_tools
+tools = get_all_tools()
+
+from langchain import hub
+prompt = hub.pull("hwchase17/react-chat")
+
+chat_history_memory = ConversationBufferWindowMemory(k=3, memory_key='chat_history', input_key='input', ouput_key='output')
+
+agent = create_react_agent(model_local, tools, prompt)
+
+agent_executor = AgentExecutor(
+    agent=agent, 
+    tools=tools, 
+    memory=chat_history_memory,
+    verbose=True, # ~> Speech out the thinking
+    handle_parsing_errors=True,
+    )
+
+
 def ollama_pipeline(message_input, history):
     if message_input:
         print("\nprompt:",message_input)
@@ -272,10 +304,15 @@ def ollama_pipeline(message_input, history):
 
         result = ""
         if model_settings.MODEL_TYPE == "Ollama":
-            llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
-            prompt = ChatPromptTemplate.from_template(system_prompt + context_retrieval + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
-            chain = prompt | llm | StrOutputParser()
-            result = chain.invoke({"user": message_input})
+            if model_settings.FUNCTION_CALLING:
+                response = agent_executor.invoke({"input": context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
+                result = response['output']
+                
+            else:
+		llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
+		prompt = ChatPromptTemplate.from_template(system_prompt + context_retrieval + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
+		chain = prompt | llm | StrOutputParser()
+		result = chain.invoke({"user": message_input})
 
         if model_settings.MODEL_TYPE == "LiteLLM":
             prompt = context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
@@ -449,6 +486,9 @@ def btn_create_new_workspace_click(workspace_list):
 
 def update_is_retrieval(is_retrieval):
     model_settings.IS_RETRIEVAL = is_retrieval
+
+def update_function_calling(function_calling):
+    model_settings.FUNCTION_CALLING = function_calling
 
 def btn_save_workspace_click(workspace_list):
     my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
@@ -685,6 +725,9 @@ def JARVIS_assistant():
     
                                 slider_top_p = gr.Slider(minimum=0, maximum=1, value=model_settings.TOP_P, step=0.05, label="Top_p", interactive=True)
                                 slider_top_p.change(fn=slider_top_p_change, inputs=slider_top_p)
+
+			    	chk_function_calling = Toggle(label="Function calling", value=True, interactive=True)
+                                chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
     
                         with gr.Row(variant="panel"):
                             with gr.Accordion(label="Retrieval settings", open=True):
