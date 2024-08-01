@@ -271,25 +271,10 @@ from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 
 from langchain_community.llms import Ollama
-model_local = Ollama(model=model_settings.MODEL_NAME)
-
 from simple_langchain_tools import get_all_tools
-tools = get_all_tools()
 
-from langchain import hub
-prompt = hub.pull("hwchase17/react-chat")
-
-chat_history_memory = ConversationBufferWindowMemory(k=3, memory_key='chat_history', input_key='input', ouput_key='output')
-
-agent = create_react_agent(model_local, tools, prompt)
-
-agent_executor = AgentExecutor(
-    agent=agent, 
-    tools=tools, 
-    memory=chat_history_memory,
-    verbose=True, # ~> Speech out the thinking
-    handle_parsing_errors=True,
-    )
+# from langchain import hub
+# prompt = hub.pull("hwchase17/react-chat")
 
 
 def ollama_pipeline(message_input, history):
@@ -305,7 +290,22 @@ def ollama_pipeline(message_input, history):
         result = ""
         if model_settings.MODEL_TYPE == "Ollama":
             if model_settings.FUNCTION_CALLING:
-                response = agent_executor.invoke({"input": context_retrieval + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
+                model_local = Ollama(model=model_settings.MODEL_NAME)
+                tools = get_all_tools()
+                prompt = PromptTemplate(input_variables=['agent_scratchpad', 'chat_history', 'input', 'tool_names', 'tools'], metadata={'lc_hub_owner': 'jarvis_assistant', 'lc_hub_repo': 'react-chat', 'lc_hub_commit_hash': '3ecd5f710db438a9cf3773c57d6ac8951eefd2cd9a9b2a0026a65a0893b86a6e'}, template=system_prompt + context_retrieval + '\n\nOverall, Assistant is a powerful tool that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\n{tools}\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to take, should be one of [{tool_names}]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n{chat_history}\n\nNew input: {input}\n{agent_scratchpad}')
+
+                chat_history_memory = ConversationBufferWindowMemory(k=3, memory_key='chat_history', input_key='input', ouput_key='output')
+                agent = create_react_agent(model_local, tools, prompt)
+
+                agent_executor = AgentExecutor(
+                    agent=agent, 
+                    tools=tools, 
+                    memory=chat_history_memory,
+                    verbose=True, # ~> Speech out the thinking
+                    handle_parsing_errors=True,
+                    )
+
+                response = agent_executor.invoke({"input": "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)})
                 result = response['output']
                 
             else:
