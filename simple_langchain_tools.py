@@ -16,6 +16,18 @@ from langchain.agents import load_tools
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 
+from langchain_community.tools import DuckDuckGoSearchRun
+
+class DuckDuckGoSearch(BaseTool):
+    name = "duck-go-search"
+    description = "This tool will lookup information on internet."
+
+    def _run(self, input_text:str) -> str:
+        """Return the information on internet."""
+        search = DuckDuckGoSearchRun()
+        result = search.run(input_text)
+        return result
+        
 class ExtractTitle(BaseTool):
     name = "extract-title-from-text-tool"
     description = "This tool will extract title from text of arXiv document."
@@ -44,7 +56,7 @@ def get_all_tools():
         ["arxiv"],
     )
 
-    tools = [Wiki_tools, Arxiv_tool[0], ExtractTitle()]
+    tools = [DuckDuckGoSearch(),Wiki_tools, Arxiv_tool[0], ExtractTitle()]
 
     # print("\ntools:",tools)
 
