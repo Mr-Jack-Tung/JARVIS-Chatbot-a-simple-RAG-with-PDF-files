@@ -18,6 +18,27 @@ from langchain_community.utilities import WikipediaAPIWrapper
 
 from langchain_community.tools import DuckDuckGoSearchRun
 
+class TwoNumbersCompare(BaseTool):
+    name = "two-numbers-compare"
+    description = "This tool will compare two numbers."
+
+    def _run(self, input_text:str) -> str:
+        """Return the greater number."""
+        results = re.findall(r"([\d\.\,]+)", str(input_text))
+
+        number_A = results[0]
+        number_B = results[1]
+
+        result = ""
+        if number_A > number_B:
+            result = number_A + " is greater than " + number_B
+        elif number_B > number_A:
+            result = number_B + " is greater than " + number_A
+        elif number_A == number_B:
+            result = number_A + " is equal with " + number_B
+
+        return result
+        
 class DuckDuckGoSearch(BaseTool):
     name = "duck-go-search"
     description = "This tool will lookup information on internet."
@@ -56,7 +77,7 @@ def get_all_tools():
         ["arxiv"],
     )
 
-    tools = [DuckDuckGoSearch(),Wiki_tools, Arxiv_tool[0], ExtractTitle()]
+    tools = [TwoNumbersCompare(), DuckDuckGoSearch(), Wiki_tools, Arxiv_tool[0], ExtractTitle()]
 
     # print("\ntools:",tools)
 
