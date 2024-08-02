@@ -78,6 +78,10 @@
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
 
+**Knowledge Editing**
+- https://github.com/zjunlp/KnowledgeEditingPapers
+
+
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Function calling
 
