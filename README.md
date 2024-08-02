@@ -44,9 +44,9 @@
 **Tools and Multi-Agents**
 - Math tool
 - Internet search agent
-- AnyTool agent: https://github.com/dyabel/AnyTool
-- OpenDevin agent: https://github.com/OpenDevin/OpenDevin
-- MindSearch agent: https://github.com/InternLM/MindSearch
+- **AnyTool agent**: https://github.com/dyabel/AnyTool
+- **OpenDevin agent**: https://github.com/OpenDevin/OpenDevin
+- **MindSearch agent**: https://github.com/InternLM/MindSearch
 
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
@@ -55,7 +55,7 @@
 - Fine tuning Embeddings Model: https://www.youtube.com/watch?v=hdFHYNCmO8U
 
 **Dynamically Semantic Router**
-- RouteLLM: https://github.com/lm-sys/RouteLLM ; RouteLLM: Learning to Route LLMs with Preference Data _ https://arxiv.org/abs/2406.18665
+- **RouteLLM**: https://github.com/lm-sys/RouteLLM ; RouteLLM: Learning to Route LLMs with Preference Data _ https://arxiv.org/abs/2406.18665
 - https://python.langchain.com/v0.1/docs/expression_language/how_to/routing/
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/03-basic-langchain-agent.ipynb
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/02-dynamic-routes.ipynb
