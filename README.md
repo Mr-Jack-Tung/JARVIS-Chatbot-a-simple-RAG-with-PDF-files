@@ -44,6 +44,7 @@
 **Tools and Multi-Agents**
 - Math tool
 - Internet search agent
+- OpenDevin agent: https://github.com/OpenDevin/OpenDevin
 - MindSearch agent: https://github.com/InternLM/MindSearch
 
 **Fine tune embbeding model for RAG pipeline ^^**
