@@ -11,7 +11,8 @@ import os, sys, re
 from langchain.pydantic_v1 import BaseModel, Field
 from langchain.tools import BaseTool
 
-from langchain.agents import load_tools
+# from langchain.agents import load_tools
+from langchain_community.agent_toolkits.load_tools import load_tools
 
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
@@ -22,20 +23,36 @@ class TwoNumbersCompare(BaseTool):
     name = "two-numbers-compare"
     description = "This tool will compare two numbers."
 
+    @staticmethod
+    def is_float(value):
+        if value is None:
+            return False
+        try:
+            float(value)
+            return True
+        except:
+            return False
+
     def _run(self, input_text:str) -> str:
         """Return the greater number."""
-        results = re.findall(r"([\d\.\,]+)", str(input_text))
+        results = re.findall(r"([\d\.]+)", str(input_text))
 
-        number_A = results[0]
-        number_B = results[1]
+        print("number A:",results[0])
+        print("number B:",results[1])
+
+        if self.is_float(results[0]):
+            number_A = float(results[0])
+        if self.is_float(results[1]):
+            number_B = float(results[1])
 
         result = ""
-        if float(number_A) == float(number_B):
-            result = str(number_A) + " is equal with " + str(number_B)
-        elif float(number_A) > float(number_B):
-            result = str(number_A) + " is greater than " + str(number_B)
-        elif float(number_B) > float(number_A):
-            result = str(number_B) + " is greater than " + str(number_A)
+        if number_A and number_B:
+            if number_A == number_B:
+                result = str(results[0]) + " is equal with " + str(results[1])
+            elif number_A > number_B:
+                result = str(results[0]) + " is greater than " + str(results[1])
+            elif number_B > number_A:
+                result = str(results[1]) + " is greater than " + str(results[0])
 
         return result
         
