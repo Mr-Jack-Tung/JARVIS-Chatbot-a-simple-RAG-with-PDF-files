@@ -78,8 +78,11 @@
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
 
+**Document AI**
+- LayoutLMv3: https://github.com/microsoft/unilm/tree/master/layoutlmv3
+
 **Knowledge Editing**
-- https://github.com/zjunlp/KnowledgeEditingPapers
+- Knowledge Editing: https://github.com/zjunlp/KnowledgeEditingPapers
 
 
 ### Update Jul 31, 2024 (v0.1.4)
