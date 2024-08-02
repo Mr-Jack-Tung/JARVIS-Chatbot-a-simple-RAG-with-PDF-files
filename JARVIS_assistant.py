@@ -266,7 +266,7 @@ def add_message(history, message):
 
 
 # https://github.com/Mr-Jack-Tung/Ollama-Mistral-with-Langchain-RAG-Agent-and-Custom-tools
-from langchain.agents import AgentExecutor, create_react_agent, load_tools
+from langchain.agents import AgentExecutor, create_react_agent
 from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 
