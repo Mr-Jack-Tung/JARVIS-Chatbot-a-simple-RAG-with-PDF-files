@@ -43,6 +43,7 @@
 **Tools and Multi-Agents**
 - Math tool
 - Internet search agent
+- **Crawl4AI agent**: https://github.com/unclecode/crawl4ai
 - **AnyTool agent**: https://github.com/dyabel/AnyTool
 - **OpenDevin agent**: https://github.com/OpenDevin/OpenDevin
 - **MindSearch agent**: https://github.com/InternLM/MindSearch
