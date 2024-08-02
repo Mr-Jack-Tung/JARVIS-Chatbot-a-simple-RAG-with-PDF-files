@@ -30,12 +30,12 @@ class TwoNumbersCompare(BaseTool):
         number_B = results[1]
 
         result = ""
-        if number_A > number_B:
-            result = number_A + " is greater than " + number_B
-        elif number_B > number_A:
-            result = number_B + " is greater than " + number_A
-        elif number_A == number_B:
-            result = number_A + " is equal with " + number_B
+        if float(number_A) == float(number_B):
+            result = str(number_A) + " is equal with " + str(number_B)
+        elif float(number_A) > float(number_B):
+            result = str(number_A) + " is greater than " + str(number_B)
+        elif float(number_B) > float(number_A):
+            result = str(number_B) + " is greater than " + str(number_A)
 
         return result
         
