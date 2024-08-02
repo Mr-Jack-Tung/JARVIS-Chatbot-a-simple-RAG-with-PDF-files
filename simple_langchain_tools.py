@@ -48,11 +48,11 @@ class TwoNumbersCompare(BaseTool):
         result = ""
         if number_A and number_B:
             if number_A == number_B:
-                result = str(results[0]) + " is equal with " + str(results[1])
+                result = "number " + str(results[0]) + " is equal to " + str(results[1])
             elif number_A > number_B:
-                result = str(results[0]) + " is greater than " + str(results[1])
+                result = "number " + str(results[0]) + " is greater than " + str(results[1])
             elif number_B > number_A:
-                result = str(results[1]) + " is greater than " + str(results[0])
+                result = "number " + str(results[1]) + " is greater than " + str(results[0])
 
         return result
         
