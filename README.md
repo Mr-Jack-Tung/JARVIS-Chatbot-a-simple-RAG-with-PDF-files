@@ -46,7 +46,7 @@
 - **Crawl4AI agent**: https://github.com/unclecode/crawl4ai
 - **AnyTool agent**: https://github.com/dyabel/AnyTool
 - **OpenDevin agent**: https://github.com/OpenDevin/OpenDevin
-- **MindSearch agent**: https://github.com/InternLM/MindSearch
+- **MindSearch agent**: https://github.com/InternLM/MindSearch ; https://arxiv.org/abs/2407.20183
 
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
