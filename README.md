@@ -61,6 +61,9 @@
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/02-dynamic-routes.ipynb
 - https://mer.vin/2024/07/routellm-code-example/
 
+**RAGFlow**
+- https://github.com/infiniflow/ragflow
+
 **GraphRAG**
 - **GraphRAG**: https://github.com/microsoft/graphrag
 - https://www.microsoft.com/en-us/research/blog/graphrag-new-tool-for-complex-data-discovery-now-on-github/
