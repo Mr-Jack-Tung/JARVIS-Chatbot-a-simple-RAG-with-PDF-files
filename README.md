@@ -9,13 +9,13 @@
 - Local Run ~> 100% Privacy
 - Open Source ~> 100% DIY Custom
 - 30 multi-languages support
-- PDF RAG support
+- PDF, DOCX, TXT RAG support
 
 ### Features
 - support 30 languages
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
-- support PDF, TXT, MD, MDX files
+- support PDF, DOCX, TXT, MD, MDX files
 - multi-files upload
 - custom Inferece settings
 - unlimit & auto save chat history to vector database
@@ -28,7 +28,6 @@
 - support LiteLLM locally
 - workspaces management
 - on/off Retrieval
-- support DOCX files
 - Function calling
 
 ### Update next (v0.x.x)
