@@ -44,6 +44,7 @@
 **Tools and Multi-Agents**
 - Math tool
 - Internet search agent
+- AnyTool agent: https://github.com/dyabel/AnyTool
 - OpenDevin agent: https://github.com/OpenDevin/OpenDevin
 - MindSearch agent: https://github.com/InternLM/MindSearch
 
