@@ -62,6 +62,7 @@
 - https://mer.vin/2024/07/routellm-code-example/
 
 **GraphRAG**
+- **GraphRAG**: https://github.com/microsoft/graphrag
 - https://www.microsoft.com/en-us/research/blog/graphrag-new-tool-for-complex-data-discovery-now-on-github/
 - https://github.com/microsoft/graphrag/tree/main/examples_notebooks
 - https://neo4j.com/developer-blog/global-graphrag-neo4j-langchain/
