@@ -75,6 +75,7 @@
 
 **Continuous Pre-training & Fine-tuning**
 - Continual Pre-training of Language Models: https://arxiv.org/abs/2302.03241
+- Continual Pre-Training of Large Language Models: How to (re)warm your model? https://arxiv.org/abs/2308.04014
 - Continuous Training and Fine-tuning for Domain-Specific Language Models in Medical Question Answering: https://arxiv.org/abs/2311.00204
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
