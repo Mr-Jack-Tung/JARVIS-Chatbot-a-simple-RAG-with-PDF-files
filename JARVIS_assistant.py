@@ -21,30 +21,8 @@ if folder_exists:
 # Install needed packages ------------------------------------------------------------
 import os
 
-print("\npip install -q tqdm pyyaml pypdf chromadb tiktoken")
-os.system("pip install -q tqdm pyyaml pypdf chromadb tiktoken")
-
-print("\npip install -q langchain-chroma")
-os.system("pip install -q langchain-chroma")
-
-print("\npip install -q gradio langchain langchain_community")
-os.system("pip install -q gradio langchain langchain_community")
-
-print("\npip install -q ollama litellm litellm[proxy]")
-os.system("pip install -q ollama litellm litellm[proxy]")
-
-print("\npip install -q openai groq google-generativeai")
-os.system("pip install -q openai groq google-generativeai")
-
-print("\npip install -q gradio_toggle")
-os.system("pip install -q gradio_toggle")
-
-print("\npip install -q python-docx")
-os.system("pip install -q python-docx")
-
-print("\npip install -q arxiv wikipedia langchainhub")
-os.system("pip install -q arxiv wikipedia langchainhub")
-
+print("\npip install -r requirements.txt")
+os.system("pip install -r requirements.txt")
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
 import ollama
