@@ -9,7 +9,7 @@
 - Local Run ~> 100% Privacy
 - Open Source ~> 100% DIY Custom
 - 30 multi-languages support
-- PDF, DOCX, TXT RAG support
+- RAG with PDF, DOCX, TXT files support
 
 ### Features
 - support 30 languages
