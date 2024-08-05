@@ -102,6 +102,7 @@
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Function calling
 - add: API Keys management
+- add: 3 rounds chat-history memory
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.4%20_%202024-08-01_2.jpg)
 
