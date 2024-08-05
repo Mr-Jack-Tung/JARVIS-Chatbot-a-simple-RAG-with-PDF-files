@@ -30,6 +30,16 @@
 - on/off Retrieval
 - Function calling
 
+### JARVIS assistant (16 ⭐) .vs
+- gpt4all (68.3k ⭐) - https://github.com/nomic-ai/gpt4all
+- open-webui (34.4k ⭐) - https://github.com/open-webui/open-webui
+- anything-llm (18.3k ⭐) - https://github.com/Mintplex-Labs/anything-llm
+- LibreChat (16k ⭐) - https://github.com/danny-avila/LibreChat
+- Verba (5.1k ⭐) - https://github.com/weaviate/Verba
+- lagent (1.3k ⭐) - https://github.com/InternLM/lagent
+- lmstudio-ai (1.2k ⭐) - https://github.com/lmstudio-ai/lms
+
+
 ### Update next (v0.x.x)
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.x.x%20_%202024-07-18.jpg)
 
