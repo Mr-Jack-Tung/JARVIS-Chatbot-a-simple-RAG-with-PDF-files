@@ -42,7 +42,7 @@ os.system("pip install -q gradio_toggle")
 print("\npip install -q python-docx")
 os.system("pip install -q python-docx")
 
-print("pip install -q arxiv wikipedia langchainhub")
+print("\npip install -q arxiv wikipedia langchainhub")
 os.system("pip install -q arxiv wikipedia langchainhub")
 
 
