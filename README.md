@@ -36,6 +36,7 @@
 - anything-llm (18.3k ⭐) - https://github.com/Mintplex-Labs/anything-llm
 - LibreChat (16k ⭐) - https://github.com/danny-avila/LibreChat
 - Verba (5.1k ⭐) - https://github.com/weaviate/Verba
+- MindSearch (2.6k ⭐) - https://github.com/InternLM/MindSearch
 - lagent (1.3k ⭐) - https://github.com/InternLM/lagent
 - lmstudio-ai (1.2k ⭐) - https://github.com/lmstudio-ai/lms
 
