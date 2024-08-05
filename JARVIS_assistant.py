@@ -43,7 +43,7 @@ print("\npip install -q python-docx")
 os.system("pip install -q python-docx")
 
 print("pip install -q arxiv wikipedia langchainhub")
-os.system("pip install -U arxiv wikipedia langchainhub")
+os.system("pip install -q arxiv wikipedia langchainhub")
 
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
