@@ -22,7 +22,7 @@ if folder_exists:
 import os
 
 print("\npip install -r requirements.txt")
-# os.system("pip install -r requirements.txt")
+os.system("pip install -r requirements.txt")
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
 import ollama
