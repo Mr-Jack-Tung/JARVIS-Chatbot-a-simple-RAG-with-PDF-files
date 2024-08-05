@@ -21,8 +21,8 @@ if folder_exists:
 # Install needed packages ------------------------------------------------------------
 import os
 
-print("\npip install -q tqdm pypdf chromadb tiktoken")
-os.system("pip install -q tqdm pypdf chromadb tiktoken")
+print("\npip install -q tqdm pyyaml pypdf chromadb tiktoken")
+os.system("pip install -q tqdm pyyaml pypdf chromadb tiktoken")
 
 print("\npip install -q langchain-chroma")
 os.system("pip install -q langchain-chroma")
@@ -276,7 +276,6 @@ from simple_langchain_tools import get_all_tools
 # from langchain import hub
 # prompt = hub.pull("hwchase17/react-chat")
 
-
 def ollama_pipeline(message_input, history):
     if message_input:
         print("\nprompt:",message_input)
@@ -291,12 +290,11 @@ def ollama_pipeline(message_input, history):
         if model_settings.MODEL_TYPE == "Ollama":
             if model_settings.FUNCTION_CALLING:
                 model_local = Ollama(model=model_settings.MODEL_NAME)
-                tools = get_all_tools()
                 prompt = PromptTemplate(input_variables=['agent_scratchpad', 'chat_history', 'input', 'tool_names', 'tools'], metadata={'lc_hub_owner': 'jarvis_assistant', 'lc_hub_repo': 'react-chat', 'lc_hub_commit_hash': '3ecd5f710db438a9cf3773c57d6ac8951eefd2cd9a9b2a0026a65a0893b86a6e'}, template=system_prompt + context_retrieval + '\n\nOverall, Assistant is a powerful tool that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\n{tools}\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to take, should be one of [{tool_names}]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n{chat_history}\n\nNew input: {input}\n{agent_scratchpad}')
 
-                chat_history_memory = ConversationBufferWindowMemory(k=3, memory_key='chat_history', input_key='input', ouput_key='output')
                 agent = create_react_agent(model_local, tools, prompt)
-
+				tools = get_all_tools()
+				chat_history_memory = ConversationBufferWindowMemory(k=3, memory_key='chat_history', input_key='input', ouput_key='output')
                 agent_executor = AgentExecutor(
                     agent=agent, 
                     tools=tools, 
@@ -400,6 +398,40 @@ def slider_retrieval_threshold_change(slider_retrieval_threshold):
     model_settings.RETRIEVAL_THRESHOLD = slider_retrieval_threshold
     print("retrieval threshold:",model_settings.RETRIEVAL_THRESHOLD)
 
+import yaml
+
+def save_api_keys_to_yaml(GROQ_KEY, OPENAI_KEY, GEMINI_KEY):
+    yaml_data = {
+    "GROQ_API_KEY": GROQ_KEY,
+    "OPENAI_API_KEY": OPENAI_KEY,
+    "GEMINI_API_KEY": GEMINI_KEY,
+    }
+    with open('api_keys.yaml', 'w') as file:
+        yaml.dump(yaml_data, file)
+
+def load_api_keys_from_yaml():
+    GROQ_KEY = ""
+    OPENAI_KEY = ""
+    GEMINI_KEY = ""
+
+    if os.path.exists("api_keys.yaml"):
+        with open("api_keys.yaml", 'r') as stream:
+            data_loaded = yaml.safe_load(stream)
+        
+            GROQ_KEY = data_loaded["GROQ_API_KEY"]
+            OPENAI_KEY = data_loaded["OPENAI_API_KEY"]
+            GEMINI_KEY = data_loaded["GEMINI_API_KEY"]
+
+            model_settings.GROQ_API_KEY = GROQ_KEY
+            model_settings.OPENAI_API_KEY = OPENAI_KEY
+            model_settings.GEMINI_API_KEY = GEMINI_KEY
+
+            os.environ['GROQ_API_KEY'] = GROQ_KEY
+            os.environ["OPENAI_API_KEY"] = OPENAI_KEY
+            os.environ["GEMINI_API_KEY"] = GEMINI_KEY
+
+    return GROQ_KEY, OPENAI_KEY, GEMINI_KEY
+	
 def btn_key_save_click(txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key):
     model_settings.GROQ_API_KEY = txt_groq_api_key
     model_settings.OPENAI_API_KEY = txt_openai_api_key
@@ -408,6 +440,8 @@ def btn_key_save_click(txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key)
     os.environ['GROQ_API_KEY'] = txt_groq_api_key
     os.environ["OPENAI_API_KEY"] = txt_openai_api_key
     os.environ["GEMINI_API_KEY"] = txt_gemini_api_key
+
+	save_api_keys_to_yaml(txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key)
 
     print("\nSave API keys ~> Ok")
 
@@ -655,9 +689,10 @@ def JARVIS_assistant():
                     with gr.Row():
                         with gr.Row(variant="panel"):
                             with gr.Accordion(label="API Keys", open=False):
-                                txt_groq_api_key = gr.Textbox(value="", placeholder="GroqCloud API Key", show_label=False)
-                                txt_openai_api_key = gr.Textbox(value="", placeholder="OpenAI API Key", show_label=False)
-                                txt_gemini_api_key = gr.Textbox(value="", placeholder="Gemini API Key", show_label=False)
+								GROQ_KEY, OPENAI_KEY, GEMINI_KEY = load_api_keys_from_yaml()
+                                txt_groq_api_key = gr.Textbox(value=GROQ_KEY, placeholder="GroqCloud API Key", show_label=False)
+                                txt_openai_api_key = gr.Textbox(value=OPENAI_KEY, placeholder="OpenAI API Key", show_label=False)
+                                txt_gemini_api_key = gr.Textbox(value=GEMINI_KEY, placeholder="Gemini API Key", show_label=False)
                                 
                                 btn_key_save = gr.Button(value="Save", min_width=50)
                                 btn_key_save.click(fn=btn_key_save_click, inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
