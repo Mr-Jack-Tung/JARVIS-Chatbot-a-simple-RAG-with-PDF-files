@@ -407,6 +407,7 @@ def save_api_keys_to_yaml(GROQ_KEY, OPENAI_KEY, GEMINI_KEY):
     }
     with open('api_keys.yaml', 'w') as file:
         yaml.dump(yaml_data, file)
+	print(" ~> save api keys to yaml file")
 
 def load_api_keys_from_yaml():
     GROQ_KEY = ""
