@@ -49,7 +49,13 @@
 **Multimodal support**
 - text
 - image
+  - MiniCPM-V 2.6: https://github.com/OpenBMB/MiniCPM-V
+  - FLUX: https://github.com/black-forest-labs/flux
+  - Stable Diffusion: https://github.com/runwayml/stable-diffusion
+  - https://github.com/huggingface/diffusers
 - audio
+  - https://github.com/onuratakan/gpt-computer-assistant
+  - https://github.com/rsxdalv/tts-generation-webui
 - video
 
 **Tools and Multi-Agents**
