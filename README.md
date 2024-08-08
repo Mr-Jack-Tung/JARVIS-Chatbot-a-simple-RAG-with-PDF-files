@@ -10,9 +10,10 @@
 - Open Source ~> 100% DIY Custom
 - 30 multi-languages support
 - RAG with PDF, DOCX, TXT files support
+- Multi-Function calling
 
 ### Features
-- support 30 languages
+- support 30 multi-languages
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
 - support PDF, DOCX, TXT, MD, MDX files
@@ -28,7 +29,7 @@
 - support LiteLLM locally
 - workspaces management
 - on/off Retrieval
-- Function calling
+- Multi-Function calling
 
 ### JARVIS assistant (16 ⭐) .vs
 - gpt4all (68.3k ⭐) - https://github.com/nomic-ai/gpt4all
@@ -106,7 +107,7 @@
 
 
 ### Update Jul 31, 2024 (v0.1.4)
-- add: Function calling
+- add: Multi-Function calling
 - add: API Keys management
 - add: 3 rounds chat-history memory
 - update: support both MacOS and Windows
