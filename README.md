@@ -58,7 +58,7 @@
   - https://github.com/onuratakan/gpt-computer-assistant
   - https://github.com/rsxdalv/tts-generation-webui
 - video
-  - https://github.com/LLaVA-VL/LLaVA-NeXT
+  - https://github.com/LLaVA-VL/LLaVA-NeXT ; https://arxiv.org/abs/2408.03326
 
 **Tools and Multi-Agents**
 - Math tool
