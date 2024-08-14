@@ -71,6 +71,7 @@
 - **MindSearch agent**: https://github.com/InternLM/MindSearch ; https://arxiv.org/abs/2407.20183
 - **AgileCoder**: https://github.com/FSoft-AI4Code/AgileCoder
 - **AgentK**: automatic build new tools and agents as needed by itself, in order to complete tasks for a user _ https://github.com/mikekelly/AgentK
+- **AI-Scientist**: https://github.com/SakanaAI/AI-Scientist
 
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
