@@ -31,7 +31,7 @@
 - on/off Retrieval
 - Multi-Function calling
 
-### JARVIS assistant (16 ⭐) .vs
+### JARVIS assistant (18 ⭐) .vs
 - gpt4all (68.3k ⭐) - https://github.com/nomic-ai/gpt4all
 - open-webui (34.4k ⭐) - https://github.com/open-webui/open-webui
 - anything-llm (18.3k ⭐) - https://github.com/Mintplex-Labs/anything-llm
