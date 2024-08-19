@@ -72,6 +72,7 @@
 - **AgileCoder**: https://github.com/FSoft-AI4Code/AgileCoder
 - **AgentK**: automatic build new tools and agents as needed by itself, in order to complete tasks for a user _ https://github.com/mikekelly/AgentK
 - **AI-Scientist**: https://github.com/SakanaAI/AI-Scientist
+- **OpenResearcher**: https://github.com/GAIR-NLP/OpenResearcher
 - **ADAS**: Automated Design of Agentic Systems - https://github.com/ShengranHu/ADAS
 
 **Fine tune embbeding model for RAG pipeline ^^**
