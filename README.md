@@ -79,6 +79,7 @@
 - **AI-Scientist**: https://github.com/SakanaAI/AI-Scientist
 - **OpenResearcher**: https://github.com/GAIR-NLP/OpenResearcher
 - **ADAS**: Automated Design of Agentic Systems - https://github.com/ShengranHu/ADAS
+- **Language Agent Tree Search (LAST)**: https://github.com/lapisrocks/LanguageAgentTreeSearch ; https://arxiv.org/abs/2310.04406
 
 **Mobile**
 - MobileAgent: https://github.com/X-PLUG/MobileAgent
