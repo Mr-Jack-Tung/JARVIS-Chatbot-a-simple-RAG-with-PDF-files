@@ -90,6 +90,7 @@
 
 **All RAG techniques**
 - https://github.com/NirDiamant/RAG_Techniques
+- WeKnow-RAG: https://arxiv.org/abs/2408.07611
 
 **RAGFlow**
 - https://github.com/infiniflow/ragflow
