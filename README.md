@@ -69,6 +69,7 @@
 - **Crawl4AI agent**: https://github.com/unclecode/crawl4ai
 - **AnyTool agent**: https://github.com/dyabel/AnyTool
 - **OpenDevin agent**: https://github.com/OpenDevin/OpenDevin
+- **DistillKit**: https://github.com/arcee-ai/DistillKit
 - **MindSearch agent**: https://github.com/InternLM/MindSearch ; https://arxiv.org/abs/2407.20183
 - **AgileCoder**: https://github.com/FSoft-AI4Code/AgileCoder
 - **AgentK**: automatic build new tools and agents as needed by itself, in order to complete tasks for a user _ https://github.com/mikekelly/AgentK
