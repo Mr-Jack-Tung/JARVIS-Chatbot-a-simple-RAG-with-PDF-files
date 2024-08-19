@@ -91,6 +91,7 @@
 **All RAG techniques**
 - https://github.com/NirDiamant/RAG_Techniques
 - WeKnow-RAG: https://arxiv.org/abs/2408.07611
+- Controllable-RAG-Agent: https://github.com/NirDiamant/Controllable-RAG-Agent
 
 **RAGFlow**
 - https://github.com/infiniflow/ragflow
