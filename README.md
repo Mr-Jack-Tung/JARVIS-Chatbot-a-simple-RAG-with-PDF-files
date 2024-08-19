@@ -103,9 +103,8 @@
 - https://github.com/NirDiamant/RAG_Techniques
 - WeKnow-RAG: https://arxiv.org/abs/2408.07611
 - Controllable-RAG-Agent: https://github.com/NirDiamant/Controllable-RAG-Agent
-
-**RAGFlow**
-- https://github.com/infiniflow/ragflow
+- Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks - https://arxiv.org/abs/2407.21059
+- RAG Flow: https://github.com/infiniflow/ragflow
 
 **GraphRAG**
 - **GraphRAG**: https://github.com/microsoft/graphrag
