@@ -77,6 +77,9 @@
 - **OpenResearcher**: https://github.com/GAIR-NLP/OpenResearcher
 - **ADAS**: Automated Design of Agentic Systems - https://github.com/ShengranHu/ADAS
 
+**Synthetic Data**:
+- PERSONA HUB: 200,000 synthetic personas - https://github.com/tencent-ailab/persona-hub
+
 **Fine tune embbeding model for RAG pipeline ^^**
 - https://www.philschmid.de/fine-tune-embedding-model-for-rag
 - https://huggingface.co/blog/matryoshka
