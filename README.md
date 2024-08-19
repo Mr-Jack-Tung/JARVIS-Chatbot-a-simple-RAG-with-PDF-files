@@ -64,6 +64,7 @@
 **Tools and Multi-Agents**
 - Math tool
 - Internet search agent
+- Professional Agents(PAgents): https://arxiv.org/abs/2402.03628
 - **CrewAI multi-agents**: https://github.com/crewAIInc/crewAI
 - **Crawl4AI agent**: https://github.com/unclecode/crawl4ai
 - **AnyTool agent**: https://github.com/dyabel/AnyTool
@@ -116,7 +117,6 @@
 
 **Knowledge Editing**
 - Knowledge Editing: https://github.com/zjunlp/KnowledgeEditingPapers
-
 
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Multi-Function calling
