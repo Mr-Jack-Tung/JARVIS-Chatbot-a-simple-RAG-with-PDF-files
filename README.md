@@ -105,6 +105,7 @@
 - Controllable-RAG-Agent: https://github.com/NirDiamant/Controllable-RAG-Agent
 - Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks - https://arxiv.org/abs/2407.21059
 - RAG Flow: https://github.com/infiniflow/ragflow
+- RAG and RAU Survey: https://github.com/2471023025/RALM_Survey ; https://arxiv.org/abs/2404.19543
 
 **GraphRAG**
 - **GraphRAG**: https://github.com/microsoft/graphrag
