@@ -87,6 +87,9 @@
 - https://github.com/aurelio-labs/semantic-router/blob/main/docs/02-dynamic-routes.ipynb
 - https://mer.vin/2024/07/routellm-code-example/
 
+**All RAG techniques**
+- https://github.com/NirDiamant/RAG_Techniques
+
 **RAGFlow**
 - https://github.com/infiniflow/ragflow
 
