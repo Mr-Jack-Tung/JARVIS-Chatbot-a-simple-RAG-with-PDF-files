@@ -132,6 +132,7 @@
 
 ### Update September 02, 2024 (v0.1.5)
 - update: Nomic Embed v1.5
+- update: separate source code files
 - add: Retrieval grader
 
 ### Update Jul 31, 2024 (v0.1.4)
