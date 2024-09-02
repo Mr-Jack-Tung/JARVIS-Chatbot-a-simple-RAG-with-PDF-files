@@ -130,6 +130,10 @@
 **Knowledge Editing**
 - Knowledge Editing: https://github.com/zjunlp/KnowledgeEditingPapers
 
+### Update September 02, 2024 (v0.1.5)
+- update: Nomic Embed v1.5
+- add: Retrieval grader
+
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Multi-Function calling
 - add: API Keys management
