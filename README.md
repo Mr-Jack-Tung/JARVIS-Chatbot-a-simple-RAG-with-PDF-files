@@ -1,3 +1,11 @@
+```
+|>python JARVIS_assistant.py
+Running on local URL:  http://127.0.0.1:7860
+
+To create a public link, set `share=True` in `launch()`.
+_
+```
+
 # JARVIS Chatbot: a local simple RAG assistant with PDF files
 - Author: Mr. Jack Tung
 - Date: 03 July 2024 - 08 PM
@@ -30,6 +38,7 @@
 - workspaces management
 - on/off Retrieval
 - Multi-Function calling
+- Retrieval grader
 
 ### JARVIS assistant (18 ⭐) .vs
 - gpt4all (68.3k ⭐) - https://github.com/nomic-ai/gpt4all
