@@ -146,7 +146,7 @@
 |				|
 |				~> db_helper.py  ~> file_readers.py
 |					|
-|					~> datasource_router.py , retrieval_grader()
+|					~> datasource_router.py , grader.py: retrieval_grader()
 + -----------------------------------------------------------------
 ```
 
