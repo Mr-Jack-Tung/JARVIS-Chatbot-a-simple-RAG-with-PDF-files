@@ -135,6 +135,21 @@
 - update: separate source code files
 - add: Retrieval grader
 
+```
++	-------------------- workflow ---------------------------------
+|	v0.1.5
+|	JARVIS_assistant.py
+|		|
+|		~> gui.py ~> custom_ui_style.py
+|			|
+|			~> gui_action.py ~> model_settings.py , tools.py , prompts.py , utils.py , get_model_list.py
+|				|
+|				~> db_helper.py  ~> file_readers.py
+|					|
+|					~> datasource_router.py , retrieval_grader()
++ -----------------------------------------------------------------
+```
+
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Multi-Function calling
 - add: API Keys management
