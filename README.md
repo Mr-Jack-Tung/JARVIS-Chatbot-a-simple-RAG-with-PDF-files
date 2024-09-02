@@ -30,7 +30,7 @@ _
 - unlimit & auto save chat history to vector database
 - support custom System Prompt
 - Ollama model auto-loader
-- (v0.1.0) 360 code lines ^^
+- (v0.1.0) only 360 lines of python code in only 1 file ^^
 - custom Retrieval settings
 - support documents reference response
 - support Groq API, OpenAI API, Gemini API
