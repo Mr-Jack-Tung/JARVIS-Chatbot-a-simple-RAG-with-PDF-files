@@ -252,10 +252,10 @@ step 5: Create repository
 step 6: Testing
 - ollama run mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files&type=Date)](https://star-history.com/#Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files&Date)
-
 *Thanks to:*
 - Michael Radermacher: https://huggingface.co/mradermacher/LLaMAX3-8B-Alpaca-GGUF
 - Data Science Basics: Ollama, How To Create Custom Models From HuggingFace (GGUF) _ https://www.youtube.com/watch?v=TFwYvHZV6j0
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files&type=Date)](https://star-history.com/#Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files&Date)
