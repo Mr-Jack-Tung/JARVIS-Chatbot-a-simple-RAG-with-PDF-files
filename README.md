@@ -134,6 +134,7 @@ _
 - Continuous Training and Fine-tuning for Domain-Specific Language Models in Medical Question Answering: https://arxiv.org/abs/2311.00204
 - Fine-tune a pretrained model: https://huggingface.co/docs/transformers/en/training
 - Finetuning: https://docs.mosaicml.com/projects/mcli/en/latest/finetuning/finetuning.html
+- Selective fine-tuning of Language Models with Spectrum: https://huggingface.co/blog/anakin87/spectrum
 
 **Document AI**
 - LayoutLMv3: https://github.com/microsoft/unilm/tree/master/layoutlmv3
