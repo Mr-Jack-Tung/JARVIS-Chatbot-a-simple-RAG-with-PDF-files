@@ -38,6 +38,7 @@ _
 - workspaces management
 - on/off Retrieval
 - Multi-Function calling
+- React agent
 - Retrieval grader
 
 ### JARVIS assistant (18 ⭐) .vs
