@@ -41,7 +41,7 @@ _
 - React agent
 - Retrieval grader
 
-### JARVIS assistant (18 ⭐) .vs
+### JARVIS assistant (21 ⭐) .vs
 - gpt4all (68.3k ⭐) - https://github.com/nomic-ai/gpt4all
 - open-webui (34.4k ⭐) - https://github.com/open-webui/open-webui
 - anything-llm (18.3k ⭐) - https://github.com/Mintplex-Labs/anything-llm
