@@ -162,6 +162,7 @@ _
 
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Multi-Function calling
+- add: React agent
 - add: API Keys management
 - add: 3 rounds chat-history memory
 - update: support both MacOS and Windows
