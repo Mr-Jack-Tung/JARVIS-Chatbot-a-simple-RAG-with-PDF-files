@@ -47,6 +47,7 @@ _
 - anything-llm (18.3k ⭐) - https://github.com/Mintplex-Labs/anything-llm
 - LibreChat (16k ⭐) - https://github.com/danny-avila/LibreChat
 - Perplexica (12k ⭐) - https://github.com/ItzCrazyKns/Perplexica
+- Kotaemob (9.3k ⭐) - https://github.com/Cinnamon/kotaemon
 - Verba (5.1k ⭐) - https://github.com/weaviate/Verba
 - gpt-computer-assistant (5k ⭐) - https://github.com/onuratakan/gpt-computer-assistant
 - MindSearch (2.6k ⭐) - https://github.com/InternLM/MindSearch
