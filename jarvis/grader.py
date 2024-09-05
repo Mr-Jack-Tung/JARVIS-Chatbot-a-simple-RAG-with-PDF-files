@@ -44,6 +44,6 @@ def retrieval_grader(question, documents, local_llm="qwen2"):
 	retrieval_grader = prompt | llm | JsonOutputParser()
 	result = retrieval_grader.invoke({"question": question, "documents": documents})
 
-	print("\nretrieval result:",result)
+	print("\n~> relevant result:",result)
 	# {'score': '1'}
 	return result # int(result['score'])
