@@ -38,7 +38,8 @@ _
 - workspaces management
 - on/off Retrieval
 - Multi-Function calling
-- React agent
+- ReACT agent
+- ReWOO agent
 - Retrieval grader
 
 ### JARVIS assistant (21 ⭐) .vs
@@ -146,6 +147,10 @@ _
 - update: Nomic Embed v1.5
 - update: separate source code files
 - add: Retrieval grader
+- update: using LangGraph
+- add: ReWOO agent
+
+![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.5%20_%202024-09-07.jpg)
 
 ```
 +	-------------------- workflow ---------------------------------
@@ -164,7 +169,7 @@ _
 
 ### Update Jul 31, 2024 (v0.1.4)
 - add: Multi-Function calling
-- add: React agent
+- add: ReACT agent
 - add: API Keys management
 - add: 3 rounds chat-history memory
 - update: support both MacOS and Windows
