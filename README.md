@@ -148,7 +148,7 @@ _
 - update: separate source code files
 - add: Retrieval grader
 - update: using LangGraph
-- add: ReWOO agent
+- add: ReWOO agent - https://blog.langchain.dev/planning-agents ; https://github.com/langchain-ai/langgraph/blob/main/examples/rewoo/rewoo.ipynb
 
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.5%20_%202024-09-07.jpg)
 
