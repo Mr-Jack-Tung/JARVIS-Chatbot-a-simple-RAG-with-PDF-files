@@ -245,6 +245,9 @@ pip install -U chromadb
 ![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.0%20_%202024-07-03.jpg)
 
 #### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
+
+<details>
+
 URL: https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
 step 1: Go to
@@ -269,6 +272,8 @@ step 6: Testing
 *Thanks to:*
 - Michael Radermacher: https://huggingface.co/mradermacher/LLaMAX3-8B-Alpaca-GGUF
 - Data Science Basics: Ollama, How To Create Custom Models From HuggingFace (GGUF) _ https://www.youtube.com/watch?v=TFwYvHZV6j0
+
+</details>
 
 ## Star History
 
