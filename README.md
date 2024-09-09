@@ -43,17 +43,17 @@ _
 - Retrieval grader
 
 ### JARVIS assistant (21 ⭐) .vs
-- gpt4all (68.3k ⭐) - https://github.com/nomic-ai/gpt4all
-- open-webui (34.4k ⭐) - https://github.com/open-webui/open-webui
-- anything-llm (18.3k ⭐) - https://github.com/Mintplex-Labs/anything-llm
-- LibreChat (16k ⭐) - https://github.com/danny-avila/LibreChat
-- Perplexica (12k ⭐) - https://github.com/ItzCrazyKns/Perplexica
-- Kotaemon (9.3k ⭐) - https://github.com/Cinnamon/kotaemon
-- Verba (5.9k ⭐) - https://github.com/weaviate/Verba
-- gpt-computer-assistant (5k ⭐) - https://github.com/onuratakan/gpt-computer-assistant
-- MindSearch (2.6k ⭐) - https://github.com/InternLM/MindSearch
-- lagent (1.3k ⭐) - https://github.com/InternLM/lagent
-- lmstudio-ai (1.2k ⭐) - https://github.com/lmstudio-ai/lms
+- gpt4all (69k ⭐) - https://github.com/nomic-ai/gpt4all
+- open-webui (38k ⭐) - https://github.com/open-webui/open-webui
+- anything-llm (21k ⭐) - https://github.com/Mintplex-Labs/anything-llm
+- LibreChat (17k ⭐) - https://github.com/danny-avila/LibreChat
+- Perplexica (13k ⭐) - https://github.com/ItzCrazyKns/Perplexica
+- Kotaemon (11k ⭐) - https://github.com/Cinnamon/kotaemon
+- Verba (6k ⭐) - https://github.com/weaviate/Verba
+- gpt-computer-assistant (5.2k ⭐) - https://github.com/onuratakan/gpt-computer-assistant
+- MindSearch (4.5k ⭐) - https://github.com/InternLM/MindSearch
+- lagent (1.7k ⭐) - https://github.com/InternLM/lagent
+- lmstudio-ai (1.4k ⭐) - https://github.com/lmstudio-ai/lms
 
 
 ### Update next (v0.x.x)
