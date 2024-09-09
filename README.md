@@ -19,6 +19,7 @@ _
 - 30 multi-languages support
 - RAG with PDF, DOCX, TXT files support
 - Multi-Function calling
+- Agent calling
 
 ### Features
 - support 30 multi-languages
