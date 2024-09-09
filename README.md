@@ -61,7 +61,9 @@ _
 
 ### Update next (v0.1.x)
 (Multilingual, Multimodal, MultiAgent, MultiDevice, ...)
+
 <details>
+  
 **Multimodal support**
 - text
 - image
@@ -142,6 +144,7 @@ _
 
 **Knowledge Editing**
 - Knowledge Editing: https://github.com/zjunlp/KnowledgeEditingPapers
+
 </details>
 
 ### Update September 02, 2024 (v0.1.5)
