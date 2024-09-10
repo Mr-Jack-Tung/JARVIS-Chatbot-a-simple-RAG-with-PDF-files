@@ -58,7 +58,7 @@ _
 
 
 ### Update next (v0.x.x)
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.x.x%20_%202024-08-09.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.x.x%20_%202024-08-09.jpg)
 
 ### Update next (v0.1.x)
 (Multilingual, Multimodal, MultiAgent, MultiDevice, ...)
