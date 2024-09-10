@@ -155,7 +155,7 @@ _
 - update: using LangGraph
 - add: ReWOO agent - https://blog.langchain.dev/planning-agents ; https://github.com/langchain-ai/langgraph/blob/main/examples/rewoo/rewoo.ipynb
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.5%20_%202024-09-07.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-07.jpg)
 
 ```
 +	-------------------- workflow ---------------------------------
@@ -179,18 +179,18 @@ _
 - add: 3 rounds chat-history memory
 - update: support both MacOS and Windows
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.4%20_%202024-08-01_2.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.4%20_%202024-08-01_2.jpg)
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.4%20_%202024-08-01.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.4%20_%202024-08-01.jpg)
 
 ### Update Jul 28, 2024 (v0.1.3)
 - add: Workspaces management
 - add: On/Off Retrieval
 - add: support DOCX files
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28_2.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28_2.jpg)
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.3%20_%202024-07-28.jpg)
 
 ### Update Jul 15, 2024 (v0.1.2)
 - add: Groq Cloud API (https://docs.litellm.ai/docs/providers/groq ; https://console.groq.com/docs/api-reference)
@@ -208,7 +208,7 @@ _
   - python JARVIS_assistant.py
   - open web browser on local URL:  http://127.0.0.1:7860
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.2%20_%202024-07-15.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.2%20_%202024-07-15.jpg)
 
 ### Notes:
 
@@ -233,7 +233,7 @@ pip install -U chromadb
 - Add: LLaMAX3-8B-Alpaca (supports over 100 languages)_ https://ollama.com/mrjacktung/mradermacher-llamax3-8b-alpaca-gguf _ bonus: "How To Create Custom Ollama Models From HuggingFace ( GGUF ) file"
   - ollama pull mrjacktung/mradermacher-llamax3-8b-alpaca-gguf
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.1%20_%202024-07-11.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.1%20_%202024-07-11.jpg)
 
 ### Screenshot Jul 03, 2024 (v0.1.0)
 - Qwen2-7B model support 30 languages (https://huggingface.co/Qwen/Qwen2-7B-Instruct-GGUF)
@@ -242,7 +242,7 @@ pip install -U chromadb
 - support multi-files upload: .PDF, .TXT format
 - unlimit & auto save chat history to database
 
-![alt-text](https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/blob/main/img/JARVIS%20assistant%20v0.1.0%20_%202024-07-03.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.0%20_%202024-07-03.jpg)
 
 #### BONUS: How To Create Custom Ollama Models From HuggingFace ( GGUF ) file
 
