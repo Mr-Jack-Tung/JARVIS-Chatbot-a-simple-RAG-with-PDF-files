@@ -151,6 +151,8 @@ _
 ### Update September 18, 2024 (v0.1.5)
 - update: OpenAI-o1 system prompt for Multi-Step Reasoning
 
+![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-18.jpg)
+
 ### Update September 02, 2024 (v0.1.5)
 - update: Nomic Embed v1.5
 - update: separate source code files
