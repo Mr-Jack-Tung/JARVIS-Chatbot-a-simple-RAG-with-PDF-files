@@ -42,6 +42,7 @@ _
 - ReACT agent
 - ReWOO agent
 - Retrieval grader
+- OpenAI-o1 likely system prompt for Multi-Step Reasoning
 
 ### JARVIS assistant (21 ⭐) .vs
 - gpt4all (69k ⭐) - https://github.com/nomic-ai/gpt4all
