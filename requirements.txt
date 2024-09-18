@@ -5,6 +5,7 @@ pypdf
 python-docx
 wikipedia
 arxiv
+hnswlib
 chromadb
 gradio
 gradio-toggle
