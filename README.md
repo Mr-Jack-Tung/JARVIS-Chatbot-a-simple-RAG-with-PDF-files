@@ -149,7 +149,7 @@ _
 </details>
 
 ### Update September 18, 2024 (v0.1.5)
-- update: OpenAI-o1 system prompt
+- update: OpenAI-o1 system prompt for Multi-Step Reasoning
 
 ### Update September 02, 2024 (v0.1.5)
 - update: Nomic Embed v1.5
