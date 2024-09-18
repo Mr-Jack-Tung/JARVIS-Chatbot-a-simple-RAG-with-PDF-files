@@ -3,7 +3,7 @@
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
 # Version: 0.1.5
-# Date: 07 December 2024 - 01 AM
+# Date: 18 December 2024 - 10 PM
 
 # Import needed packages ------------------------------------------------------------
 import os, sys, re
@@ -113,6 +113,9 @@ def bot(history, chat_input):
         s_time = time.time()
         answer, source = ollama_pipeline(question, history)
         e_time = time.time()
+
+        from jarvis.parse_response_o1 import parse_response
+        answer = parse_response(answer)
         
         print("\nprompt:",question)
         print("\n{0:.2f}s ~> Answer:".format(e_time-s_time),answer)
