@@ -13,7 +13,7 @@ from langchain_core.output_parsers import JsonOutputParser
 
 # https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_crag_local/
 # https://github.com/FlagOpen/FlagEmbedding/tree/master/FlagEmbedding/reranker
-def retrieval_grader(question, documents, local_llm="qwen2"):
+def retrieval_grader(question, documents, local_llm="qwen2.5"):
 
 	### LLM
 	# local_llm = "qwen2"
