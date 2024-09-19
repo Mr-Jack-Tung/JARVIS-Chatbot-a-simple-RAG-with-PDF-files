@@ -111,7 +111,7 @@ def JARVIS_assistant():
                             if dropdown_model_type == "Ollama":
                                 ollama_list_models = get_ollama_list_models()
                                 # model_settings.MODEL_NAME = ollama_list_models[0]
-                                model_settings.MODEL_NAME = "qwen2:latest"
+                                model_settings.MODEL_NAME = "qwen2.5:latest"
                                 print("Selected model:",model_settings.MODEL_NAME)
 
                                 with gr.Row(variant="panel"):
