@@ -26,6 +26,7 @@ _
 - Agent calling
 
 ### Features
+- support Qwen2.5 is the latest series of Qwen large language models.
 - support 30 multi-languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more.
 - supports long contexts of up to 128K tokens and can generate up to 8K tokens.
 - upload in any language PDF files and response with user language ^^
@@ -156,6 +157,7 @@ _
 
 ### Update September 18, 2024 (v0.1.5)
 - update: OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning
+- update: support Qwen2.5 is the latest series of Qwen large language models.
 
 ![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-18.jpg)
 
