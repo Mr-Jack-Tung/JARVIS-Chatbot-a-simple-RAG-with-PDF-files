@@ -133,7 +133,7 @@ def JARVIS_assistant():
                                         slider_top_p.change(fn=slider_top_p_change, inputs=slider_top_p)
 
                                 with gr.Row(variant="panel"):
-                                    with gr.Accordion(label="Function calling", open=True):
+                                    with gr.Accordion(label="Function calling", open=False):
                                         chk_function_calling = Toggle(label="Function calling", value=model_settings.FUNCTION_CALLING, interactive=True, min_width=220)
                                         chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
     
@@ -184,7 +184,7 @@ def JARVIS_assistant():
                             # radio_device.select(fn=radio_device_select, inputs=[radio_device])
 
                         with gr.Row(variant="panel"):
-                            with gr.Accordion(label="Retrieval settings", open=True):
+                            with gr.Accordion(label="Retrieval settings", open=False):
                                 chk_is_retrieval = Toggle(label="Is retrieval", value=True, interactive=True)
                                 chk_is_retrieval.change(fn=update_is_retrieval, inputs=chk_is_retrieval)
                                 
