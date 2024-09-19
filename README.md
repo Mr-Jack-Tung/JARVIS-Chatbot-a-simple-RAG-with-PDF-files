@@ -48,7 +48,7 @@ _
 - ReACT agent
 - ReWOO agent
 - Retrieval grader
-- OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning
+- OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
 
 ### JARVIS assistant (21 ⭐) .vs
 - gpt4all (69k ⭐) - https://github.com/nomic-ai/gpt4all
@@ -156,7 +156,7 @@ _
 </details>
 
 ### Update September 18, 2024 (v0.1.5)
-- update: OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning
+- update: OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
 - update: support Qwen2.5 is the latest series of Qwen large language models.
 
 ![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-18.jpg)
