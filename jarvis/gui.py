@@ -133,15 +133,16 @@ def JARVIS_assistant():
                                         slider_top_p.change(fn=slider_top_p_change, inputs=slider_top_p)
 
                                 with gr.Row(variant="panel"):
-                                    chk_function_calling = Toggle(label="Function calling", value=model_settings.FUNCTION_CALLING, interactive=True, min_width=220)
-                                    chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
-
-                                    # @gr.render(inputs=chk_function_calling)
-                                    # def show_radio_agents(chk_function_calling):
-                                    #     if chk_function_calling:
-                                    # with gr.Row(variant="panel"):
-                                    radio_agents = gr.Radio(choices=["ReWOO", "ReACT"], value='ReWOO', label="with Agents")
-                                    radio_agents.select(fn=radio_agents_select, inputs=[radio_agents])
+                                    with gr.Accordion(label="Function calling", open=True):
+                                        chk_function_calling = Toggle(label="Function calling", value=model_settings.FUNCTION_CALLING, interactive=True, min_width=220)
+                                        chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
+    
+                                        # @gr.render(inputs=chk_function_calling)
+                                        # def show_radio_agents(chk_function_calling):
+                                        #     if chk_function_calling:
+                                        # with gr.Row(variant="panel"):
+                                        radio_agents = gr.Radio(choices=["ReWOO", "ReACT"], value='ReWOO', label="with Agents")
+                                        radio_agents.select(fn=radio_agents_select, inputs=[radio_agents])
 
                             if dropdown_model_type == "GroqCloud" and model_settings.GROQ_API_KEY:
                                 groq_list_models = get_groq_list_models(model_settings.GROQ_API_KEY)
