@@ -159,7 +159,7 @@ _
 - update: OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
 - update: support Qwen2.5 is the latest series of Qwen large language models.
 
-![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-18.jpg)
+![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-19.jpg)
 
 ### Update September 02, 2024 (v0.1.5)
 - update: Nomic Embed v1.5
