@@ -20,7 +20,7 @@ class Model_Settings:
         self.GROQ_API_KEY = ""
         self.OPENAI_API_KEY = ""
         self.GEMINI_API_KEY = ""
-        self.IS_RETRIEVAL = True
-        self.FUNCTION_CALLING = True
+        self.IS_RETRIEVAL = False
+        self.FUNCTION_CALLING = False
         self.AGENT_CALLING = "ReWOO"
         self.CHAT_HISTORY_SAVING = True
