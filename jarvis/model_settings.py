@@ -8,7 +8,7 @@
 class Model_Settings:
     def __init__(self):
         self.MODEL_TYPE = "Ollama"
-        self.MODEL_NAME = 'qwen2:latest'
+        self.MODEL_NAME = 'qwen2.5:latest'
         self.NUM_PREDICT = 2048
         self.TEMPERATURE = 0
         self.TOP_K = 50
