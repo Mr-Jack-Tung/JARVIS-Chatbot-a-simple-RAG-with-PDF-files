@@ -26,7 +26,7 @@ _
 - Agent calling
 
 ### Features
-- support 30 multi-languages
+- support 30 multi-languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more.
 - supports long contexts of up to 128K tokens and can generate up to 8K tokens.
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
