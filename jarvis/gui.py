@@ -185,7 +185,7 @@ def JARVIS_assistant():
 
                         with gr.Row(variant="panel"):
                             with gr.Accordion(label="Retrieval settings", open=False):
-                                chk_is_retrieval = Toggle(label="Is retrieval", value=True, interactive=True)
+                                chk_is_retrieval = Toggle(label="Is retrieval", value=model_settings.IS_RETRIEVAL, interactive=True)
                                 chk_is_retrieval.change(fn=update_is_retrieval, inputs=chk_is_retrieval)
                                 
                                 slider_retrieval_top_k = gr.Slider(minimum=1, maximum=30, value=model_settings.RETRIEVAL_TOP_K, step=1, label="Top-K", interactive=True, min_width=220)
