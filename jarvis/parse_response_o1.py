@@ -25,7 +25,7 @@ def parse_response(response):
 
 	output_string = ""
 	if steps:
-		output_string += "\n\n**Steps:**"
+		output_string += "\n\n**Thinking steps:**"
 		for i, step in enumerate(steps):
 			output_string += "\n"+ str(i) + ": " + step
 	if reflection:
