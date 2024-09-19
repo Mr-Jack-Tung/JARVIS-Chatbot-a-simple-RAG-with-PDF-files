@@ -23,6 +23,7 @@ _
 
 ### Features
 - support 30 multi-languages
+- supports long contexts of up to 128K tokens and can generate up to 8K tokens.
 - upload in any language PDF files and response with user language ^^
 - unlimit upload files to vector database
 - support PDF, DOCX, TXT, MD, MDX files
