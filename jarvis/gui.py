@@ -220,7 +220,7 @@ def JARVIS_assistant():
                             return workspace_list, workspace
     
                 workspace_selected = state_workspace_selected.value
-                chatbot = gr.Chatbot(workspace_selected["history"], elem_id="chatbot", bubble_full_width=False, min_width=800, height=560, show_copy_button=True,)
+                chatbot = gr.Chatbot(workspace_selected["history"], elem_id="chatbot", bubble_full_width=False, min_width=800, height=800, show_copy_button=True,)
                 chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
     
                 def workspace_selected_chatbot(workspace_selected):
