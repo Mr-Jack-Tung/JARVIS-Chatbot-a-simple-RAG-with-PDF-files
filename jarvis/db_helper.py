@@ -7,7 +7,7 @@
 
 from time import sleep
 from datetime import datetime
-import tqdm
+from tqdm import tqdm
 
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.text_splitter import RecursiveCharacterTextSplitter
