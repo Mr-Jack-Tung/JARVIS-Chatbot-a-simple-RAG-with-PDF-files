@@ -37,7 +37,7 @@ def retrieval_grader(question, documents, local_llm="qwen2.5"):
 		Question: {question} \n
 		Fact: \n\n {documents} \n\n
 
-		Give a binary score 'yes' or 'no' score to indicate whether the document is relevant to the question. \n
+		Give a binary score '1' or '0' score to indicate whether the document is relevant to the question. \n
 		Provide the binary score as a JSON with a single key 'score' and no premable or explanation.
 		""",
 		input_variables=["question", "documents"],
