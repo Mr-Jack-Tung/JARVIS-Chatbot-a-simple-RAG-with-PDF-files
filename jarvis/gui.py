@@ -218,6 +218,11 @@ def JARVIS_assistant():
                             with gr.Column(scale=1, min_width=50):
                                 btn_reset = gr.Button(value="Reset")
                                 btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
+                def on_tab_select(evt: gr.SelectData):
+                    print(f"\nYou selected the {evt.value} tab.")
+                    if evt.value == "System prompt":
+                        return model_settings.SYSTEM_PROMPT
+                
                 tab_system_prompt.select(fn=on_tab_select, outputs=txt_system_prompt)
             with gr.Column(scale=7):
                 def update_chat_history(chatbot, workspace_list, workspace_selected):
