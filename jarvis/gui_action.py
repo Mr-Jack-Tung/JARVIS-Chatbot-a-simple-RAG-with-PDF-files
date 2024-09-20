@@ -23,6 +23,9 @@ from langchain_community.chat_models import ChatOllama
 from jarvis.model_settings import Model_Settings
 model_settings = Model_Settings()
 
+from jarvis.prompts import system_prompt_basic, system_prompt_function_calling, system_prompt_strawberry_o1
+model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+
 from jarvis.db_helper import vectorstore_add_document, vectorstore_add_multi_files, vectorstore_similarity_search_with_score
 
 def add_message(history, message):
@@ -42,7 +45,7 @@ def add_message(history, message):
     return history
 
 
-from jarvis.prompts import system_prompt
+# from jarvis.prompts import system_prompt
 
 # https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_adaptive_rag_local/
 def get_adaptive_rag(message_input, history):
@@ -85,24 +88,24 @@ def ollama_pipeline(message_input, history):
                 if model_settings.AGENT_CALLING == "ReWOO":
                     # ReWOO agent calling
                     from jarvis.rewoo_agent import rewoo_agent
-                    response = rewoo_agent(model_settings.MODEL_NAME, system_prompt, context_retrieval, message_input)
+                    response = rewoo_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, context_retrieval, message_input)
                     result = response['output']
 
                 if model_settings.AGENT_CALLING == "ReACT":
                     # ReACT agent calling
                     from jarvis.react_agent import react_agent
-                    response = react_agent(model_settings.MODEL_NAME, system_prompt, retrieval_prompt, message_input)
+                    response = react_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, retrieval_prompt, message_input)
                     result = response['output']
             else:
                 llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
-                prompt = ChatPromptTemplate.from_template(system_prompt + retrieval_prompt + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
+                prompt = ChatPromptTemplate.from_template(model_settings.SYSTEM_PROMPT + retrieval_prompt + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
                 chain = prompt | llm | StrOutputParser()
                 result = chain.invoke({"user": message_input})
         
         else: # MODEL_TYPE == "LiteLLM" , "OpenAI" , "GroqCloud" , "Gemini"
             from jarvis.llms import llm_completion
             prompt = retrieval_prompt + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
-            result = llm_completion(model_settings.MODEL_TYPE, model_settings.MODEL_NAME, system_prompt, prompt)
+            result = llm_completion(model_settings.MODEL_TYPE, model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, prompt)
 
         return result, source
 
@@ -138,7 +141,7 @@ def btn_save_click(txt_system_prompt):
     print("\nsystem_prompt:",model_settings.SYSTEM_PROMPT)
 
 def btn_reset_click(txt_system_prompt):
-    model_settings.SYSTEM_PROMPT = system_prompt
+    model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
     return model_settings.SYSTEM_PROMPT
 
 def radio_device_select(radio_device):
@@ -214,7 +217,13 @@ def update_is_retrieval(is_retrieval):
     print("\nRetrieval documents is:",model_settings.IS_RETRIEVAL)
 
 def update_function_calling(function_calling):
-    model_settings.FUNCTION_CALLING = function_calling
+    if function_calling == True:
+        model_settings.FUNCTION_CALLING = function_calling
+        model_settings.SYSTEM_PROMPT = system_prompt_function_calling
+    else:
+        model_settings.FUNCTION_CALLING = function_calling
+        model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+        
     print("\nFunction calling is:",model_settings.FUNCTION_CALLING)
 
 def radio_agents_select(radio_agents):
@@ -224,6 +233,18 @@ def radio_agents_select(radio_agents):
 def update_chat_saving(chat_history_saving):
     model_settings.CHAT_HISTORY_SAVING = chat_history_saving
     print("\nSaving chat-history is:",model_settings.CHAT_HISTORY_SAVING)
+
+def btn_basic_prompt_click():
+    model_settings.SYSTEM_PROMPT = system_prompt_basic
+    return model_settings.SYSTEM_PROMPT
+
+def btn_function_calling_prompt_click():
+    model_settings.SYSTEM_PROMPT = system_prompt_function_calling
+    return model_settings.SYSTEM_PROMPT
+
+def btn_strawberry_o1_prompt_click():
+    model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+    return model_settings.SYSTEM_PROMPT
 
 def btn_create_new_workspace_click(workspace_list):
     max_id = 0
