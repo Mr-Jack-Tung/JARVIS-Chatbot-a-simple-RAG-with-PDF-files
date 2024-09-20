@@ -22,8 +22,8 @@ if folder_exists:
 	print("\n",path_to_folder,"is deleted")
 
 # Install needed packages ------------------------------------------------------------
-print("\npip install -Ur  requirements.txt")
-os.system("pip install -Ur requirements.txt")
+print("\npython -m pip install -Ur  requirements.txt")
+os.system("python -m pip install -Ur requirements.txt")
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
 import ollama
