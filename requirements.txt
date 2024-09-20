@@ -5,10 +5,6 @@ pypdf
 python-docx
 wikipedia
 arxiv
-hnswlib
-primp
-chroma-hnswlib
-chromadb
 gradio
 gradio-toggle
 groq
