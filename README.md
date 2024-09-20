@@ -1,5 +1,6 @@
 ```
 # Requirements: python=3.12.4
+conda create -n jarvis python=3.12.4
 
 # For Installing...
 |> python setup.py
