@@ -159,10 +159,14 @@ _
 
 </details>
 
+### Update September 21, 2024 (v0.1.5)
+- update: system prompt choosing or editing
+
+![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-21.jpg)
+
 ### Update September 18, 2024 (v0.1.5)
 - update: OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
 - update: support Qwen2.5 is the latest series of Qwen large language models.
-- update: system prompt choosing or editing
 
 ![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-20.jpg)
 
