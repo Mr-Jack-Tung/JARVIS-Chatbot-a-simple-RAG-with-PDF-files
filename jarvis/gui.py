@@ -198,7 +198,7 @@ def JARVIS_assistant():
                             chk_chat_saving = Toggle(label="Save Chat-history", value=model_settings.CHAT_HISTORY_SAVING, interactive=True, min_width=220)
                             chk_chat_saving.change(fn=update_chat_saving, inputs=chk_chat_saving)
 
-                with gr.Tab("System prompt"):
+                with gr.Tab("System prompt") as tab_system_prompt:
                     with gr.Row():
                         btn_basic_prompt = gr.Button(value="basic prompt")
                         btn_function_calling_prompt = gr.Button(value="function_calling prompt")
@@ -218,7 +218,7 @@ def JARVIS_assistant():
                             with gr.Column(scale=1, min_width=50):
                                 btn_reset = gr.Button(value="Reset")
                                 btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
-                
+                tab_system_prompt.select(fn=on_tab_select, outputs=txt_system_prompt)
             with gr.Column(scale=7):
                 def update_chat_history(chatbot, workspace_list, workspace_selected):
                     for wp in workspace_list:
