@@ -205,7 +205,7 @@ def JARVIS_assistant():
                         btn_strawberry_o1_prompt = gr.Button(value="strawberry_o1 prompt")
                         
                     with gr.Row():
-                        txt_system_prompt = gr.Textbox(value=system_prompt, label="System prompt", lines=23, min_width=220)
+                        txt_system_prompt = gr.Textbox(value=model_settings.SYSTEM_PROMPT, label="System prompt", lines=23, min_width=220)
                         btn_basic_prompt.click(fn=btn_basic_prompt_click, outputs=txt_system_prompt)
                         btn_function_calling_prompt.click(fn=btn_function_calling_prompt_click, outputs=txt_system_prompt)
                         btn_strawberry_o1_prompt.click(fn=btn_strawberry_o1_prompt_click, outputs=txt_system_prompt)
