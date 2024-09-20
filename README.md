@@ -1,4 +1,5 @@
 ```
+# Requirements: python=3.12.4
 # For Installing...
 |> python setup.py
 
