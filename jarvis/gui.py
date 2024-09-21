@@ -243,7 +243,6 @@ def JARVIS_assistant():
     
                 chat_msg = chat_input.submit(fn=add_message, inputs=[chatbot, chat_input], outputs=[chatbot])
                 bot_msg = chat_msg.then(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input]).then(fn=update_chat_history, inputs=[chatbot, state_workspace_list, state_workspace_selected], outputs=[state_workspace_list, state_workspace_selected])
-    chatbot
     
                 # gr.Examples(examples=[{'text': "Bạn tên là gì?"}, {'text': "What's your name?"}, {'text': 'Quel est ton nom?'}, {'text': 'Wie heißen Sie?'}, {'text': '¿Cómo te llamas?'}, {'text': '你叫什么名字？'}, {'text': 'あなたの名前は何ですか？'}, {'text': '이름이 뭐에요?'}, {'text': 'คุณชื่ออะไร?'}, {'text': 'ما اسمك؟'}], inputs=chat_input)
     
