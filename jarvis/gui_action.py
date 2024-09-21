@@ -24,7 +24,7 @@ from jarvis.model_settings import Model_Settings
 model_settings = Model_Settings()
 
 from jarvis.prompts import system_prompt_basic, system_prompt_function_calling, system_prompt_strawberry_o1
-model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+model_settings.SYSTEM_PROMPT = system_prompt_basic
 
 from jarvis.db_helper import vectorstore_add_document, vectorstore_add_multi_files, vectorstore_similarity_search_with_score
 
@@ -141,7 +141,7 @@ def btn_save_click(txt_system_prompt):
     print("\nsystem_prompt:",model_settings.SYSTEM_PROMPT)
 
 def btn_reset_click(txt_system_prompt):
-    model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+    model_settings.SYSTEM_PROMPT = system_prompt_basic
     return model_settings.SYSTEM_PROMPT
 
 def radio_device_select(radio_device):
