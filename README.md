@@ -164,6 +164,7 @@ _
 
 ### Update September 21, 2024 (v0.1.5)
 - update: system prompt choosing or editing
+- udpate: White Mode | Dark Mode
 
 ![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-21.jpg)
 
