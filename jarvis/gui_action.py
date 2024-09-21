@@ -258,6 +258,7 @@ def btn_create_new_workspace_click(workspace_list):
     workspace_list.insert(0, workspace)
     return workspace_list, workspace
 
+import platform # Get system information
 def btn_save_workspace_click(workspace_list):
     my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
     folder_path = "chat_workspaces"
