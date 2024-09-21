@@ -56,6 +56,7 @@ _
 - ReWOO agent
 - Retrieval grader
 - OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
+- support Light Mode | Dark Mode
 
 ### JARVIS assistant (21 ⭐) .vs
 - gpt4all (69k ⭐) - https://github.com/nomic-ai/gpt4all
@@ -164,7 +165,7 @@ _
 
 ### Update September 21, 2024 (v0.1.5)
 - update: system prompt choosing or editing
-- udpate: White Mode | Dark Mode
+- udpate: Light Mode | Dark Mode
 
 ![alt-text](./img/JARVIS%20assistant%20v0.1.5%20_%202024-09-21.jpg)
 
