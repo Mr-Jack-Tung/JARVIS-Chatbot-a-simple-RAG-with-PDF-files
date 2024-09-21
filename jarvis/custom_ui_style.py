@@ -9,6 +9,7 @@ from gradio.themes.base import Base
 from gradio.themes.utils import colors, fonts, sizes
 from typing import Iterable
 
+# https://www.gradio.app/guides/theming-guide
 # Style class ------------------------------------------------------------
 class UI_Style(Base):
     def __init__(
