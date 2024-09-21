@@ -26,9 +26,9 @@ from jarvis.utils import load_api_keys_from_yaml
 
 # GUI ------------------------------------------------------------
 def JARVIS_assistant():
-    ui_style = UI_Style()
+    # ui_style = UI_Style()
 
-    # default_ui = "gradio/default"
+    default_ui = "gradio/default"
     # theme_2 = gr.Theme.from_hub("gradio/base")
     # theme_3 = gr.Theme.from_hub("gradio/seafoam")
     # theme_4 = gr.Theme.from_hub("gradio/glass")
@@ -38,7 +38,7 @@ def JARVIS_assistant():
     # theme_8 = gr.Theme.from_hub("snehilsanyal/scikit-learn")
     # theme_9 = gr.Theme.from_hub("abidlabs/banana")
     
-    with gr.Blocks(theme=ui_style) as GUI:
+    with gr.Blocks(theme=default_ui) as GUI:
         with gr.Row():
             with gr.Column(scale=1):
                 with gr.Tab("Workspace"):
