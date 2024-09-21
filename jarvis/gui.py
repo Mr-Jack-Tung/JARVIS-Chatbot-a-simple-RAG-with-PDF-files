@@ -41,6 +41,9 @@ def JARVIS_assistant():
     with gr.Blocks(theme=default_ui) as GUI:
         with gr.Row():
             with gr.Column(scale=1):
+                with gr.Row():
+                    gr.HTML("<a href='http://127.0.0.1:7860/' target='_self' style='text-decoration: none;'>White Mode</a> | <a href='http://127.0.0.1:7860/?__theme=dark' target='_self' style='text-decoration: none;'>Dark Mode</a>")
+                
                 with gr.Tab("Workspace"):
                     first_state_workspace = {"id":0, "name":"My first workspace", "history":[["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"]]}
                     state_workspace_list = gr.State([first_state_workspace])
