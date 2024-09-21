@@ -236,14 +236,17 @@ def update_chat_saving(chat_history_saving):
 
 def btn_basic_prompt_click():
     model_settings.SYSTEM_PROMPT = system_prompt_basic
+    print("\nYou have been selected for the basic system prompt.")
     return model_settings.SYSTEM_PROMPT
 
 def btn_function_calling_prompt_click():
     model_settings.SYSTEM_PROMPT = system_prompt_function_calling
+    print("\nYou have been selected for the function calling system prompt.")
     return model_settings.SYSTEM_PROMPT
 
 def btn_strawberry_o1_prompt_click():
     model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+    print("\nYou have been selected for the strawberry_o1 system prompt.")
     return model_settings.SYSTEM_PROMPT
 
 def btn_create_new_workspace_click(workspace_list):
