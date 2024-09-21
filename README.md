@@ -12,6 +12,9 @@ Running on local URL:  http://127.0.0.1:7860
 
 To create a public link, set `share=True` in `launch()`.
 _
+
+# For dark mode ...
+# http://localhost:7860/?__theme=dark
 ```
 
 # JARVIS Chatbot: a local simple RAG assistant with PDF files
