@@ -222,7 +222,7 @@ def update_function_calling(function_calling):
         model_settings.SYSTEM_PROMPT = system_prompt_function_calling
     else:
         model_settings.FUNCTION_CALLING = function_calling
-        model_settings.SYSTEM_PROMPT = system_prompt_strawberry_o1
+        model_settings.SYSTEM_PROMPT = system_prompt_basic
         
     print("\nFunction calling is:",model_settings.FUNCTION_CALLING)
 
