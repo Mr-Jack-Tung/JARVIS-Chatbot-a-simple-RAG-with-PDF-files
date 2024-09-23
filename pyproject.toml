@@ -30,6 +30,7 @@ ollama = "^0.3.3"
 openai = "^1.47.0"
 google-generativeai = "^0.8.1"
 duckduckgo-search = "^6.2.12"
+protobuf = "^3.20.3"
 
 
 [build-system]
