@@ -10,9 +10,11 @@ import os
 print("\npython -m pip install --upgrade pip")
 os.system('python -m pip install --upgrade pip')
 
+# https://pipx.pypa.io/latest/
 print("\npython -m pip install --user pipx")
 os.system("python -m pip install --user pipx")
 
+# https://python-poetry.org/docs/
 print("\npipx install poetry")
 os.system("pipx install poetry")
 
