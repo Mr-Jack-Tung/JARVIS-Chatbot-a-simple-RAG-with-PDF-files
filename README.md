@@ -7,6 +7,7 @@
 |> python setup.py
 
 # For Running...
+|> cd jarvis_assistant
 |> python JARVIS_assistant.py
 Running on local URL:  http://127.0.0.1:7860
 

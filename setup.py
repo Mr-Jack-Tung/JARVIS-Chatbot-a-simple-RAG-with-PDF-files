@@ -10,6 +10,15 @@ import os
 print("\npython -m pip install --upgrade pip")
 os.system('python -m pip install --upgrade pip')
 
+print("\npython -m pip install --user pipx")
+os.system("python -m pip install --user pipx")
+
+print("\npipx install poetry")
+os.system("pipx install poetry")
+
+print("\npoetry update")
+os.system("poetry update")
+
 # Delelte Chroma vectorstore ------------------------------------------------------------
 import os.path
 import shutil
@@ -22,8 +31,11 @@ if folder_exists:
 	print("\n",path_to_folder,"is deleted")
 
 # Install needed packages ------------------------------------------------------------
-print("\npython -m pip install -Ur  requirements.txt")
-os.system("python -m pip install -Ur requirements.txt")
+# print("\npython -m pip install -Ur  requirements.txt")
+# os.system("python -m pip install -Ur requirements.txt")
+
+print("\npoetry install")
+os.system("poetry install")
 
 # Pull ollama Qwen2-7B model ------------------------------------------------------------
 import ollama

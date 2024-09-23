@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "jarvis-assistant"
+version = "0.1.0"
+description = ""
+authors = ["Mr. Jack Tung <tunglt1618@gmail.com>"]
+readme = "README.md"
+# packages = [{include = "jarvis_assistant", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+tqdm = "^4.66.5"
+pyyaml = "^6.0.2"
+tiktoken = "^0.7.0"
+pypdf = "^5.0.0"
+python-docx = "^1.1.2"
+wikipedia = "^1.4.0"
+arxiv = "^2.1.3"
+gradio = "^4.44.0"
+gradio-toggle = "^1.0.4"
+groq = "^0.11.0"
+graphviz = "^0.20.3"
+nomic = {extras = ["local"], version = "^3.1.2"}
+langchain = "^0.3.0"
+langchain-nomic = "^0.1.3"
+langchain-chroma = "^0.1.4"
+langchain-community = "^0.3.0"
+langchainhub = "^0.1.21"
+litellm = {extras = ["proxy"], version = "^1.47.1"}
+ollama = "^0.3.3"
+openai = "^1.47.0"
+google-generativeai = "^0.8.1"
+duckduckgo-search = "^6.2.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+Homepage = "https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files"
+Issues = "https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/issues"
