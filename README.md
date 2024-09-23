@@ -163,6 +163,11 @@ _
 
 </details>
 
+### Update September 24, 2024 (v0.1.5)
+- update: Auto control installing dependencies with Poetry ^^
+
+![alt-text](./img/JARVIS assistant v0.1.5_2024-09-24_poetry.jpg)
+
 ### Update September 21, 2024 (v0.1.5)
 - update: system prompt choosing or editing
 - udpate: Light Mode | Dark Mode
