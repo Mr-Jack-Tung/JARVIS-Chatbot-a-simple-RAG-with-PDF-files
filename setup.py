@@ -18,6 +18,9 @@ os.system("python -m pip install --user pipx")
 print("\npipx install poetry")
 os.system("pipx install poetry")
 
+print("\npoetry self update")
+os.system("poetry self update")
+
 print("\npoetry update")
 os.system("poetry update")
 
