@@ -7,12 +7,12 @@
 
 import os
 
-print("\npython -m pip install --upgrade pip")
-os.system('python -m pip install --upgrade pip')
+print("\npython3 -m pip install --upgrade pip")
+os.system('python3 -m pip install --upgrade pip')
 
 # https://pipx.pypa.io/latest/
-print("\npython -m pip install --user pipx")
-os.system("python -m pip install --user pipx")
+print("\npython3 -m pip install pipx")
+os.system("python3 -m pip install pipx")
 
 # https://python-poetry.org/docs/
 print("\npipx install poetry")
