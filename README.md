@@ -58,17 +58,17 @@ _
 - OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
 - support Light Mode | Dark Mode
 
-### JARVIS assistant (21 ⭐) .vs
+### JARVIS assistant (22 ⭐) .vs
 - gpt4all (69k ⭐) - https://github.com/nomic-ai/gpt4all
-- open-webui (38k ⭐) - https://github.com/open-webui/open-webui
-- anything-llm (21k ⭐) - https://github.com/Mintplex-Labs/anything-llm
+- open-webui (40k ⭐) - https://github.com/open-webui/open-webui
+- anything-llm (23k ⭐) - https://github.com/Mintplex-Labs/anything-llm
 - LibreChat (17k ⭐) - https://github.com/danny-avila/LibreChat
 - Perplexica (13k ⭐) - https://github.com/ItzCrazyKns/Perplexica
-- Kotaemon (11k ⭐) - https://github.com/Cinnamon/kotaemon
+- Kotaemon (12k ⭐) - https://github.com/Cinnamon/kotaemon
 - Verba (6k ⭐) - https://github.com/weaviate/Verba
 - gpt-computer-assistant (5.2k ⭐) - https://github.com/onuratakan/gpt-computer-assistant
-- MindSearch (4.5k ⭐) - https://github.com/InternLM/MindSearch
-- lagent (1.7k ⭐) - https://github.com/InternLM/lagent
+- MindSearch (4.7k ⭐) - https://github.com/InternLM/MindSearch
+- lagent (1.8k ⭐) - https://github.com/InternLM/lagent
 - lmstudio-ai (1.4k ⭐) - https://github.com/lmstudio-ai/lms
 
 
