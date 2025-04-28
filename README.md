@@ -169,6 +169,10 @@ _
 
 ### Update April 27, 2025 (v0.1.6)
 - update: Qwen2.5:3b model support
+- update: mask API keys textbox support
+- update: manual retrieval grader support
+- update: multi-API-providers Grader, ReAct and ReWOO agents support
+- add: web augmented search support
 
 ### Update September 24, 2024 (v0.1.5)
 - update: Auto control installing dependencies with Poetry ^^

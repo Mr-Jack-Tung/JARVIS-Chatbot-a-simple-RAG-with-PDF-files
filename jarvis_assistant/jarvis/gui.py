@@ -10,6 +10,7 @@ import gradio as gr
 from gradio_toggle import Toggle
 
 from .gui_action import *
+from .model_settings import Model_Settings as model_settings
 
 # theme_default = gr.themes.Default().set(
 #     body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
@@ -200,6 +201,9 @@ def JARVIS_assistant():
                                 
                                 chk_is_grader = Toggle(label="Is grader", value=model_settings.IS_GRADER, interactive=True)
                                 chk_is_grader.change(fn=update_is_grader, inputs=chk_is_grader)
+                                
+                                chk_is_web_search = Toggle(label="Is web search", value=model_settings.IS_WEB_SEARCH, interactive=True)
+                                chk_is_web_search.change(fn=update_is_web_search, inputs=chk_is_web_search)
                         
                         with gr.Row(variant="panel"):
                             chk_chat_saving = Toggle(label="Save Chat-history", value=model_settings.CHAT_HISTORY_SAVING, interactive=True, min_width=220)

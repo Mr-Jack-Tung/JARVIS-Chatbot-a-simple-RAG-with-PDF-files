@@ -18,11 +18,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.chat_models import ChatOllama
 
-
 # Start ------------------------------------------------------------
-from .model_settings import Model_Settings
-model_settings = Model_Settings()
-
+from .model_settings import Model_Settings as model_settings
 from .prompts import system_prompt_basic, system_prompt_function_calling, system_prompt_strawberry_o1
 model_settings.SYSTEM_PROMPT = system_prompt_basic
 
@@ -74,9 +71,9 @@ def ollama_pipeline(message_input, history):
         source = []
         retrieval_prompt, source, context_retrieval = get_adaptive_rag(message_input, history)
 
-        # print("\nretrieval_prompt:",retrieval_prompt)
-        print("\ncontext_retrieval:",context_retrieval)
-        # print("\nollama_pipeline source:",source)
+        # print("\nRetrieval_prompt:",retrieval_prompt)
+        print("\nContext_retrieval:",context_retrieval)
+        # print("\nOllama_pipeline source:",source)
         
         result = ""
         if model_settings.MODEL_TYPE == "Ollama":
@@ -86,13 +83,13 @@ def ollama_pipeline(message_input, history):
                 if model_settings.AGENT_CALLING == "ReWOO":
                     # ReWOO agent calling
                     from .rewoo_agent import rewoo_agent
-                    response = rewoo_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, context_retrieval, message_input)
+                    response = rewoo_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, retrieval_prompt, message_input)
                     result = response['output']
 
                 if model_settings.AGENT_CALLING == "ReACT":
                     # ReACT agent calling
                     from .react_agent import react_agent
-                    response = react_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, retrieval_prompt, message_input)
+                    response = react_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, context_retrieval, message_input)
                     result = response['output']
             else:
                 llm = ChatOllama(model=model_settings.MODEL_NAME, temperature=model_settings.TEMPERATURE, top_k=model_settings.TOP_K, top_p=model_settings.TOP_P, max_new_tokens=model_settings.NUM_PREDICT, repeat_penalty=model_settings.REPEAT_PENALTY)
@@ -208,6 +205,10 @@ def update_is_retrieval(is_retrieval):
 def update_is_grader(is_grader):
     model_settings.IS_GRADER = is_grader
     print("\nGrader documents is:",model_settings.IS_GRADER)
+    
+def update_is_web_search(is_web_search):
+    model_settings.IS_WEB_SEARCH = is_web_search
+    print("\nSearch relevant documents is:",model_settings.IS_WEB_SEARCH)
 
 def update_function_calling(function_calling):
     if function_calling == True:

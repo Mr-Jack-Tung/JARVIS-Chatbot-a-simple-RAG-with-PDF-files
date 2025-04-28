@@ -20,10 +20,10 @@ from docx import Document
 def docx_file_reader(file_path):
 	text = ""
 	doc = Document(file_path)
-	fullText = []
+	full_text = []
 	for para in doc.paragraphs:
-		fullText.append(para.text)
-	text = '\n'.join(fullText)
+		full_text.append(para.text)
+	text = '\n'.join(full_text)
 	return text
 
 def text_file_reader(file_path):

@@ -23,9 +23,6 @@ from langchain_ollama import OllamaEmbeddings
 from loguru import logger
 from duckduckgo_search import DDGS
 
-from .model_settings import Model_Settings
-model_settings = Model_Settings()
-
 chunk_size = 1024
 child_splitter = RecursiveCharacterTextSplitter(
     chunk_size=chunk_size, 
@@ -67,30 +64,28 @@ def vectorstore_add_document(text:str, source:str):
 
 from .file_readers import pdf_file_reader, docx_file_reader, text_file_reader
 
-import platform # Get system information
+def _get_file_name(file_path):
+    import platform # Get system information
+    platform_sys = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
+    sep = "\\" if platform_sys == "Windows" else "/"
+    file_name = str(file_path).split(sep)[-1]
+    return file_name
+
 def vectorstore_add_multi_files(path_files):
-    my_platform = platform.system() #  "Linux", "Windows", or "Darwin" (Mac)
     
     upload_files = ""
     count=0
-    for file in path_files:
-        count +=1
-        
-        file_name = ""
-        if my_platform == "Windows":
-            file_name = str(file).split("\\")[-1]   # Windows: .split("\\")[-1]
-        elif my_platform == "Darwin":
-            file_name = str(file).split("/")[-1]    # MacOS: .split("/")[-1] 
-        else:
-            file_name = str(file).split("/")[-1]    # Linux: .split("/")[-1]
-        file_extend = str(file_name).split(".")[-1]
+    for file_path in path_files:
+        count +=1    
+        file_name = _get_file_name(file_path)
+        file_ext = str(file_name).split(".")[-1]
 
         print("({0}/{1}) upload files:".format(count,len(path_files)), file_name)
 
         file_string = ""
-        if file_extend == "pdf":
+        if file_ext == "pdf":
             file_string += "📓 " + file_name +"\n"
-            pages = pdf_file_reader(file)
+            pages = pdf_file_reader(file_path)
             page_total = len(pages)
 
             for i in tqdm(range(page_total), desc ="~> to vectorstore"):
@@ -98,17 +93,17 @@ def vectorstore_add_multi_files(path_files):
                     vectorstore_add_document(pages[i].page_content, file_name)
                 sleep(0.1)
 
-        if file_extend in ["txt", "md", "mdx"]:
+        if file_ext in ["txt", "md", "mdx"]:
             file_string += "📝 " + file_name +"\n"
-            text = text_file_reader(file)
+            text = text_file_reader(file_path)
 
             if text:
                 print("\n",text[:300],"...")
                 vectorstore_add_document(text, file_name)
         
-        if file_extend == "docx":
+        if file_ext == "docx":
             file_string += "📓 " + file_name +"\n"
-            text = docx_file_reader(file)
+            text = docx_file_reader(file_path)
 
             if text:
                 print("\n",text[:300],"...")
@@ -133,16 +128,20 @@ def web_augmented_search(question, k=3):
     return snippets
 
 from .grader import retrieval_grader
+from .model_settings import Model_Settings as model_settings
 
 def vectorstore_similarity_search_with_score(question, top_k, retrieval_threshold):
     results = []
     search_results = vectorstore.similarity_search_with_score(question, k=top_k)
 
     if model_settings.IS_GRADER:
+        # Filter out non-relevant documents
+        filtered_results = []
         for doc in search_results:
             if int(retrieval_grader(question, str(doc[0].page_content))['score']) == 1:
                 # print(doc)
-                results.append(doc)
+                filtered_results.append(doc)
+        results = filtered_results
     else:
         results = search_results
 
@@ -169,9 +168,10 @@ def vectorstore_similarity_search_with_score(question, top_k, retrieval_threshol
                 context_retrieval += "Retrieval content {0}:\n".format(i) + str(results[i][0].page_content) + " Recall score: {0:.6f}".format(results[i][1]) + "\n\n"
         print("\nRetrieval:", str(count), "items")
         print("Source: ", source, "\n")
-        
+    
+    if model_settings.IS_WEB_SEARCH:
         # if no or low-quality retrieval, augment context with web search
-        if count == 0 or max_score < retrieval_threshold:
+        if MAX_SCORE < retrieval_threshold:
             logger.info("Low-quality/no retrieval, augmenting with web search")
             web_snips = web_augmented_search(question, top_k)
             if web_snips:

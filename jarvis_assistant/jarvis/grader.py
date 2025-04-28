@@ -11,8 +11,6 @@ from langchain.prompts import PromptTemplate
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import JsonOutputParser
 from loguru import logger
-import sys
-logger.add(sys.stderr, format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}", level="DEBUG")
 # from langchain_core.output_parsers import StrOutputParser
 
 # https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_crag_local/

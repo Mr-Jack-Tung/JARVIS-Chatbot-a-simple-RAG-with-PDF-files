@@ -6,22 +6,23 @@
 # Update: 28 April 2025
 
 class Model_Settings:
-    def __init__(self):
-        self.MODEL_TYPE = "Ollama"
-        self.MODEL_NAME = 'qwen2.5:3b'
-        self.NUM_PREDICT = 2048
-        self.TEMPERATURE = 0.2
-        self.TOP_K = 50
-        self.TOP_P = 0.95
-        self.REPEAT_PENALTY = 1.12
-        self.SYSTEM_PROMPT = ""
-        self.RETRIEVAL_TOP_K = 3
-        self.RETRIEVAL_THRESHOLD = 0.25
-        self.GROQ_API_KEY = ""
-        self.OPENAI_API_KEY = ""
-        self.GEMINI_API_KEY = ""
-        self.IS_RETRIEVAL = False
-        self.IS_GRADER = False
-        self.FUNCTION_CALLING = False
-        self.AGENT_CALLING = "ReWOO"
-        self.CHAT_HISTORY_SAVING = True
+    # Định nghĩa trực tiếp các thuộc tính (attributes) ở cấp lớp (class-level)
+    MODEL_TYPE = "Ollama"
+    MODEL_NAME = 'qwen2.5:3b'
+    NUM_PREDICT = 2048
+    TEMPERATURE = 0.2
+    TOP_K = 50
+    TOP_P = 0.95
+    REPEAT_PENALTY = 1.12
+    SYSTEM_PROMPT = ""
+    RETRIEVAL_TOP_K = 3
+    RETRIEVAL_THRESHOLD = 0.25
+    GROQ_API_KEY = ""
+    OPENAI_API_KEY = ""
+    GEMINI_API_KEY = ""
+    IS_RETRIEVAL = False
+    IS_GRADER = False
+    IS_WEB_SEARCH = True
+    FUNCTION_CALLING = False
+    AGENT_CALLING = "ReWOO"
+    CHAT_HISTORY_SAVING = True
