@@ -34,33 +34,37 @@ _
 - RAG with PDF, DOCX, TXT files support
 - Multi-Function calling
 - Agent calling
+- Comprehensive error handling
+- Robust logging system
 
 ### Features
-- support Qwen2.5 is the latest series of Qwen large language models.
-- support 30 multi-languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more.
-- supports long contexts of up to 128K tokens and can generate up to 8K tokens.
-- upload in any language PDF files and response with user language ^^
-- unlimit upload files to vector database
-- support PDF, DOCX, TXT, MD, MDX files
-- multi-files upload
-- custom Inferece settings
-- unlimit & auto save chat history to vector database
-- support custom System Prompt
+- Support for Qwen2.5, the latest series of Qwen large language models
+- Support for 30+ languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more
+- Long context support of up to 128K tokens with generation up to 8K tokens
+- Upload PDF files in any language and get responses in your preferred language
+- Unlimited file uploads to vector database
+- Support for PDF, DOCX, TXT, MD, MDX files
+- Multi-file upload capability
+- Customizable inference settings
+- Automatic chat history saving to vector database
+- Custom system prompt support
 - Ollama model auto-loader
-- (v0.1.0) only 360 lines of python code in only 1 file ^^
-- custom Retrieval settings
-- support documents reference response
-- support Groq API, OpenAI API, Gemini API
-- support LiteLLM locally
-- workspaces management
-- on/off Retrieval
-- on/off Grader
-- Multi-Function calling
-- ReACT agent
-- ReWOO agent
-- Retrieval grader
-- OpenAI Strawberry(o1) likely system prompt for Multi-Step Reasoning chains
-- support Light Mode | Dark Mode
+- Customizable retrieval settings
+- Document reference in responses
+- Support for Groq API, OpenAI API, Gemini API
+- Local LiteLLM support
+- Workspace management
+- Toggle for retrieval augmentation
+- Toggle for relevance grading
+- Multi-function calling
+- ReACT agent integration
+- ReWOO agent integration
+- Retrieval grader for better document relevance
+- OpenAI Strawberry(o1) system prompt for multi-step reasoning
+- Light and Dark mode support
+- Web search augmentation when retrieval quality is low
+- Comprehensive error handling and logging
+- Cross-platform compatibility (Windows, macOS, Linux)
 
 ### JARVIS assistant (22 ⭐) .vs
 - gpt4all (69k ⭐) - https://github.com/nomic-ai/gpt4all
@@ -167,6 +171,23 @@ _
 
 </details>
 
+### Update April 28, 2025 (v0.1.7)
+- update: Improved error handling throughout the codebase
+- update: Enhanced logging system with file-based logging
+- update: Better code organization with proper documentation
+- update: Fixed date inconsistencies across files
+- update: Improved file handling with proper resource management
+- update: Enhanced vectorstore initialization with directory creation if needed
+- update: Added fallback mechanisms when operations fail
+- update: Improved cross-platform compatibility
+- update: Enhanced grader module with support for all LLM providers (Ollama, OpenAI, Groq, Gemini)
+- add: New get_model_info() method for easy status reporting
+- add: Comprehensive docstrings for all functions
+- add: New hallucination_grader to detect unsupported claims
+- add: New answer_grader to evaluate response quality
+- add: New question_rewriter to improve query clarity
+- add: New sub_query_generator to break down complex questions
+
 ### Update April 27, 2025 (v0.1.6)
 - update: Qwen2.5:3b model support
 - update: mask API keys textbox support
@@ -202,8 +223,8 @@ _
 
 ```
 +	-------------------- workflow ---------------------------------
-|	v0.1.5
-|	JARVIS_assistant.py
+|	v0.1.7
+|	main.py / JARVIS_assistant.py
 |		|
 |		~> gui.py ~> custom_ui_style.py
 |			|
@@ -211,7 +232,9 @@ _
 |				|
 |				~> db_helper.py  ~> file_readers.py
 |					|
-|					~> datasource_router.py , grader.py: retrieval_grader()
+|					~> datasource_router.py , grader.py: retrieval_grader() , 
+|                     hallucination_grader() , answer_grader() , 
+|                     question_rewriter() , sub_query_generator()
 + -----------------------------------------------------------------
 ```
 
@@ -284,6 +307,7 @@ pip install -U chromadb
 - custom Inferece settings
 - support multi-files upload: .PDF, .TXT format
 - unlimit & auto save chat history to database
+- (v0.1.0) only 360 lines of python code in only 1 file ^^
 
 ![alt-text](./img/JARVIS%20assistant%20v0.1.0%20_%202024-07-03.jpg)
 

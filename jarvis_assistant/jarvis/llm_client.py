@@ -351,7 +351,7 @@ class GeminiClient(BaseLLMClient):
             
             # Get response
             response = chat.send_message(gemini_messages[-1]['parts'][0]['text'])
-            logger.debug(f"GeminiClient response raw: {response}")
+            # logger.debug(f"GeminiClient response raw: {response}")
             
             # Format response to match expected structure
             result = {
