@@ -21,9 +21,6 @@ os.system("pipx install poetry")
 print("\npoetry self update")
 os.system("poetry self update")
 
-print("\npoetry update")
-os.system("poetry update")
-
 # Delelte Chroma vectorstore ------------------------------------------------------------
 import os.path
 import shutil
@@ -42,7 +39,13 @@ if folder_exists:
 print("\npoetry install")
 os.system("poetry install")
 
-# Pull ollama Qwen2-7B model ------------------------------------------------------------
+print("\npoetry update")
+os.system("poetry update")
+
+print("\npoetry lock")
+os.system("poetry lock")
+
+# Pull ollama Qwen2.5:3b model ------------------------------------------------------------
 import ollama
 
 print("\nollama pull nomic-embed-text") # Nomic Embed v1.5 Embedding
@@ -51,5 +54,5 @@ ollama.pull('nomic-embed-text')
 # print("\nollama pull chroma/all-minilm-l6-v2-f32")
 # ollama.pull('chroma/all-minilm-l6-v2-f32')
 
-print("\nollama pull qwen2.5\n")
-ollama.pull('qwen2.5')
+print("\nollama pull qwen2.5:3b\n")
+ollama.pull('qwen2.5:3b')

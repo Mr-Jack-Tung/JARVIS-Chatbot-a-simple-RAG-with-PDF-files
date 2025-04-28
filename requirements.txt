@@ -8,6 +8,7 @@ arxiv
 gradio
 gradio-toggle
 groq
+python-dotenv
 graphviz
 nomic[local]
 langchain

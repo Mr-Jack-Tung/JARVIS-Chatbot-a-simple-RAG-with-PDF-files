@@ -9,7 +9,7 @@
 import gradio as gr
 from gradio_toggle import Toggle
 
-from jarvis.gui_action import *
+from .gui_action import *
 
 # theme_default = gr.themes.Default().set(
 #     body_background_fill="repeating-linear-gradient(45deg, *primary_200, *primary_200 10px, *primary_50 10px, *primary_50 20px)",
@@ -21,8 +21,8 @@ from jarvis.gui_action import *
 #     body_background_fill_dark="repeating-linear-gradient(45deg, *primary_800, *primary_800 10px, *primary_900 10px, *primary_900 20px)",
 # )
 
-from jarvis.custom_ui_style import UI_Style
-from jarvis.utils import load_api_keys_from_yaml
+from .custom_ui_style import UI_Style
+from .utils import load_api_keys_from_yaml
 
 # GUI ------------------------------------------------------------
 def JARVIS_assistant():
@@ -42,10 +42,10 @@ def JARVIS_assistant():
         with gr.Row():
             with gr.Column(scale=1):
                 with gr.Row():
-                    gr.HTML("<a href='http://127.0.0.1:7860/' target='_self' style='text-decoration: none;'>Light Mode</a> | <a href='http://127.0.0.1:7860/?__theme=dark' target='_self' style='text-decoration: none;'>Dark Mode</a>")
+                    gr.HTML("<a href='http://127.0.0.1:7860/?__theme=light' target='_self' style='text-decoration: none;'>Light Mode</a> | <a href='http://127.0.0.1:7860/?__theme=dark' target='_self' style='text-decoration: none;'>Dark Mode</a>")
                 
                 with gr.Tab("Workspace"):
-                    first_state_workspace = {"id":0, "name":"My first workspace", "history":[["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"]]}
+                    first_state_workspace = {"id":0, "name":"My first workspace", "history":[{"role":"assistant","content":"Jarvis (AI): Hi, my name Jarvis. I am your assistant. How may I help you today?"}]}
                     state_workspace_list = gr.State([first_state_workspace])
                     state_workspace_selected = gr.State(first_state_workspace)
                     
@@ -98,9 +98,9 @@ def JARVIS_assistant():
                         with gr.Row(variant="panel"):
                             with gr.Accordion(label="API Keys", open=False):
                                 GROQ_KEY, OPENAI_KEY, GEMINI_KEY = load_api_keys_from_yaml(model_settings)
-                                txt_groq_api_key = gr.Textbox(value=GROQ_KEY, placeholder="GroqCloud API Key", show_label=False)
-                                txt_openai_api_key = gr.Textbox(value=OPENAI_KEY, placeholder="OpenAI API Key", show_label=False)
-                                txt_gemini_api_key = gr.Textbox(value=GEMINI_KEY, placeholder="Gemini API Key", show_label=False)
+                                txt_groq_api_key = gr.Textbox(value=GROQ_KEY, type="password", placeholder="GroqCloud API Key", show_label=False)
+                                txt_openai_api_key = gr.Textbox(value=OPENAI_KEY, type="password", placeholder="OpenAI API Key", show_label=False)
+                                txt_gemini_api_key = gr.Textbox(value=GEMINI_KEY, type="password", placeholder="Gemini API Key", show_label=False)
                                 
                                 btn_key_save = gr.Button(value="Save", min_width=50)
                                 btn_key_save.click(fn=btn_key_save_click, inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
@@ -114,7 +114,7 @@ def JARVIS_assistant():
                             if dropdown_model_type == "Ollama":
                                 ollama_list_models = get_ollama_list_models()
                                 # model_settings.MODEL_NAME = ollama_list_models[0]
-                                model_settings.MODEL_NAME = "qwen2.5:latest"
+                                model_settings.MODEL_NAME = "qwen2.5:3b"
                                 print("Selected model:",model_settings.MODEL_NAME)
 
                                 with gr.Row(variant="panel"):
@@ -237,7 +237,15 @@ def JARVIS_assistant():
                             return workspace_list, workspace
     
                 workspace_selected = state_workspace_selected.value
-                chatbot = gr.Chatbot(workspace_selected["history"], elem_id="chatbot", bubble_full_width=False, min_width=800, height=800, show_copy_button=True,)
+                chatbot = gr.Chatbot(
+                    workspace_selected["history"],
+                    type="messages",
+                    elem_id="chatbot",
+                    bubble_full_width=False,
+                    min_width=800,
+                    height=800,
+                    show_copy_button=True,
+                )
                 chat_input = gr.MultimodalTextbox(value={"text": ""}, interactive=True, file_types=[".pdf",".txt"], file_count='multiple', placeholder="Enter message or upload file...", show_label=False)
     
                 def workspace_selected_chatbot(workspace_selected):

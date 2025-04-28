@@ -16,7 +16,8 @@ from langchain.docstore.document import Document as LangchainDocument
 from langchain_chroma import Chroma
 from langchain.storage import InMemoryStore
 # from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OllamaEmbeddings
+# from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import OllamaEmbeddings
 # from langchain_nomic.embeddings import NomicEmbeddings
 
 chunk_size = 1024
@@ -58,7 +59,7 @@ def vectorstore_add_document(text:str, source:str):
     knowledge_item = doc_spliter(text, source)
     chroma_retriever.add_documents(knowledge_item, ids=None)
 
-from jarvis.file_readers import pdf_file_reader, docx_file_reader, text_file_reader
+from .file_readers import pdf_file_reader, docx_file_reader, text_file_reader
 
 import platform # Get system information
 def vectorstore_add_multi_files(path_files):
@@ -110,7 +111,7 @@ def vectorstore_add_multi_files(path_files):
         upload_files += file_string
     return upload_files
 
-from jarvis.grader import retrieval_grader
+from .grader import retrieval_grader
 
 def vectorstore_similarity_search_with_score(question, top_k, retrieval_threshold):
     results = []

@@ -5,7 +5,7 @@
 # Version: 0.1.5
 # Date: 18 December 2024 - 10 PM
 
-from jarvis.gui import JARVIS_assistant
+from jarvis_assistant.jarvis.gui import JARVIS_assistant
 
 if __name__ == "__main__":
     JARVIS_assistant()

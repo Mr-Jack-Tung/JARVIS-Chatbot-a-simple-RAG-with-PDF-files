@@ -15,7 +15,7 @@ def rewoo_agent(model_name, system_prompt, context_retrieval, task):
     from langchain_core.output_parsers import StrOutputParser
     
     # model = ChatOpenAI(temperature=0)
-    # model = ChatOllama(model="qwen2", temperature=0)
+    # model = ChatOllama(model="qwen2.5:3b", temperature=0)
     model = ChatOllama(model=model_name, temperature=0)
 
     # prompt = ChatPromptTemplate.from_template(system_prompt + retrieval_prompt + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")
@@ -89,7 +89,7 @@ def rewoo_agent(model_name, system_prompt, context_retrieval, task):
     # from langchain_community.tools.tavily_search import TavilySearchResults
     # search = TavilySearchResults()
 
-    from jarvis.tools import TaviDuckGoSearch
+    from .tools import TaviDuckGoSearch
     search = TaviDuckGoSearch()
 
     def _get_current_task(state: ReWOO):

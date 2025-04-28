@@ -20,30 +20,23 @@ from langchain_community.chat_models import ChatOllama
 
 
 # Start ------------------------------------------------------------
-from jarvis.model_settings import Model_Settings
+from .model_settings import Model_Settings
 model_settings = Model_Settings()
 
-from jarvis.prompts import system_prompt_basic, system_prompt_function_calling, system_prompt_strawberry_o1
+from .prompts import system_prompt_basic, system_prompt_function_calling, system_prompt_strawberry_o1
 model_settings.SYSTEM_PROMPT = system_prompt_basic
 
-from jarvis.db_helper import vectorstore_add_document, vectorstore_add_multi_files, vectorstore_similarity_search_with_score
+from .db_helper import vectorstore_add_document, vectorstore_add_multi_files, vectorstore_similarity_search_with_score
 
 def add_message(history, message):
-    upload_files = ""
-    if message["files"]:
-        path_files = message["files"]
-        print("\n")
-        upload_files += vectorstore_add_multi_files(path_files)
-    if upload_files:
-        print("\nUpload files:\n",upload_files)
-    
-    if len(history)<1:
-        history.append(["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?"])
-    if message["text"]:
-        dt_string = datetime.now().strftime("%H.%M")
-        history.append(("(" + dt_string + ") **human**: " + message["text"], ""))
+    # Handle file uploads and append assistant feedback
+    if message.get("files"):
+        upload_feedback = vectorstore_add_multi_files(message["files"])
+        history.append({"role":"assistant", "content": f"Jarvis (AI): {upload_feedback}"})
+    # Append user message
+    if message.get("text"):
+        history.append({"role":"user", "content": f"Human: {message['text']}"})
     return history
-
 
 # from jarvis.prompts import system_prompt
 
@@ -51,9 +44,14 @@ def add_message(history, message):
 def get_adaptive_rag(message_input, history):
     retrieval_prompt = ""
     msg_history = ""
-    for msg in history[-4:-1]: # get 3 last history chats
-        if msg:
-            msg_history += "human:" + str(msg[0]).split("**:")[1] + "\n" + "assistant:" + str(msg[1]).split("**:")[1]  + "\n"
+    # Build last few exchanges
+    for msg in history[-4:-1]:
+        if not isinstance(msg, dict) or 'role' not in msg:
+            continue
+        if msg['role'] == 'user':
+            msg_history += f"human: {msg['content']}\n"
+        elif msg['role'] == 'assistant':
+            msg_history += f"assistant: {msg['content']}\n"
     if msg_history:
         msg_history = "\n\nCHAT HISTORY:\n" + msg_history
         # print("\nmsg_history:",msg_history)
@@ -87,13 +85,13 @@ def ollama_pipeline(message_input, history):
             if model_settings.FUNCTION_CALLING:
                 if model_settings.AGENT_CALLING == "ReWOO":
                     # ReWOO agent calling
-                    from jarvis.rewoo_agent import rewoo_agent
+                    from .rewoo_agent import rewoo_agent
                     response = rewoo_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, context_retrieval, message_input)
                     result = response['output']
 
                 if model_settings.AGENT_CALLING == "ReACT":
                     # ReACT agent calling
-                    from jarvis.react_agent import react_agent
+                    from .react_agent import react_agent
                     response = react_agent(model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, retrieval_prompt, message_input)
                     result = response['output']
             else:
@@ -103,37 +101,25 @@ def ollama_pipeline(message_input, history):
                 result = chain.invoke({"user": message_input})
         
         else: # MODEL_TYPE == "LiteLLM" , "OpenAI" , "GroqCloud" , "Gemini"
-            from jarvis.llms import llm_completion
+            from .llms import llm_completion
             prompt = retrieval_prompt + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
             result = llm_completion(model_settings.MODEL_TYPE, model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, prompt)
 
         return result, source
 
 def bot(history, chat_input):
-    if chat_input['text']:
-        question = str(history[-1][0]).split("**human**: ")[1]
-        source = []
-        s_time = time.time()
+    # Process only if user sent text
+    if chat_input.get('text'):
+        question = history[-1]["content"].split(': ',1)[1] if ": " in history[-1]["content"] else history[-1]["content"]
         answer, source = ollama_pipeline(question, history)
-        e_time = time.time()
-
-        from jarvis.parse_response_o1 import parse_response
-        answer = parse_response(answer)
-        
-        print("\nprompt:",question)
-        print("\n{0:.2f}s ~> Answer:".format(e_time-s_time),answer)
-        dt_string = datetime.now().strftime("%H.%M")
-        response = "(" + dt_string + ") **Jarvis (AI)**: " + str(answer)
+        resp = f"Jarvis (AI): {answer}"
         if source:
-            response += "<br>**Source:** " + str(source)
-        history[-1][1] = ""
-        history[-1][1] = response
-        
+            resp += f"\nSource: {source}"
+        history.append({"role":"assistant", "content": resp})
+        # Optionally save chat history
         if model_settings.CHAT_HISTORY_SAVING:
-            response2db = str("### HUMAN: "+question+"\n"+"### ASSISTANT: "+answer)
-            vectorstore_add_document(response2db, 'chat_history')
-            print("\n.. Chat-history has been added to the vector store!")
-        
+            log = f"### HUMAN: {question}\n### ASSISTANT: {answer}"
+            vectorstore_add_document(log, 'chat_history')
     return history, {"text": ""}
 
 def btn_save_click(txt_system_prompt):
@@ -171,7 +157,7 @@ def slider_retrieval_threshold_change(slider_retrieval_threshold):
     model_settings.RETRIEVAL_THRESHOLD = slider_retrieval_threshold
     print("retrieval threshold:",model_settings.RETRIEVAL_THRESHOLD)
 
-from jarvis.utils import save_api_keys_to_yaml
+from .utils import save_api_keys_to_yaml
 
 def btn_key_save_click(txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key):
     model_settings.GROQ_API_KEY = txt_groq_api_key
@@ -186,7 +172,7 @@ def btn_key_save_click(txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key)
 
     print("\nSave API keys ~> Ok")
 
-from jarvis.get_model_list import get_ollama_list_models, get_groq_list_models, get_openai_list_models, get_gemini_list_modes
+from .get_model_list import get_ollama_list_models, get_groq_list_models, get_openai_list_models, get_gemini_list_modes
 
 def dropdown_model_type_select(dropdown_model_type):
     model_settings.MODEL_TYPE = dropdown_model_type
@@ -254,7 +240,7 @@ def btn_create_new_workspace_click(workspace_list):
     for wp in workspace_list:
         if wp["id"] >= max_id:
             max_id = wp["id"] + 1
-    workspace = {"id":max_id, "name":"New workspace "+str(max_id), "history":[["**human**: Hello", "**Jarvis (AI)**: Hi, my name Jarvis. I am your assistant. How may I help you today?  [v{0}]".format(max_id)]]}
+    workspace = {"id":max_id, "name":"New workspace "+str(max_id), "history":[{"role":"user", "content": "Human: Hello"}, {"role":"assistant", "content": f"Jarvis (AI): Hi, my name Jarvis. I am your assistant. How may I help you today?  [v{max_id}]"}]}
     workspace_list.insert(0, workspace)
     return workspace_list, workspace
 
@@ -283,5 +269,5 @@ def btn_save_workspace_click(workspace_list):
 
         with open(file_path, 'w', encoding="utf-8") as f:
             for chat in wp["history"]:
-                f.write(str(chat[0])+"\n"+str(chat[1])+"\n\n")
+                f.write(str(chat["content"])+"\n\n")
         print("\nsave workspace to ~>",file_path)

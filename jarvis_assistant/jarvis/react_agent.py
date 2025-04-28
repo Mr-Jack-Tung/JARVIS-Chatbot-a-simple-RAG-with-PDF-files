@@ -10,7 +10,7 @@ from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.memory import ConversationBufferWindowMemory
-from jarvis.tools import get_all_tools
+from .tools import get_all_tools
 
 # from langchain import hub
 # prompt = hub.pull("hwchase17/react-chat")

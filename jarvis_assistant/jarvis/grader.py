@@ -7,47 +7,43 @@
 
 
 from langchain.prompts import PromptTemplate
-from langchain_community.chat_models import ChatOllama
+# from langchain_community.chat_models import ChatOllama # LangChainDeprecationWarning: The class `ChatOllama` was deprecated in LangChain 0.3.1 and will be removed in 1.0.0.
+from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import JsonOutputParser
+from loguru import logger
+import sys
+logger.add(sys.stderr, format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}", level="DEBUG")
 # from langchain_core.output_parsers import StrOutputParser
 
 # https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_crag_local/
 # https://github.com/FlagOpen/FlagEmbedding/tree/master/FlagEmbedding/reranker
-def retrieval_grader(question, documents, local_llm="qwen2.5"):
+def retrieval_grader(question, documents, local_llm="qwen2.5:3b"):
 
 	### LLM
-	# local_llm = "qwen2"
+	# local_llm = "qwen2.5:3b"
 	llm = ChatOllama(model=local_llm, format="json", temperature=0)
 
 	### Prompt
 	prompt = PromptTemplate(
-		template="""You are a teacher grading a quiz. You will be given: 
-		1/ a QUESTION
-		2/ A FACT provided by the student
+        template="""
+You are a relevance scorer. You will receive:
+1) QUESTION
+2) FACT
 
-		You are grading RELEVANCE RECALL:
-		A score of 1 means that ANY of the statements in the FACT are relevant to the QUESTION. 
-		A score of 0 means that NONE of the statements in the FACT are relevant to the QUESTION. 
-		1 is the highest (best) score. 0 is the lowest score you can give. 
+Assign a binary score: 1 if ANY statement in the FACT is relevant to the QUESTION; otherwise 0.
+Output only JSON in the form {{"score":1}} with no additional text or explanation.
 
-		Explain your reasoning in a step-by-step manner. Ensure your reasoning and conclusion are correct. 
-
-		Avoid simply stating the correct answer at the outset.
-
-		Question: {question} \n
-		Fact: \n\n {documents} \n\n
-
-		Give a binary score '1' or '0' score to indicate whether the document is relevant to the question. \n
-		Provide the binary score as a JSON with a single key 'score' and no premable or explanation.
-		""",
+QUESTION: {question}
+FACT: {documents}
+""",
 		input_variables=["question", "documents"],
 	)
 
-	# print("\nretrieval document:",documents[:300])
+	logger.debug(f"retrieval document: {documents[:300]}")
 
 	retrieval_grader = prompt | llm | JsonOutputParser()
 	result = retrieval_grader.invoke({"question": question, "documents": documents})
 
-	print("\n~> relevant result:",result)
+	logger.info(f"~> relevant result: {result}")
 	# {'score': '1'}
 	return result # int(result['score'])
