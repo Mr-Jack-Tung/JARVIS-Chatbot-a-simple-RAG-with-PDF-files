@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 06 December 2024 - 03 PM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 # https://github.com/Mr-Jack-Tung/Ollama-Mistral-with-Langchain-RAG-Agent-and-Custom-tools
 from langchain_community.llms import Ollama

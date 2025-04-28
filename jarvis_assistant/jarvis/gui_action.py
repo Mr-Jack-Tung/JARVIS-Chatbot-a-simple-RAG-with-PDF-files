@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 18 December 2024 - 10 PM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 # Import needed packages ------------------------------------------------------------
 import os, sys, re
@@ -32,7 +32,7 @@ def add_message(history, message):
     # Handle file uploads and append assistant feedback
     if message.get("files"):
         upload_feedback = vectorstore_add_multi_files(message["files"])
-        history.append({"role":"assistant", "content": f"Jarvis (AI): {upload_feedback}"})
+        history.append({"role":"assistant", "content": f"{upload_feedback}"})
     # Append user message
     if message.get("text"):
         history.append({"role":"user", "content": f"Human: {message['text']}"})
@@ -104,7 +104,10 @@ def ollama_pipeline(message_input, history):
             from .llms import llm_completion
             prompt = retrieval_prompt + "\n\nCONVERSATION:\n**human**: {0}\n**Jarvis (AI)**: ".format(message_input)
             result = llm_completion(model_settings.MODEL_TYPE, model_settings.MODEL_NAME, model_settings.SYSTEM_PROMPT, prompt)
-
+        if "Jarvis (AI):" in result:
+            result = result.split("Jarvis (AI):")[1].strip()
+        if "**Jarvis (AI)**:" in result:
+            result = result.split("**Jarvis (AI)**:")[1].strip()
         return result, source
 
 def bot(history, chat_input):
@@ -115,7 +118,7 @@ def bot(history, chat_input):
         resp = f"Jarvis (AI): {answer}"
         if source:
             resp += f"\nSource: {source}"
-        history.append({"role":"assistant", "content": resp})
+        history.append({"role":"assistant", "content":resp})
         # Optionally save chat history
         if model_settings.CHAT_HISTORY_SAVING:
             log = f"### HUMAN: {question}\n### ASSISTANT: {answer}"
@@ -201,6 +204,10 @@ def litellm_dropdown_model_select(dropdown_model):
 def update_is_retrieval(is_retrieval):
     model_settings.IS_RETRIEVAL = is_retrieval
     print("\nRetrieval documents is:",model_settings.IS_RETRIEVAL)
+
+def update_is_grader(is_grader):
+    model_settings.IS_GRADER = is_grader
+    print("\nGrader documents is:",model_settings.IS_GRADER)
 
 def update_function_calling(function_calling):
     if function_calling == True:

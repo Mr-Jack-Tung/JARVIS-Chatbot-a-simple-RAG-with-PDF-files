@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# JARVIS Chatbot - a simple RAG with PDF files
+# Create: 27 April 2025
+# Author: Mr.Jack _ www.bicweb.vn
+# Version: 0.1.6
+# Update: 28 April 2025
 """
 LLM client abstraction for function calling across providers.
 Enhanced with better error handling and support for more providers.

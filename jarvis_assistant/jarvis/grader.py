@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 05 December 2024 - 11 PM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 
 from langchain.prompts import PromptTemplate

@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 07 December 2024 - 01 AM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 # pip install gradio-toggle
 import gradio as gr
@@ -28,7 +28,8 @@ from .utils import load_api_keys_from_yaml
 def JARVIS_assistant():
     ui_style = UI_Style()
 
-    default_ui = "gradio/default"
+    # Một số gradio themes
+    # default_ui = "gradio/default"
     # theme_2 = gr.Theme.from_hub("gradio/base")
     # theme_3 = gr.Theme.from_hub("gradio/seafoam")
     # theme_4 = gr.Theme.from_hub("gradio/glass")
@@ -196,6 +197,9 @@ def JARVIS_assistant():
     
                                 slider_retrieval_threshold = gr.Slider(minimum=0, maximum=1, value=model_settings.RETRIEVAL_THRESHOLD, step=0.05, label="Threshold score", interactive=True)
                                 slider_retrieval_threshold.change(fn=slider_retrieval_threshold_change, inputs=slider_retrieval_threshold)
+                                
+                                chk_is_grader = Toggle(label="Is grader", value=model_settings.IS_GRADER, interactive=True)
+                                chk_is_grader.change(fn=update_is_grader, inputs=chk_is_grader)
                         
                         with gr.Row(variant="panel"):
                             chk_chat_saving = Toggle(label="Save Chat-history", value=model_settings.CHAT_HISTORY_SAVING, interactive=True, min_width=220)

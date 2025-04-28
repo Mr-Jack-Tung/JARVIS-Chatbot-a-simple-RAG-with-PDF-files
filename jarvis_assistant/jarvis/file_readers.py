@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 02 December 2024 - 05 PM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 # https://python.langchain.com/v0.2/docs/integrations/document_loaders/recursive_url/
 # The RecursiveUrlLoader lets you recursively scrape all child links from a root URL and parse them into Documents.

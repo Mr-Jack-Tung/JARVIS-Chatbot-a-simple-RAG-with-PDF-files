@@ -3,7 +3,7 @@
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
 # Version: 0.1.6
-# Date: 28 April 2025 - 12 AM
+# Update: 28 April 2025
 
 import openai
 import os

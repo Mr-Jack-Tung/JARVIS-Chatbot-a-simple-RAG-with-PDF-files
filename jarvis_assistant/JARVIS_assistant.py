@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 18 December 2024 - 10 PM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 from jarvis_assistant.jarvis.gui import JARVIS_assistant
 

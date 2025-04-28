@@ -2,17 +2,17 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 07 December 2024 - 01 AM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 class Model_Settings:
     def __init__(self):
         self.MODEL_TYPE = "Ollama"
         self.MODEL_NAME = 'qwen2.5:3b'
         self.NUM_PREDICT = 2048
-        self.TEMPERATURE = 0
+        self.TEMPERATURE = 0.2
         self.TOP_K = 50
-        self.TOP_P = 1
+        self.TOP_P = 0.95
         self.REPEAT_PENALTY = 1.12
         self.SYSTEM_PROMPT = ""
         self.RETRIEVAL_TOP_K = 3
@@ -21,6 +21,7 @@ class Model_Settings:
         self.OPENAI_API_KEY = ""
         self.GEMINI_API_KEY = ""
         self.IS_RETRIEVAL = False
+        self.IS_GRADER = False
         self.FUNCTION_CALLING = False
         self.AGENT_CALLING = "ReWOO"
         self.CHAT_HISTORY_SAVING = True

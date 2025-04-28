@@ -54,6 +54,7 @@ _
 - support LiteLLM locally
 - workspaces management
 - on/off Retrieval
+- on/off Grader
 - Multi-Function calling
 - ReACT agent
 - ReWOO agent

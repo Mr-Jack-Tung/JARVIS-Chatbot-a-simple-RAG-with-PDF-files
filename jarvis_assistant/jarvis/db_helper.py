@@ -2,8 +2,8 @@
 # JARVIS Chatbot - a simple RAG with PDF files
 # Create: 03 July 2024
 # Author: Mr.Jack _ www.bicweb.vn
-# Version: 0.1.5
-# Date: 02 December 2024 - 05 PM
+# Version: 0.1.6
+# Update: 28 April 2025
 
 from time import sleep
 from datetime import datetime
@@ -19,6 +19,12 @@ from langchain.storage import InMemoryStore
 # from langchain_community.embeddings import OllamaEmbeddings
 from langchain_ollama import OllamaEmbeddings
 # from langchain_nomic.embeddings import NomicEmbeddings
+
+from loguru import logger
+from duckduckgo_search import DDGS
+
+from .model_settings import Model_Settings
+model_settings = Model_Settings()
 
 chunk_size = 1024
 child_splitter = RecursiveCharacterTextSplitter(
@@ -111,16 +117,34 @@ def vectorstore_add_multi_files(path_files):
         upload_files += file_string
     return upload_files
 
+def web_augmented_search(question, k=3):
+    logger.info(f"web_augmented_search called with question={question}, k={k}")
+    try:
+        with DDGS() as ddgs:
+            hits = ddgs.text(question, max_results=k)
+            snippets = [hit.get('body', '') for hit in hits if 'body' in hit]
+    except Exception as e:
+        logger.error(f"Web search failed for question={question}: {e}")
+        return []
+    if not snippets:
+        logger.warning(f"No web search hits for question={question}")
+        return []
+    logger.debug(f"Web snippets: {snippets}")
+    return snippets
+
 from .grader import retrieval_grader
 
 def vectorstore_similarity_search_with_score(question, top_k, retrieval_threshold):
     results = []
     search_results = vectorstore.similarity_search_with_score(question, k=top_k)
 
-    for doc in search_results:
-        if int(retrieval_grader(question, str(doc[0].page_content))['score']) == 1:
-            # print(doc)
-            results.append(doc)
+    if model_settings.IS_GRADER:
+        for doc in search_results:
+            if int(retrieval_grader(question, str(doc[0].page_content))['score']) == 1:
+                # print(doc)
+                results.append(doc)
+    else:
+        results = search_results
 
     context_retrieval = ""
     source = []
@@ -145,6 +169,15 @@ def vectorstore_similarity_search_with_score(question, top_k, retrieval_threshol
                 context_retrieval += "Retrieval content {0}:\n".format(i) + str(results[i][0].page_content) + " Recall score: {0:.6f}".format(results[i][1]) + "\n\n"
         print("\nRetrieval:", str(count), "items")
         print("Source: ", source, "\n")
+        
+        # if no or low-quality retrieval, augment context with web search
+        if count == 0 or max_score < retrieval_threshold:
+            logger.info("Low-quality/no retrieval, augmenting with web search")
+            web_snips = web_augmented_search(question, top_k)
+            if web_snips:
+                context_retrieval += "\n\nWEB SEARCH RESULTS:\n" + "\n\n".join(web_snips)
+                source.append("web_search")
+        
     return context_retrieval, source
 
 # https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_crag_local/
