@@ -7,7 +7,8 @@
 |> python3 setup.py
 
 # For Running...
-|> poetry run python3 -m main
+|> poetry run python3 main.py
+or poetry run python3 -m main
 or poetry run python3 -m jarvis_assistant.JARVIS_assistant
 or python3 jarvis_assistant/JARVIS_assistant.py
 Running on local URL:  http://127.0.0.1:7860
@@ -165,7 +166,7 @@ _
 
 </details>
 
-### Update April 27, 2025 (v0.1.5)
+### Update April 27, 2025 (v0.1.6)
 - update: Qwen2.5:3b model support
 
 ### Update September 24, 2024 (v0.1.5)
