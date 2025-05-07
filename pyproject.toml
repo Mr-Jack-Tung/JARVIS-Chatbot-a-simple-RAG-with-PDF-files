@@ -2,7 +2,7 @@
 [project]
 dynamic = ["dependencies", "requires-python"]
 name = "jarvis-assistant"
-version = "0.1.6"
+version = "0.1.7"
 description = "JARVIS is a simple RAG chatbot with PDF files"
 readme = "README.md"
 authors = [ { name = "Mr. Jack Tung", email = "tunglt1618@gmail.com" } ]

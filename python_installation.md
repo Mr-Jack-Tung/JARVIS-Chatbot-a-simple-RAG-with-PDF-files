@@ -19,6 +19,7 @@ pip install poetry
 poetry install
 poetry update
 poetry lock
+poetry check
 poetry list
 
 

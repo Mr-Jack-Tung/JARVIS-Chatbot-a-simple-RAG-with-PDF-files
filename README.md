@@ -1,12 +1,19 @@
 ```
-# Requirements: python=3.12.10
-# conda create -n jarvis python=3.12.10
-# conda activate jarvis
+Step 1: Clone repo
+git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
+cd JARVIS-Chatbot-a-simple-RAG-with-PDF-files
 
-# For Installing...
+Requirements: python=3.12.10
+python3.12 -m venv .venv
+source .venv/bin/activate
+or
+conda create -n jarvis python=3.12.10
+conda activate jarvis
+
+# Step 2: For Installing...
 |> python3 setup.py
 
-# For Running...
+# Step 3: For Running...
 |> poetry run python3 main.py
 or poetry run python3 -m main
 or poetry run python3 -m jarvis_assistant.JARVIS_assistant

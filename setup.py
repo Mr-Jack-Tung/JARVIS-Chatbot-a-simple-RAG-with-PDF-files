@@ -15,8 +15,8 @@ print("\npython3 -m pip install pipx")
 os.system("python3 -m pip install pipx")
 
 # https://python-poetry.org/docs/
-print("\npipx install poetry")
-os.system("pipx install poetry")
+print("\npip install poetry")
+os.system("pip install poetry")
 
 print("\npoetry self update")
 os.system("poetry self update")
@@ -44,6 +44,9 @@ os.system("poetry update")
 
 print("\npoetry lock")
 os.system("poetry lock")
+
+print("\npoetry check")
+os.system("poetry check")
 
 # Pull ollama Qwen3:4b model ------------------------------------------------------------
 import ollama
