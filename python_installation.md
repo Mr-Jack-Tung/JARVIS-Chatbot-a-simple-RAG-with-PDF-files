@@ -119,3 +119,51 @@ pyenv virtualenv 3.12.4 jarvis
 pyenv activate jarvis
 ### Kiểm tra phiên bản
 python --version
+
+
+# Cách khởi tạo và cài đặt Poetry trên môi trường và dự án đang sẵn có:
+https://python-poetry.org/docs/basic-usage/
+
+## 1. Khởi tạo project mới với poetry
+cd /path/to/project/folder
+poetry init # Follow prompts or provide answers in a config file.
+poetry add <package_name> # Add packages one by one.
+poetry remove <package_name>
+poetry show # Show installed packages.
+
+or:
+First, generate a `requirements.txt` file using `pip freeze > requirements.txt`. Then, you can use a loop to add each package from the `requirements.txt` file to your `pyproject.toml` using a loop:
+You can use a loop to iterate through each package in the `requirements.txt` file and add it individually using `poetry add`.
+
+```
+while IFS= read -r package; do
+  poetry add "$package"
+done < requirements.txt
+```
+
+Other commands:
+poetry add <package_name> --group group_name # Add dependencies under different groups defined in pyproject.toml.
+poetry add <package_name> --dev # Add dev dependencies.
+poetry run <command> # Run commands within the virtual environment.
+poetry build # Build distribution archives.
+poetry publish # Publish built distributions.
+poetry export --format requirements.txt > requirements.txt # Export dependencies as a requirements file.
+poetry lock # Lock dependencies and write them into the lockfile.
+
+## 2. Cài đặt Poetry trong một dự án đã tồn tại
+cd /path/to/existing/project/folder
+poetry install # Install all dependencies listed in pyproject.toml.
+poetry update # Update dependencies based on latest versions specified in pyproject.toml.
+poetry add <package_name> # Add new dependencies to both pyproject.toml and lock file.
+poetry remove <package_name> # Remove dependencies from both pyproject.toml and lock file.
+poetry show # List currently installed dependencies along with their versions.
+poetry env info # Display information about the current virtual environment.
+poetry shell # Open an interactive shell session within the virtual environment.
+poetry run <command> # Execute any command inside the virtual environment without activating it manually.
+poetry version # Print the current project version number.
+poetry version <new_version_number> # Set a new version for the project.
+poetry config # View configuration settings related to Poetry itself.
+poetry config --list # List all available configuration options.
+poetry config --unset key # Unset specific configuration keys.
+poetry config --local key value # Modify local configuration values directly in the pyproject.toml file.
+poetry config --global key value # Change global configuration settings across multiple projects.
