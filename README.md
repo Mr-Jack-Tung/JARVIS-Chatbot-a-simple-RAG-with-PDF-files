@@ -38,7 +38,7 @@ _
 - Robust logging system
 
 ### Features
-- Support for Qwen2.5, the latest series of Qwen large language models
+- Support for Qwen3, the latest series of Qwen large language models
 - Support for 30+ languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more
 - Long context support of up to 128K tokens with generation up to 8K tokens
 - Upload PDF files in any language and get responses in your preferred language
@@ -189,7 +189,7 @@ _
 - add: New sub_query_generator to break down complex questions
 
 ### Update April 27, 2025 (v0.1.6)
-- update: Qwen2.5:3b model support
+- update: Qwen3:4b model support
 - update: mask API keys textbox support
 - update: manual retrieval grader support
 - update: multi-API-providers Grader, ReAct and ReWOO agents support

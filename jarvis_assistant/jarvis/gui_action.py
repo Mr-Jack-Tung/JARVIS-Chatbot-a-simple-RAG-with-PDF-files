@@ -21,7 +21,7 @@ import openai
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, 
@@ -190,8 +190,14 @@ def ollama_pipeline(message_input, history):
                         "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: "
                     )
                     
+                    # Append /no_think to the prompt
+                    prompt += " /no_think"
+                    
                     chain = prompt | llm | StrOutputParser()
                     result = chain.invoke({"user": message_input})
+                    
+                    # Remove <think> and </think> tokens
+                    result = result.replace("<think>", "").replace("</think>", "").strip()
                 except Exception as e:
                     log.error(f"Error with Ollama completion: {str(e)}")
                     result = f"I encountered an error generating a response: {str(e)}"

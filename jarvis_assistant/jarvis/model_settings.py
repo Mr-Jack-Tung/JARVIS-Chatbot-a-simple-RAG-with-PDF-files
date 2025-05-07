@@ -15,12 +15,12 @@ class Model_Settings:
     
     # Model selection settings
     MODEL_TYPE = "Ollama"  # Options: "Ollama", "GroqCloud", "OpenAI", "Gemini", "LiteLLM"
-    MODEL_NAME = 'qwen2.5:3b'  # Default model name
+    MODEL_NAME = 'qwen3:4b'  # Default model name
     
     # Generation parameters
     NUM_PREDICT = 2048     # Maximum number of tokens to generate
     TEMPERATURE = 0.2      # Controls randomness (0.0 = deterministic, 1.0 = creative)
-    TOP_K = 50             # Limits vocabulary to top K tokens
+    TOP_K = 30             # Limits vocabulary to top K tokens
     TOP_P = 0.95           # Nucleus sampling parameter
     REPEAT_PENALTY = 1.12  # Penalty for repeating tokens
     

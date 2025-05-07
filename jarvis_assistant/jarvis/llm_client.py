@@ -58,12 +58,7 @@ class OllamaClient(BaseLLMClient):
     def __init__(self, model_name: str):
         super().__init__(model_name)
         try:
-            # Try to import from langchain_ollama first (newer package)
-            try:
-                from langchain_ollama import ChatOllama
-            except ImportError:
-                from langchain_community.chat_models import ChatOllama
-                
+            from langchain_ollama import ChatOllama    
             from .model_settings import Model_Settings as ModelSettings
             settings = ModelSettings()
             
@@ -99,6 +94,9 @@ class OllamaClient(BaseLLMClient):
             # Format messages as a single prompt
             prompt = "\n".join([f"{m.get('role', 'user')}: {m.get('content', '')}" for m in messages])
             
+            # Append /no_think to the prompt
+            prompt += " /no_think"
+            
             # Invoke the model
             response = self.client.invoke(prompt)
             logger.debug(f"OllamaClient response raw: {response}")
@@ -108,6 +106,9 @@ class OllamaClient(BaseLLMClient):
                 content = response.content
             else:
                 content = str(response)
+            
+            # Remove <think> and </think> tokens
+            content = content.replace("<think>", "").replace("</think>", "").strip()
                 
             result = {"choices": [{"message": {"content": content}}]}
             logger.info("OllamaClient.chat succeeded")

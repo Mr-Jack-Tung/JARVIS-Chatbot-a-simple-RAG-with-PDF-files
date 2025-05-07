@@ -10,12 +10,12 @@
 
 def rewoo_agent(model_name, system_prompt, context_retrieval, task):
     # from langchain_openai import ChatOpenAI
-    from langchain_community.chat_models import ChatOllama
+    from langchain_ollama import ChatOllama
     from langchain_core.prompts import ChatPromptTemplate
     from langchain_core.output_parsers import StrOutputParser
     
     # model = ChatOpenAI(temperature=0)
-    # model = ChatOllama(model="qwen2.5:3b", temperature=0)
+    # model = ChatOllama(model="qwen3:4b", temperature=0)
     model = ChatOllama(model=model_name, temperature=0)
 
     # prompt = ChatPromptTemplate.from_template(system_prompt + retrieval_prompt + "\n\nCONVERSATION:\n**human**: {user}\n**Jarvis (AI)**: ")

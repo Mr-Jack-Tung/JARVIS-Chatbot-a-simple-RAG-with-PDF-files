@@ -1,0 +1,8 @@
+# .gitignore
+.venv
+chroma_vectorstore
+chat_workspaces
+logs
+jarvis.log
+__pycache__
+api_keys.yaml
