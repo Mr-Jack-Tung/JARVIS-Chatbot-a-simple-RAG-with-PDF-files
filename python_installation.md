@@ -22,6 +22,9 @@ poetry lock
 poetry check
 poetry list
 
+poetry add httpx==0.27.0
+
+brew install mactex
 
 ## 2. Dùng Anaconda
 ### Cài Anaconda

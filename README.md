@@ -13,7 +13,21 @@ conda activate jarvis
 # Step 2: For Installing...
 |> python3 setup.py
 
+
 # Step 3: For Running...
+=======
+# For Chroma Database Configuration
+# Set ANONYMIZED_TELEMETRY to False to disable telemetry
+# 1. Set environment variable:
+export ANONYMIZED_TELEMETRY=False
+
+# 2. Or add to .env file in project root:
+ANONYMIZED_TELEMETRY=False
+
+# 3. Or add to docker-compose.yml if using Docker:
+ANONYMIZED_TELEMETRY=False
+
+# For Running...
 |> poetry run python3 main.py
 or poetry run python3 -m main
 or poetry run python3 -m jarvis_assistant.JARVIS_assistant
