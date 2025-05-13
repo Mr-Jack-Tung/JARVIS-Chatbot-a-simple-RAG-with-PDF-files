@@ -12,6 +12,8 @@ Homepage = "https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF
 Issues   = "https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files/issues"
 
 [tool.poetry]
+name = "jarvis-assistant"
+version = "0.1.7"
 # metadata moved to [project]
 # Uncomment and adjust if your package code lives under src/
 # packages = [{include = "jarvis_assistant", from = "src"}]
