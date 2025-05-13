@@ -363,6 +363,21 @@ step 6: Testing
 
 </details>
 
+## Docker Compose Usage
+
+To run the application using Docker Compose, follow these steps:
+
+1.  Clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files.git
+    cd JARVIS-Chatbot-a-simple-RAG-with-PDF-files
+    ```
+2.  Make sure you have Docker and Docker Compose installed on your system.
+3.  Navigate to the project directory in your terminal.
+4.  Run the command `docker-compose up -d` to start the application in detached mode.
+
+This will build the Docker image and start the container. You can then access the application in your web browser.
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files&type=Date)](https://star-history.com/#Mr-Jack-Tung/JARVIS-Chatbot-a-simple-RAG-with-PDF-files&Date)
