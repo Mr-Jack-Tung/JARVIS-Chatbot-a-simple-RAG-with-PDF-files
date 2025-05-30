@@ -26,6 +26,8 @@ poetry add httpx==0.27.0
 
 brew install mactex # Cài LaTeX
 
+Note: By downgrading to NumPy 1.26.4, we provided a version that PyTorch 2.2.2 can properly interact with Python 3.10~3.12
+
 ## 2. Dùng Anaconda
 ### Cài Anaconda
 https://www.anaconda.com/products/distribution
