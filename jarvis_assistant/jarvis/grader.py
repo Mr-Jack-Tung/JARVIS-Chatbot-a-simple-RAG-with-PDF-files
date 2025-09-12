@@ -12,17 +12,19 @@ from typing import Dict, Any, Optional, Union
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_ollama import ChatOllama
-from loguru import logger
+from loguru import logger as base_logger
 
 from .model_settings import Model_Settings
 
-# Configure loguru logger
-logger.add(
+# Create a separate logger for the grader
+grader_logger = base_logger.bind(name="grader").opt(colors=True)
+grader_logger.add(
     "logs/grader.log",
     rotation="10 MB",
     retention="1 week",
     level="INFO",
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {module}:{function}:{line} | {message}"
+    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {extra[name]} | {module}:{function}:{line} | {message}",
+    filter=lambda record: record["extra"].get("name") == "grader"
 )
 
 # https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_crag_local/
@@ -47,8 +49,8 @@ def retrieval_grader(question: str, documents: str, local_llm: Optional[str] = N
         model_type = settings.MODEL_TYPE
         model_name = local_llm or settings.MODEL_NAME
         
-        logger.info(f"Grading relevance using {model_type}/{model_name}")
-        logger.debug(f"Grading document: {documents[:300]}...")
+        grader_logger.info(f"Grading relevance using {model_type}/{model_name}")
+        grader_logger.debug(f"Grading document: {documents[:300]}...")
         
         # Define the grading prompt
         prompt = PromptTemplate(
@@ -73,11 +75,11 @@ FACT: {documents}
                 llm = ChatOllama(model=model_name, format="json", temperature=0)
                 retrieval_grader_chain = prompt | llm | JsonOutputParser()
                 result = retrieval_grader_chain.invoke({"question": question, "documents": documents})
-                logger.info(f"Grading result (Ollama): {result}")
+                grader_logger.info(f"Grading result (Ollama): {result}")
                 return result
             except Exception as e:
-                logger.error(f"Error using Ollama for grading: {str(e)}")
-                logger.error(traceback.format_exc())
+                grader_logger.error(f"Error using Ollama for grading: {str(e)}")
+                grader_logger.error(traceback.format_exc())
                 # Fall back to direct API approach
                 
         # For other model types or as fallback, use the LLM client directly
@@ -114,25 +116,25 @@ FACT: {documents}
                     else:
                         result = json.loads(content)
                         
-                    logger.info(f"Grading result ({model_type}): {result}")
+                    grader_logger.info(f"Grading result ({model_type}): {result}")
                     return result
                 except json.JSONDecodeError:
-                    logger.error(f"Failed to parse JSON from response: {content}")
+                    grader_logger.error(f"Failed to parse JSON from response: {content}")
                     # Return a default score of 1 to be inclusive rather than exclusive
                     return {"score": 1}
             else:
-                logger.error(f"Invalid response format: {response}")
+                grader_logger.error(f"Invalid response format: {response}")
                 return {"score": 1}  # Default to including the document
                 
         except Exception as e:
-            logger.error(f"Error in API-based grading: {str(e)}")
-            logger.error(traceback.format_exc())
+            grader_logger.error(f"Error in API-based grading: {str(e)}")
+            grader_logger.error(traceback.format_exc())
             # Default to including the document in case of errors
             return {"score": 1}
             
     except Exception as e:
-        logger.error(f"Unexpected error in retrieval_grader: {str(e)}")
-        logger.error(traceback.format_exc())
+        grader_logger.error(f"Unexpected error in retrieval_grader: {str(e)}")
+        grader_logger.error(traceback.format_exc())
         # Default to including the document in case of errors
         return {"score": 1}
 
@@ -154,7 +156,7 @@ def hallucination_grader(question: str, answer: str, context: str) -> Dict[str, 
         model_type = settings.MODEL_TYPE
         model_name = settings.MODEL_NAME
         
-        logger.info(f"Grading hallucination using {model_type}/{model_name}")
+        grader_logger.info(f"Grading hallucination using {model_type}/{model_name}")
         
         # Define the hallucination grading prompt
         prompt = PromptTemplate(
@@ -213,24 +215,24 @@ CONTEXT: {context}
                     else:
                         result = json.loads(content)
                         
-                    logger.info(f"Hallucination grading result: {result}")
+                    grader_logger.info(f"Hallucination grading result: {result}")
                     return result
                 except json.JSONDecodeError:
-                    logger.error(f"Failed to parse JSON from response: {content}")
+                    grader_logger.error(f"Failed to parse JSON from response: {content}")
                     # Return a moderate score as default
                     return {"hallucination_score": 0.5, "explanation": "Failed to parse grader output"}
             else:
-                logger.error(f"Invalid response format: {response}")
+                grader_logger.error(f"Invalid response format: {response}")
                 return {"hallucination_score": 0.5, "explanation": "Invalid grader response"}
                 
         except Exception as e:
-            logger.error(f"Error in hallucination grading: {str(e)}")
-            logger.error(traceback.format_exc())
+            grader_logger.error(f"Error in hallucination grading: {str(e)}")
+            grader_logger.error(traceback.format_exc())
             return {"hallucination_score": 0.5, "explanation": f"Error: {str(e)}"}
             
     except Exception as e:
-        logger.error(f"Unexpected error in hallucination_grader: {str(e)}")
-        logger.error(traceback.format_exc())
+        grader_logger.error(f"Unexpected error in hallucination_grader: {str(e)}")
+        grader_logger.error(traceback.format_exc())
         return {"hallucination_score": 0.5, "explanation": f"Unexpected error: {str(e)}"}
 
 def answer_grader(question: str, answer: str) -> Dict[str, Any]:
@@ -250,7 +252,7 @@ def answer_grader(question: str, answer: str) -> Dict[str, Any]:
         model_type = settings.MODEL_TYPE
         model_name = settings.MODEL_NAME
         
-        logger.info(f"Grading answer quality using {model_type}/{model_name}")
+        grader_logger.info(f"Grading answer quality using {model_type}/{model_name}")
         
         # Define the answer quality grading prompt
         prompt = PromptTemplate(
@@ -309,23 +311,23 @@ ANSWER: {answer}
                     else:
                         result = json.loads(content)
                         
-                    logger.info(f"Answer quality grading result: {result}")
+                    grader_logger.info(f"Answer quality grading result: {result}")
                     return result
                 except json.JSONDecodeError:
-                    logger.error(f"Failed to parse JSON from response: {content}")
+                    grader_logger.error(f"Failed to parse JSON from response: {content}")
                     return {"quality_score": 5, "feedback": "Failed to parse grader output"}
             else:
-                logger.error(f"Invalid response format: {response}")
+                grader_logger.error(f"Invalid response format: {response}")
                 return {"quality_score": 5, "feedback": "Invalid grader response"}
                 
         except Exception as e:
-            logger.error(f"Error in answer quality grading: {str(e)}")
-            logger.error(traceback.format_exc())
+            grader_logger.error(f"Error in answer quality grading: {str(e)}")
+            grader_logger.error(traceback.format_exc())
             return {"quality_score": 5, "feedback": f"Error: {str(e)}"}
             
     except Exception as e:
-        logger.error(f"Unexpected error in answer_grader: {str(e)}")
-        logger.error(traceback.format_exc())
+        grader_logger.error(f"Unexpected error in answer_grader: {str(e)}")
+        grader_logger.error(traceback.format_exc())
         return {"quality_score": 5, "feedback": f"Unexpected error: {str(e)}"}
 
 def question_rewriter(question: str, context: str = "") -> Dict[str, Any]:
@@ -345,7 +347,7 @@ def question_rewriter(question: str, context: str = "") -> Dict[str, Any]:
         model_type = settings.MODEL_TYPE
         model_name = settings.MODEL_NAME
         
-        logger.info(f"Rewriting question using {model_type}/{model_name}")
+        grader_logger.info(f"Rewriting question using {model_type}/{model_name}")
         
         # Define the question rewriting prompt
         template = """
@@ -412,32 +414,32 @@ ORIGINAL_QUESTION: {question}
                     else:
                         result = json.loads(content)
                         
-                    logger.info(f"Question rewriting result: {result}")
+                    grader_logger.info(f"Question rewriting result: {result}")
                     return result
                 except json.JSONDecodeError:
-                    logger.error(f"Failed to parse JSON from response: {content}")
+                    grader_logger.error(f"Failed to parse JSON from response: {content}")
                     return {
                         "rewritten_question": question,
                         "explanation": "Failed to parse rewriter output"
                     }
             else:
-                logger.error(f"Invalid response format: {response}")
+                grader_logger.error(f"Invalid response format: {response}")
                 return {
                     "rewritten_question": question,
                     "explanation": "Invalid rewriter response"
                 }
                 
         except Exception as e:
-            logger.error(f"Error in question rewriting: {str(e)}")
-            logger.error(traceback.format_exc())
+            grader_logger.error(f"Error in question rewriting: {str(e)}")
+            grader_logger.error(traceback.format_exc())
             return {
                 "rewritten_question": question,
                 "explanation": f"Error: {str(e)}"
             }
             
     except Exception as e:
-        logger.error(f"Unexpected error in question_rewriter: {str(e)}")
-        logger.error(traceback.format_exc())
+        grader_logger.error(f"Unexpected error in question_rewriter: {str(e)}")
+        grader_logger.error(traceback.format_exc())
         return {
             "rewritten_question": question,
             "explanation": f"Unexpected error: {str(e)}"
@@ -460,7 +462,7 @@ def sub_query_generator(question: str, context: str = "") -> Dict[str, Any]:
         model_type = settings.MODEL_TYPE
         model_name = settings.MODEL_NAME
         
-        logger.info(f"Generating sub-queries using {model_type}/{model_name}")
+        grader_logger.info(f"Generating sub-queries using {model_type}/{model_name}")
         
         # Define the sub-query generation prompt
         template = """
@@ -535,32 +537,32 @@ COMPLEX_QUESTION: {question}
                     else:
                         result = json.loads(content)
                         
-                    logger.info(f"Sub-query generation result: {result}")
+                    grader_logger.info(f"Sub-query generation result: {result}")
                     return result
                 except json.JSONDecodeError:
-                    logger.error(f"Failed to parse JSON from response: {content}")
+                    grader_logger.error(f"Failed to parse JSON from response: {content}")
                     return {
                         "sub_queries": [question],
                         "reasoning": "Failed to parse sub-query generator output"
                     }
             else:
-                logger.error(f"Invalid response format: {response}")
+                grader_logger.error(f"Invalid response format: {response}")
                 return {
                     "sub_queries": [question],
                     "reasoning": "Invalid sub-query generator response"
                 }
                 
         except Exception as e:
-            logger.error(f"Error in sub-query generation: {str(e)}")
-            logger.error(traceback.format_exc())
+            grader_logger.error(f"Error in sub-query generation: {str(e)}")
+            grader_logger.error(traceback.format_exc())
             return {
                 "sub_queries": [question],
                 "reasoning": f"Error: {str(e)}"
             }
             
     except Exception as e:
-        logger.error(f"Unexpected error in sub_query_generator: {str(e)}")
-        logger.error(traceback.format_exc())
+        grader_logger.error(f"Unexpected error in sub_query_generator: {str(e)}")
+        grader_logger.error(traceback.format_exc())
         return {
             "sub_queries": [question],
             "reasoning": f"Unexpected error: {str(e)}"
