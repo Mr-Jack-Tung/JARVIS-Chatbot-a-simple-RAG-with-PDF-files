@@ -192,6 +192,9 @@ _
 
 </details>
 
+### Update September 12, 2025 (v0.1.7)
+- update: docker compose up -d
+
 ### Update April 28, 2025 (v0.1.7)
 - update: Improved error handling throughout the codebase
 - update: Enhanced logging system with file-based logging
