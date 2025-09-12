@@ -25,7 +25,7 @@ class Model_Settings:
     REPEAT_PENALTY = 1.12  # Penalty for repeating tokens
     
     # System prompt
-    SYSTEM_PROMPT = ""     # Will be initialized from prompts.py
+    SYSTEM_PROMPT: str = ""     # Will be initialized from prompts.py
     
     # Retrieval settings
     RETRIEVAL_TOP_K = 3        # Number of documents to retrieve
@@ -39,10 +39,12 @@ class Model_Settings:
     # Feature toggles
     IS_RETRIEVAL = False       # Enable/disable retrieval augmentation
     IS_GRADER = False          # Enable/disable relevance grading
-    IS_WEB_SEARCH = True       # Enable/disable web search augmentation
+    IS_WEB_SEARCH = False       # Enable/disable web search augmentation
     FUNCTION_CALLING = False   # Enable/disable function calling
+    IS_THINKING = False        # Enable/disable thinking process
+    SHOW_THINKING = False      # Enable/disable showing thinking process
     AGENT_CALLING = "ReWOO"    # Agent type: "ReWOO" or "ReACT"
-    CHAT_HISTORY_SAVING = True # Enable/disable saving chat history
+    CHAT_HISTORY_SAVING = False # Enable/disable saving chat history
     
     @classmethod
     def get_model_info(cls):

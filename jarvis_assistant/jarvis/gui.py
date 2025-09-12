@@ -105,7 +105,9 @@ def JARVIS_assistant():
                                 txt_gemini_api_key = gr.Textbox(value=GEMINI_KEY, type="password", placeholder="Gemini API Key", show_label=False)
                                 
                                 btn_key_save = gr.Button(value="Save", min_width=50)
-                                btn_key_save.click(fn=btn_key_save_click, inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
+                                btn_key_save.click(fn=btn_key_save_click, 
+                                                   inputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key], 
+                                                   outputs=[txt_groq_api_key, txt_openai_api_key, txt_gemini_api_key])
                                 
                         with gr.Row(variant="panel"):
                             dropdown_model_type = gr.Dropdown(choices=["Ollama", "GroqCloud", "OpenAI", "Gemini", "LiteLLM"], value=model_settings.MODEL_TYPE, type="value", label="Type", interactive=True, min_width=220)
@@ -117,8 +119,6 @@ def JARVIS_assistant():
                                 ollama_list_models = get_ollama_list_models()
                                 # model_settings.MODEL_NAME = ollama_list_models[0]
                                 model_settings.MODEL_NAME = "qwen3:4b"
-                                print("Selected model:",model_settings.MODEL_NAME)
-
                                 with gr.Row(variant="panel"):
                                     ollama_dropdown_model = gr.Dropdown(choices=ollama_list_models, value=model_settings.MODEL_NAME, type="value", label="Model", interactive=True, min_width=220)
                                     ollama_dropdown_model.select(fn=ollama_dropdown_model_select, inputs=[ollama_dropdown_model])
@@ -141,6 +141,12 @@ def JARVIS_assistant():
                                     with gr.Accordion(label="Function calling", open=False):
                                         chk_function_calling = Toggle(label="Function calling", value=model_settings.FUNCTION_CALLING, interactive=True, min_width=220)
                                         chk_function_calling.change(fn=update_function_calling, inputs=chk_function_calling)
+                                        
+                                        chk_is_thinking = Toggle(label="Thinking", value=model_settings.IS_THINKING, interactive=True, min_width=220)
+                                        chk_is_thinking.change(fn=update_is_thinking, inputs=chk_is_thinking)
+                                        
+                                        chk_show_thinking = Toggle(label="Thinking Show", value=model_settings.SHOW_THINKING, interactive=True, min_width=220)
+                                        chk_show_thinking.change(fn=update_show_thinking, inputs=chk_show_thinking)
     
                                         # @gr.render(inputs=chk_function_calling)
                                         # def show_radio_agents(chk_function_calling):
@@ -152,7 +158,6 @@ def JARVIS_assistant():
                             if dropdown_model_type == "GroqCloud" and model_settings.GROQ_API_KEY:
                                 groq_list_models = get_groq_list_models(model_settings.GROQ_API_KEY)
                                 model_settings.MODEL_NAME = groq_list_models[0]
-                                print("Selected model:",model_settings.MODEL_NAME)
 
                                 with gr.Row(variant="panel"):
                                     groq_dropdown_model = gr.Dropdown(choices=groq_list_models, value=model_settings.MODEL_NAME, type="value", label="Models", interactive=True)
@@ -161,7 +166,6 @@ def JARVIS_assistant():
                             if dropdown_model_type == "OpenAI" and model_settings.OPENAI_API_KEY:
                                 openai_list_models = get_openai_list_models(model_settings.OPENAI_API_KEY)
                                 model_settings.MODEL_NAME = openai_list_models[0]
-                                print("Selected model:",model_settings.MODEL_NAME)
 
                                 with gr.Row(variant="panel"):
                                     openai_dropdown_model = gr.Dropdown(choices=openai_list_models, value=model_settings.MODEL_NAME, type="value", label="Models", interactive=True)
@@ -170,7 +174,6 @@ def JARVIS_assistant():
                             if dropdown_model_type == "Gemini" and model_settings.GEMINI_API_KEY:
                                 gemini_list_modes = get_gemini_list_modes(model_settings.GEMINI_API_KEY)
                                 model_settings.MODEL_NAME = gemini_list_modes[0]
-                                print("Selected model:",model_settings.MODEL_NAME)
 
                                 with gr.Row(variant="panel"):
                                     gemini_dropdown_model = gr.Dropdown(choices=gemini_list_modes, value=model_settings.MODEL_NAME, type="value", label="Models", interactive=True)
@@ -179,7 +182,6 @@ def JARVIS_assistant():
                             if dropdown_model_type == "LiteLLM":
                                 litellm_list_models = get_ollama_list_models()
                                 model_settings.MODEL_NAME = litellm_list_models[0]
-                                print("Selected model:",model_settings.MODEL_NAME)
 
                                 with gr.Row(variant="panel"):
                                     litellm_dropdown_model = gr.Dropdown(choices=litellm_list_models, value=model_settings.MODEL_NAME, type="value", label="Models", interactive=True)
@@ -229,21 +231,13 @@ def JARVIS_assistant():
                             with gr.Column(scale=1, min_width=50):
                                 btn_reset = gr.Button(value="Reset")
                                 btn_reset.click(fn=btn_reset_click, inputs=txt_system_prompt, outputs=txt_system_prompt)
+                
                 def on_tab_select(evt: gr.SelectData):
-                    print(f"\nYou selected the {evt.value} tab.")
                     if evt.value == "System prompt":
                         return model_settings.SYSTEM_PROMPT
                 
                 tab_system_prompt.select(fn=on_tab_select, outputs=txt_system_prompt)
             with gr.Column(scale=7):
-                def update_chat_history(chatbot, workspace_list, workspace_selected):
-                    for wp in workspace_list:
-                        if wp["id"] == workspace_selected["id"]:
-                            workspace= {"id":wp["id"], "name":wp["name"], "history":chatbot}
-                            workspace_list.remove(wp)
-                            workspace_list.insert(0, workspace)
-                            return workspace_list, workspace
-    
                 workspace_selected = state_workspace_selected.value
                 chatbot = gr.Chatbot(
                     workspace_selected["history"],
@@ -260,8 +254,7 @@ def JARVIS_assistant():
                     return workspace_selected["history"]
                 state_workspace_selected.change(fn=workspace_selected_chatbot, inputs=state_workspace_selected,  outputs=chatbot)
     
-                chat_msg = chat_input.submit(fn=add_message, inputs=[chatbot, chat_input], outputs=[chatbot])
-                bot_msg = chat_msg.then(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input]).then(fn=update_chat_history, inputs=[chatbot, state_workspace_list, state_workspace_selected], outputs=[state_workspace_list, state_workspace_selected])
+                chat_input.submit(fn=bot, inputs=[chatbot, chat_input], outputs=[chatbot, chat_input])
     
                 gr.Examples(examples=[{'text': "Bạn tên là gì?"}, {'text': "What's your name?"}, {'text': 'Quel est ton nom?'}, {'text': 'Wie heißen Sie?'}, {'text': '¿Cómo te llamas?'}, {'text': '你叫什么名字？'}, {'text': 'あなたの名前は何ですか？'}, {'text': '이름이 뭐에요?'}, {'text': 'คุณชื่ออะไร?'}, {'text': 'ما اسمك؟'}], inputs=chat_input)
     

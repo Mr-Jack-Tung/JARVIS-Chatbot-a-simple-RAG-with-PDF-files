@@ -28,3 +28,16 @@ def llm_completion(model_type, model_name, system_prompt, prompt):
     if resp.get("error"):
         raise ValueError(resp["error"])
     return str(resp)
+
+def llm_stream_completion(model_type, model_name, system_prompt, prompt):
+    """
+    Send chat completion via unified LLM client and stream the response.
+    """
+    from .llm_client import get_llm_client
+    client = get_llm_client(model_type, model_name)
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt},
+    ]
+    for chunk in client.stream(messages):
+        yield chunk

@@ -15,26 +15,23 @@ JARVIS is a Retrieval-Augmented Generation (RAG) chatbot that can:
 - Support multiple LLM backends (Ollama, OpenAI, Groq, Gemini)
 - Use function calling with ReWOO and ReACT agents
 """
-import logging
+import sys
+from loguru import logger
 
-# Configure root logger
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler('jarvis.log')
-    ]
-)
+# Configure Loguru logger
+logger.remove()  # Remove default handler
+logger.add(sys.stderr, level="INFO")  # Add console sink
+logger.add("jarvis.log", level="INFO", rotation="10 MB", retention="7 days")  # Add file sink
 
 from jarvis_assistant.jarvis.gui import JARVIS_assistant
 
 def main():
     """Launch the JARVIS assistant GUI"""
     try:
+        logger.info("Starting JARVIS Assistant...")
         JARVIS_assistant()
     except Exception as e:
-        logging.error(f"Error starting JARVIS: {str(e)}")
+        logger.exception(f"Critical error starting JARVIS: {str(e)}")
         raise
 
 if __name__ == "__main__":
