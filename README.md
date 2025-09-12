@@ -193,7 +193,9 @@ _
 </details>
 
 ### Update September 12, 2025 (v0.1.7)
-- update: docker compose up -d
+- update: dockerfile and docker-compose.yaml updated
+  - for build: docker compose build --no-cache
+  - for run: docker compose up -d
 
 ### Update April 28, 2025 (v0.1.7)
 - update: Improved error handling throughout the codebase
