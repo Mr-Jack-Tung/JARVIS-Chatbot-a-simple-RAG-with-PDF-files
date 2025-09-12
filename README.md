@@ -108,6 +108,8 @@ _
 (Multilingual, Multimodal, MultiAgent, MultiDevice, ...)
 
 <details>
+
+![alt-text](./img/JARVIS%20assistant%20v0.x.x%20_%202024-07-18.jpg)
   
 **Multimodal support**
 - text
