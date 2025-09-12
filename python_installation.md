@@ -16,6 +16,9 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 
 pip install poetry
+pip install --upgrade pip
+
+poetry lock
 poetry install
 poetry update
 poetry lock
@@ -23,10 +26,20 @@ poetry check
 poetry list
 
 poetry add httpx==0.27.0
+poetry add gpt4all@^2.8.2
+
+poetry env use 3.11
+poetry lock --no-cache --regenerate
 
 brew install mactex # Cài LaTeX
 
 Note: By downgrading to NumPy 1.26.4, we provided a version that PyTorch 2.2.2 can properly interact with Python 3.10~3.12
+
+## UV help
+uv supports pylock.toml as an export target and in the uv pip CLI. For example:
+- To export a uv.lock to the pylock.toml format, run: uv export -o pylock.toml
+- To generate a pylock.toml file from a set of requirements, run: uv pip compile -o pylock.toml requirements.txt
+- To install from a pylock.toml file, run: uv pip sync pylock.toml or uv pip install -r pylock.toml
 
 ## 2. Dùng Anaconda
 ### Cài Anaconda

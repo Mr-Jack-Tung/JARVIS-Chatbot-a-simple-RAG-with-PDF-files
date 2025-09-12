@@ -22,3 +22,4 @@ ollama
 openai
 google-generativeai
 duckduckgo-search
+gpt4all

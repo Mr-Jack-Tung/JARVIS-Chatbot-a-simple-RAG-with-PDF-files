@@ -1,49 +1,34 @@
-# Sử dụng hình ảnh Python chính thức
-FROM python:3.12-slim
+# Stage 1: Install PyPI dependencies only
+FROM --platform=linux/amd64 python:3.12-slim AS deps
+WORKDIR /tmp/deps
 
-# Thiết lập thư mục làm việc
-WORKDIR /app
-
-# Cài đặt các dependencies hệ thống
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    software-properties-common \
-    git \
-    netcat-openbsd \
-    && apt-get install -y curl \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates build-essential cmake ninja-build \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Ollama
-RUN curl -fsSL https://ollama.com/install.sh | sh
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel cython uv
 
-# Sao chép các file cấu hình Poetry
-COPY pyproject.toml ./
+# Copy only lockfiles, no local package
+COPY pylock.toml uv.lock ./
 
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
+# Install PyPI dependencies only
+RUN uv pip install --requirements pylock.toml --preview-features pylock --system
 
-# Cài đặt Poetry
-RUN pip install poetry
+# Stage 2: Final image
+FROM --platform=linux/amd64 python:3.12-slim
+WORKDIR /app
 
-RUN poetry env use python3.12
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates libopenblas-dev libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Cài đặt dependencies
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi --no-root
+# Copy venv/dependencies from deps stage
+COPY --from=deps /usr/local /usr/local
 
-RUN poetry lock
-RUN poetry update
-
+# Copy application code
 COPY . .
 
-# Đặt biến môi trường
-ENV PYTHONUNBUFFERED=1
+# Install local package editable
+RUN pip install --no-cache-dir -e .
 
-# RUN groupadd -r appuser && useradd -r -g appuser appuser
-# RUN chown -R appuser:appuser .
-# USER appuser
-
-# HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost:8000/ || exit 1
-
-CMD ["/bin/bash", "-c", "ollama serve & until nc -z localhost 11434; do echo 'Waiting for Ollama to start...'; sleep 5; done; ollama pull nomic-embed-text && ollama pull qwen3:4b && poetry run python3 main.py"]
+CMD ["python3", "main.py"]

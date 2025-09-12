@@ -1,25 +1,44 @@
-version: "3.8"
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
+    platform: linux/arm64
+    depends_on:
+      ollama:
+        condition: service_healthy
     ports:
-      - "7860:7860" # default port for gradio server
-    volumes:
-      - .:/app # Ánh xạ thư mục local vào container
+      - "7860:7860"
     environment:
+      - OLLAMA_HOST=http://ollama:11434
       - PYTHONUNBUFFERED=1
-      # - PORT=8000
-    restart: always
+    restart: unless-stopped
+    command: ["python3", "main.py"]
 
   ollama:
-    image: ollama/ollama
+    image: ollama/ollama:latest
+    platform: linux/amd64
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     volumes:
-      - ollama:/root/.ollama
+      - ollama_models:/root/.ollama
     ports:
       - "11434:11434"
-    restart: always
+    restart: unless-stopped
+
+  ollama-init:
+    image: ollama/ollama:latest
+    platform: linux/amd64
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    entrypoint: ["/bin/sh", "-c", "ollama pull qwen3:4b && ollama pull nomic-embed-text"]
+    restart: "no"
 
 volumes:
-  ollama:
+  ollama_models:
